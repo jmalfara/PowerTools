@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_empty_content">You haven\'t added any shortcuts yet. Favourite\'d tools will appear here</string>
+
+    <!--  Conversions  -->
+    <string name="dashboard_conversion_tile_ml_to_oz">Milliliters to Ounce</string>
+    <string name="dashboard_conversion_tile_km_to_m">Kilometers to Miles</string>
+    <string name="dashboard_conversion_tile_l_to_gal">Liters to Gallon</string>
+    <string name="dashboard_conversion_tile_l100km_to_mpg">L/100Km to MPG</string>
+
+</resources>
