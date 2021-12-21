@@ -9,17 +9,10 @@ import com.jmat.conversions.ui.fragment.ConversionLiters100KmToMPGFragment
 import com.jmat.conversions.ui.fragment.ConversionMilliliterToOunceFragment
 import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.setupSupportActionbar
-import com.jmat.powertools.modules.conversions.CONVERSIONS_ACTION_KEY
-import com.jmat.powertools.modules.conversions.CONVERSIONS_ACTION_KM_TO_MILES
-import com.jmat.powertools.modules.conversions.CONVERSIONS_ACTION_KM_TO_MPG
-import com.jmat.powertools.modules.conversions.CONVERSIONS_ACTION_MILLILITERS_TO_OUNCES
+import com.jmat.powertools.modules.conversions.*
 import java.lang.RuntimeException
 
 class ConversionsActivity : AppCompatActivity() {
-//    private val action: String by lazy {
-//        intent.getStringExtra(CONVERSIONS_ACTION_KEY)!!
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversions)
@@ -30,14 +23,12 @@ class ConversionsActivity : AppCompatActivity() {
             navigationMode = NavigationMode.BACK
         )
 
-//        val fragment = when(CONVERSIONS_ACTION_KM_TO_MPG) {
-//            CONVERSIONS_ACTION_KM_TO_MPG -> ConversionLiters100KmToMPGFragment()
-//            CONVERSIONS_ACTION_KM_TO_MILES -> ConversionKilometersToMilesFragment()
-//            CONVERSIONS_ACTION_MILLILITERS_TO_OUNCES -> ConversionMilliliterToOunceFragment()
-////            else -> throw RuntimeException("Unknown Action: $action")
-//        }
-
-        val fragment = ConversionLiters100KmToMPGFragment()
+        val fragment = when(val deeplinkUrl = intent.dataString) {
+            DEEPLINK_CONVERSIONS_L100KM_TO_MPG -> ConversionLiters100KmToMPGFragment()
+            DEEPLINK_CONVERSIONS_KM_TO_MILES -> ConversionKilometersToMilesFragment()
+            DEEPLINK_CONVERSIONS_ML_TO_OUNCES -> ConversionMilliliterToOunceFragment()
+            else -> throw RuntimeException("Unknown Action: $deeplinkUrl")
+        }
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, fragment)

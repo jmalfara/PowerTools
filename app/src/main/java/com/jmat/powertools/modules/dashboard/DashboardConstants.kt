@@ -1,4 +1,5 @@
 package com.jmat.powertools.modules.dashboard
 
-class DashboardConstants {
-}
+import com.jmat.powertools.DEEPLINK_BASE
+
+const val DEEPLINK_DASHBOARD = "$DEEPLINK_BASE://dashboard"
