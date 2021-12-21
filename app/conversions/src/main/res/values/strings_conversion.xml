@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="conversion_title">Conversions</string>
+    <string name="conversion_tile_ml_to_oz">Milliliters to Ounce</string>
+    <string name="conversion_hint_ml">Milliliters</string>
+    <string name="conversion_definition_ml">A milliliter is a metric unit used to measure capacity that\'s equal to one-thousandth of a liter. Capacity is the amount of liquid a container can hold. One liter contains 1,000 milliliters, so to convert liters to milliliters you multiply the number of liters times 1,000</string>
+    <string name="conversion_hint_oz">Ounce</string>
+
+    <string name="conversion_tile_km_to_m">Kilometers to Miles</string>
+    <string name="conversion_hint_km">Kilometers</string>
+    <string name="conversion_hint_m">Miles</string>
+
+    <string name="conversion_tile_l_to_gal">Liters to Gallon</string>
+
+    <string name="conversion_tile_l100km_to_mpg">L/100Km to MPG</string>
+    <string name="conversion_hint_l100km">L/100Km</string>
+    <string name="conversion_hint_mpg">MPG</string>
+    <string name="conversion_label_us_gallon">Use US Gallon</string>
+
+
+</resources>

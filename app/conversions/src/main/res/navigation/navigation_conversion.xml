@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/conversionMillilitersToOunceFragment">
+
+<!--    <fragment-->
+<!--        android:id="@+id/dashboardConversion"-->
+<!--        android:name="com.jmat.conversion.ui.fragment.ConversionFragment"-->
+<!--        tools:layout="@layout/fragment_conversion">-->
+
+<!--        <action-->
+<!--            android:id="@+id/dashboardConversion_to_conversionMillilitersToOunceFragment"-->
+<!--            app:destination="@+id/conversionMillilitersToOunceFragment" />-->
+
+<!--        <action-->
+<!--            android:id="@+id/dashboardConversion_to_conversionKilometersToMilesFragment"-->
+<!--            app:destination="@+id/conversionKilometersToMilesFragment" />-->
+
+<!--        <action-->
+<!--            android:id="@+id/dashboardConversion_to_conversionLiters100KmToMPGFragment"-->
+<!--            app:destination="@+id/conversionLiters100KmToMPGFragment" />-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/conversionMillilitersToOunceFragment"
+        android:name="com.jmat.conversions.ui.fragment.ConversionMilliliterToOunceFragment"
+        tools:layout="@layout/fragment_conversion_ml_to_oz"/>
+
+    <fragment
+        android:id="@+id/conversionKilometersToMilesFragment"
+        android:name="com.jmat.conversions.ui.fragment.ConversionKilometersToMilesFragment"
+        tools:layout="@layout/fragment_conversion_km_to_m"/>
+
+    <fragment
+        android:id="@+id/conversionLiters100KmToMPGFragment"
+        android:name="com.jmat.conversions.ui.fragment.ConversionLiters100KmToMPGFragment"
+        tools:layout="@layout/fragment_conversion_l100km_to_mpg"/>
+</navigation>

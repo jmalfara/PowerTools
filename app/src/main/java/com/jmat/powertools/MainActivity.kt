@@ -3,6 +3,7 @@ package com.jmat.powertools
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.base.extensions.navigateLauncherActions
 
 class MainActivity : AppCompatActivity() {
@@ -11,9 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<View>(R.id.textView).setOnClickListener {
-            navigateLauncherActions(
-                launcherAction = LauncherActions.DASHBOARD
-            )
+            navigateDeeplink(DeeplinkActions.DASHBOARD)
         }
     }
 }

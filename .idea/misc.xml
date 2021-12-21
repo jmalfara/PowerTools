@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/drawable/ic_swap_vertical_circle_24.xml" value="0.167" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/activity_conversions.xml" value="0.25" />
+        <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/fragment_conversion_km_to_m.xml" value="0.1578125" />
+        <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/fragment_conversion_l100km_to_mpg.xml" value="0.1" />
+        <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/fragment_conversion_ml_to_oz.xml" value="0.1" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/dashboard/src/main/res/layout/activity_dashboard.xml" value="0.125" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/dashboard/src/main/res/layout/fragment_conversion.xml" value="0.165625" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/dashboard/src/main/res/layout/fragment_conversions.xml" value="0.15833333333333333" />
@@ -15,6 +19,7 @@
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/dashboard/src/main/res/menu/menu_dashboard.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.227" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/layout/activity_main.xml" value="0.15896739130434784" />
+        <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/menu/menu_feature.xml" value="0.1578125" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/menu/menu_main.xml" value="0.165625" />
       </map>
     </option>
