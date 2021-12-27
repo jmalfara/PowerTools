@@ -16,3 +16,4 @@ rootProject.name = "PowerTools"
 include ':app'
 include ':app:dashboard'
 include ':app:conversions'
+include ':app:settings'

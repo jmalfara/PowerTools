@@ -39,7 +39,7 @@ android {
         viewBinding true
     }
 
-    dynamicFeatures = [':app:dashboard', ':app:conversions']
+    dynamicFeatures = [':app:dashboard', ':app:conversions', ':app:settings']
 }
 
 dependencies {

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/conversions" />
             <option value="$PROJECT_DIR$/app/dashboard" />
+            <option value="$PROJECT_DIR$/app/settings" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
