@@ -17,6 +17,7 @@ import com.jmat.conversions.R
 import com.jmat.powertools.R as AppR
 
 import com.jmat.conversions.databinding.FragmentConversionKmToMBinding
+import com.jmat.conversions.di.*
 import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
@@ -28,24 +29,34 @@ import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
-import com.jmat.powertools.data.preferences.userPreferencesStore
 import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_KM_TO_MILES
 import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_KM_TO_MILES
+import javax.inject.Inject
 
-class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversion_km_to_m) {
+class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversion_km_to_m),
+    InjectionInitializer<ConversionsComponent> by ConversionsInjectionInitializer() {
+
     private val binding: FragmentConversionKmToMBinding by viewBinding(
         FragmentConversionKmToMBinding::bind
     )
 
+    @Inject
+    lateinit var userPreferencesRepository: UserPreferencesRepository
+
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
-            userPreferencesRepository = UserPreferencesRepository(requireContext().userPreferencesStore),
+            userPreferencesRepository = userPreferencesRepository,
             favouriteId = ID_CONVERSIONS_KM_TO_MILES,
             favouriteActionLink = DEEPLINK_CONVERSIONS_KM_TO_MILES
         )
     }
 
     private val viewModel: ConversionKilometersToMilesViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        buildComponent().inject(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

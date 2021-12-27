@@ -12,6 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.jmat.conversions.R
 import com.jmat.conversions.databinding.FragmentConversionL100kmToMpgBinding
+import com.jmat.conversions.di.ConversionsComponent
+import com.jmat.conversions.di.ConversionsInjectionInitializer
+import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
@@ -23,29 +26,37 @@ import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
 import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
-import com.jmat.powertools.data.preferences.userPreferencesStore
-import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_KM_TO_MILES
 import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_L100KM_TO_MPG
 import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_L100KM_TO_MPG
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import javax.inject.Inject
 
-class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion_l100km_to_mpg) {
+class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion_l100km_to_mpg),
+    InjectionInitializer<ConversionsComponent> by ConversionsInjectionInitializer() {
+
     private val binding: FragmentConversionL100kmToMpgBinding by viewBinding(
         FragmentConversionL100kmToMpgBinding::bind
     )
 
+    @Inject
+    lateinit var userPreferencesRepository: UserPreferencesRepository
 
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
-            userPreferencesRepository = UserPreferencesRepository(requireContext().userPreferencesStore),
+            userPreferencesRepository = userPreferencesRepository,
             favouriteId = ID_CONVERSIONS_L100KM_TO_MPG,
             favouriteActionLink = DEEPLINK_CONVERSIONS_L100KM_TO_MPG
         )
     }
 
     private val viewModel: ConversionL100KmToMPGViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        buildComponent().inject(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

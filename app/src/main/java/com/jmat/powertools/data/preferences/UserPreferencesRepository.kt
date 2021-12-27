@@ -1,19 +1,11 @@
 package com.jmat.powertools.data.preferences
 
-import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import com.jmat.powertools.Favourite
 import com.jmat.powertools.UserPreferences
+import javax.inject.Inject
 
-private const val DATA_STORE_FILE_NAME = "user_prefs.pb"
-
-val Context.userPreferencesStore: DataStore<UserPreferences> by dataStore(
-    fileName = DATA_STORE_FILE_NAME,
-    serializer = UserPreferencesSerializer
-)
-
-class UserPreferencesRepository(
+class UserPreferencesRepository @Inject constructor (
     private val dataStore: DataStore<UserPreferences>
 ) {
     val data = dataStore.data
