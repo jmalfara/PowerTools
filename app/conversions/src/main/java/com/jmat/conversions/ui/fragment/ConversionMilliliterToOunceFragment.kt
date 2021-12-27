@@ -24,6 +24,8 @@ import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.data.preferences.userPreferencesStore
+import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
+import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_ML_TO_OUNCES
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
@@ -36,7 +38,8 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = UserPreferencesRepository(requireContext().userPreferencesStore),
-            favouriteId = "conversion_ml_to_oz"
+            favouriteId = ID_CONVERSIONS_ML_TO_OUNCES,
+            favouriteActionLink = DEEPLINK_CONVERSIONS_ML_TO_OUNCES
         )
     }
 

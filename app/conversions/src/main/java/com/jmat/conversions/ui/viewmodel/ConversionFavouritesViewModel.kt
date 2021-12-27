@@ -12,7 +12,8 @@ import kotlinx.coroutines.launch
 
 class ConversionFavouritesViewModel(
     private val userPreferencesRepository: UserPreferencesRepository,
-    private val favouriteId: String
+    private val favouriteId: String,
+    private val favouriteActionLink: String
 ) : ViewModel() {
     val isFavourite: Flow<Boolean> = userPreferencesRepository.data.transform { data ->
         val favourite = data.favouritesList.contains { it.id == favouriteId }
@@ -26,7 +27,7 @@ class ConversionFavouritesViewModel(
             } else {
                 userPreferencesRepository.addFavorite(
                     id = favouriteId,
-                    deeplink = "powertools://conversion/km_to_m"
+                    deeplink = favouriteActionLink
                 )
             }
         }
@@ -35,13 +36,16 @@ class ConversionFavouritesViewModel(
 
 class ConversionFavouritesViewModelFactory(
     private val userPreferencesRepository: UserPreferencesRepository,
-    val favouriteId: String
+    val favouriteId: String,
+    private val favouriteActionLink: String
 ) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ConversionFavouritesViewModel::class.java)) {
             return ConversionFavouritesViewModel(
                 userPreferencesRepository = userPreferencesRepository,
-                favouriteId = favouriteId
+                favouriteId = favouriteId,
+                favouriteActionLink = favouriteActionLink
             ) as T
         } else throw RuntimeException("ConversionKilometersToMilesViewModelFactory not assignable")
     }

@@ -24,6 +24,9 @@ import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.data.preferences.userPreferencesStore
+import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_KM_TO_MILES
+import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_L100KM_TO_MPG
+import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_L100KM_TO_MPG
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
@@ -37,7 +40,8 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = UserPreferencesRepository(requireContext().userPreferencesStore),
-            favouriteId = "conversion_l100km_to_mpg"
+            favouriteId = ID_CONVERSIONS_L100KM_TO_MPG,
+            favouriteActionLink = DEEPLINK_CONVERSIONS_L100KM_TO_MPG
         )
     }
 

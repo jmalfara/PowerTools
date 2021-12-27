@@ -29,6 +29,8 @@ import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.data.preferences.userPreferencesStore
+import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_KM_TO_MILES
+import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_KM_TO_MILES
 
 class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversion_km_to_m) {
     private val binding: FragmentConversionKmToMBinding by viewBinding(
@@ -38,7 +40,8 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = UserPreferencesRepository(requireContext().userPreferencesStore),
-            favouriteId = "conversion_km_to_miles"
+            favouriteId = ID_CONVERSIONS_KM_TO_MILES,
+            favouriteActionLink = DEEPLINK_CONVERSIONS_KM_TO_MILES
         )
     }
 
