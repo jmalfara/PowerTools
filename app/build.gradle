@@ -8,14 +8,14 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk TARGET_SDK as int
 
     defaultConfig {
         applicationId "com.jmat.powertools"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        minSdk MIN_SDK as int
+        targetSdk TARGET_SDK as int
+        versionCode APP_VERSION_CODE as int
+        versionName APP_VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +27,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JDK_VERSION
+        targetCompatibility JDK_VERSION
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JDK_VERSION
     }
 
     buildFeatures {
@@ -50,12 +51,12 @@ dependencies {
     api "androidx.navigation:navigation-ui-ktx:${NAVIGATION_VERSION}"
     api "androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}"
 
-    api "androidx.datastore:datastore:1.0.0"
-    api "com.google.protobuf:protobuf-javalite:3.11.0"
-    api "androidx.datastore:datastore-core:1.0.0"
+    api "androidx.datastore:datastore:${DATASTORE_VERSION}"
+    api "androidx.datastore:datastore-core:${DATASTORE_VERSION}"
+    api "com.google.protobuf:protobuf-javalite:${PROTOBUF_VERSION}"
 
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation "com.google.dagger:hilt-android:${HILT_VERSION}"
+    kapt "com.google.dagger:hilt-compiler:${HILT_VERSION}"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
