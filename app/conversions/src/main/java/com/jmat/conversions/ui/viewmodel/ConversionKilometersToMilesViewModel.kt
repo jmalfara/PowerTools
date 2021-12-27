@@ -14,9 +14,7 @@ import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-class ConversionKilometersToMilesViewModel(
-    val userPreferencesRepository: UserPreferencesRepository
-) : ViewModel() {
+class ConversionKilometersToMilesViewModel : ViewModel() {
     private val scale = 10
     private val milesPerKm = BigDecimal(0.621371)
     private val _events = MutableSharedFlow<ConversionEvent>(replay = 0)
@@ -40,36 +38,5 @@ class ConversionKilometersToMilesViewModel(
                 ConversionEvent.UpdateFromAmount(totalKms)
             )
         }
-    }
-
-    private val favouriteId = "conversion_km_to_m"
-    val isFavourite: Flow<Boolean> = userPreferencesRepository.data.transform { data ->
-        val favourite = data.favouritesList.contains { it.id == favouriteId }
-        emit(favourite)
-    }
-
-    fun toggleFavourite() {
-        viewModelScope.launch {
-            if (isFavourite.first()) {
-                userPreferencesRepository.removeFavourite(favouriteId)
-            } else {
-                userPreferencesRepository.addFavorite(
-                    id = favouriteId,
-                    deeplink = "powertools://conversion/km_to_m"
-                )
-            }
-        }
-    }
-}
-
-class ConversionKilometersToMilesViewModelFactory(
-    private val userPreferencesRepository: UserPreferencesRepository
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ConversionKilometersToMilesViewModel::class.java)) {
-            return ConversionKilometersToMilesViewModel(
-                userPreferencesRepository = userPreferencesRepository
-            ) as T
-        } else throw RuntimeException("ConversionKilometersToMilesViewModelFactory not assignable")
     }
 }
