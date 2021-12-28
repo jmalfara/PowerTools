@@ -6,6 +6,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigationrail.NavigationRailView
 import com.jmat.dashboard.R
+import com.jmat.powertools.base.extensions.navigateDeeplink
+import com.jmat.powertools.modules.settings.DEEPLINK_SETTINGS
 import dagger.hilt.android.AndroidEntryPoint
 
 class DashboardActivity : AppCompatActivity() {
@@ -19,5 +21,10 @@ class DashboardActivity : AppCompatActivity() {
 
         val navigationRail = findViewById<NavigationRailView>(R.id.navigation_rail)
         navigationRail.setupWithNavController(navController)
+
+        navigationRail.menu.findItem(R.id.settings).setOnMenuItemClickListener { item ->
+            navigateDeeplink(DEEPLINK_SETTINGS)
+            true
+        }
     }
 }

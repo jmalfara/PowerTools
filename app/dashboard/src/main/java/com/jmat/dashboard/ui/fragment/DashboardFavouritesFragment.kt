@@ -61,7 +61,7 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.favourites.collect { favourites ->
                     favouritesAdapter.submitList(favourites)
                     binding.emptyCard.isVisible = favourites.isEmpty()

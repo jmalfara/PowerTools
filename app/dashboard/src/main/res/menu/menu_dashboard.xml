@@ -16,4 +16,13 @@
         app:iconTint="?attr/colorOnPrimary"
         app:showAsAction="ifRoom"/>
 
+    <group>
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_24"
+            android:title="@string/title_settings"
+            app:iconTint="?attr/colorOnPrimary"
+            app:showAsAction="ifRoom" />
+    </group>
+
 </menu>

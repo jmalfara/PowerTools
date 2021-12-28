@@ -29,4 +29,10 @@ class UserPreferencesRepository @Inject constructor (
             preferences.toBuilder().removeFavourites(index).build()
         }
     }
+
+    suspend fun clear() {
+        dataStore.updateData { preferences ->
+            preferences.defaultInstanceForType
+        }
+    }
 }

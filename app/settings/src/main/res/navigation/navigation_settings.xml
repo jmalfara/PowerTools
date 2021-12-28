@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_settings"
+    app:startDestination="@id/settingsLandingFragment">
+
+    <fragment
+        android:id="@+id/settingsLandingFragment"
+        android:name="com.jmat.settings.ui.fragment.SettingsLandingFragment"
+        tools:layout="@layout/fragment_settings_landing"/>
+</navigation>

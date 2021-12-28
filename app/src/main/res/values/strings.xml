@@ -2,9 +2,12 @@
     <string name="placeholder_content">Placeholder Content</string>
     <string name="app_name">Power Tools</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
 
     <string name="menu_main_dashboard">Dashboard</string>
     <string name="menu_main_calculate">Calculate</string>
+    <string name="menu_main_settings">Settings</string>
+
     <string name="menu_feature_favourite">Favourite</string>
     <string name="title_conversion">Conversion</string>
     <string name="title_conversions">Conversions</string>
