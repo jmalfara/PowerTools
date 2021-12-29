@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group>
+    <group android:id="@+id/group1">
         <item android:id="@+id/clearData"
             android:icon="@drawable/ic_clear_24"
             android:title="@string/settings_item_clear_data"/>
+    </group>
+
+    <group android:id="@+id/group2">
+        <item android:id="@+id/appInfo"
+            android:icon="@drawable/ic_developer_mode_24"
+            android:title="@string/settings_item_debug"/>
     </group>
 </menu>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!--    Do Fonts -->
+    <style name="Text.H1" parent="TextAppearance.MaterialComponents.Headline4"/>
+    <style name="Text.H2" parent="TextAppearance.MaterialComponents.Headline5"/>
+    <style name="Text.Body1" parent="TextAppearance.MaterialComponents.Body1"/>
+    <style name="Text.Body2" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:alpha">0.8</item>
+    </style>
 </resources>

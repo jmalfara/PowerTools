@@ -2,6 +2,7 @@ package com.jmat.settings.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.jmat.powertools.base.delegate.viewBinding
@@ -18,7 +19,9 @@ import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
 class SettingsLandingFragment : Fragment(R.layout.fragment_settings_landing) {
-    private val binding: FragmentSettingsLandingBinding by viewBinding(FragmentSettingsLandingBinding::bind)
+    private val binding: FragmentSettingsLandingBinding by viewBinding(
+        FragmentSettingsLandingBinding::bind
+    )
 
     @Inject
     lateinit var viewModelFactory: InjectedViewModelFactory
@@ -39,12 +42,15 @@ class SettingsLandingFragment : Fragment(R.layout.fragment_settings_landing) {
 
         setupToolbar(
             toolbar = binding.toolbar,
-            navigationMode = NavigationMode.BACK
+            navigationMode = NavigationMode.CLOSE
         )
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.clearData -> viewModel.clearData()
+                R.id.clearData -> {
+                    viewModel.clearData()
+                    Toast.makeText(requireContext(), "App data cleared", Toast.LENGTH_SHORT).show()
+                }
                 else -> {}
             }
             true

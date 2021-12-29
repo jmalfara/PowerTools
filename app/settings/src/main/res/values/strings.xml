@@ -1,3 +1,4 @@
 <resources>
     <string name="settings_item_clear_data">Clear Data</string>
+    <string name="settings_item_debug">Debug</string>
 </resources>
