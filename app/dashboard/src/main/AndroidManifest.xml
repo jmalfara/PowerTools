@@ -34,14 +34,5 @@
                 <data android:scheme="powertools" android:host="dashboard" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ui.DashboardSettingLaunchActivity"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.jmat.powertools.DASHBOARD_SETTING_LAUNCH" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

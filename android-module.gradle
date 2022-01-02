@@ -2,7 +2,6 @@ apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdk TARGET_SDK as int

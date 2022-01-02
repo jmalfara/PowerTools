@@ -1,9 +1,20 @@
 package com.jmat.powertools.base.extensions
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.jmat.powertools.R
+
+fun Activity.setupSupportActionbar(
+    toolbar: Toolbar,
+    title: CharSequence? = null,
+    navigationMode: NavigationMode
+) {
+    (this as AppCompatActivity).setupSupportActionbar(
+        toolbar, title, navigationMode
+    )
+}
 
 fun AppCompatActivity.setupSupportActionbar(
     toolbar: Toolbar,

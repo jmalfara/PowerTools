@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.jmat.settings">
+    package="com.jmat.showcase">
 
     <dist:module
         dist:instant="false"
-        dist:title="Settings">
+        dist:title="@string/title_showcase">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
@@ -20,10 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity
-            android:name=".ui.SettingsActivity"
+            android:name=".ui.ShowcaseActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.jmat.powertools.SETTINGS" />
+                <action android:name="com.jmat.powertools.SHOWCASE" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -31,9 +31,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="powertools" android:host="settings" />
+                <data android:scheme="powertools" android:host="showcase" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

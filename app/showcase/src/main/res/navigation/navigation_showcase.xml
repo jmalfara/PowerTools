@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_showcase"
+    app:startDestination="@id/showcaseLandingFragment">
+
+    <fragment
+        android:id="@+id/showcaseLandingFragment"
+        android:name="com.jmat.showcase.ui.fragment.ShowcaseLandingFragment"
+        tools:layout="@layout/fragment_showcase_landing">
+
+        <action
+            android:id="@+id/showcaseLandingFragment_to_showcaseButtonsFragment"
+            app:destination="@id/showcaseButtonsFragment"/>
+
+        <action
+            android:id="@+id/showcaseLandingFragment_to_showcaseTextFragment"
+            app:destination="@id/showcaseTextFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/showcaseButtonsFragment"
+        android:name="com.jmat.showcase.ui.fragment.ShowcaseButtonsFragment"
+        tools:layout="@layout/fragment_showcase_buttons"/>
+
+    <fragment
+        android:id="@+id/showcaseTextFragment"
+        android:name="com.jmat.showcase.ui.fragment.ShowcaseTextFragment"
+        tools:layout="@layout/fragment_showcase_text"/>
+</navigation>

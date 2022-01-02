@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="showcase_action_buttons">Buttons</string>
+    <string name="showcase_buttons_single_title">Single Buttons</string>
+    <string name="showcase_buttons_bars_title">Button Bars</string>
+    <string name="showcase_action_primary">Primary</string>
+    <string name="showcase_action_secondary">Secondary</string>
+    <string name="showcase_action_tertiary">Tertiary</string>
+
+    <string name="showcase_action_typography">Typography</string>
+    <string name="showcase_text_h1">H1</string>
+    <string name="showcase_text_h2">H2</string>
+    <string name="showcase_text_body1" tools:ignore="Typos">Body1</string>
+    <string name="showcase_text_body2">Body2</string>
+    <string name="showcase_text_caption">Caption</string>
+
+</resources>

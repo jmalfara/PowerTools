@@ -1,4 +1,5 @@
 apply from: "$rootProject.projectDir/android-module.gradle"
+apply plugin: 'dagger.hilt.android.plugin'
 
 dependencies {
     implementation project(":app")
