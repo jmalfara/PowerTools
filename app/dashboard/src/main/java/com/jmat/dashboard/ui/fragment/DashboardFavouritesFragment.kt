@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardFavouritesBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
+import com.jmat.dashboard.di.inject
 import com.jmat.dashboard.ui.adapter.FavouritesAdapter
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
-import com.jmat.dashboard.ui.viewmodel.DashboardViewModelFactory
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
+import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
@@ -31,22 +32,11 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
     )
 
     @Inject
-    lateinit var userPreferencesRepository: UserPreferencesRepository
-
-    private val viewModel: DashboardViewModel by viewModels {
-        DashboardViewModelFactory(
-            userPreferencesRepository = userPreferencesRepository
-        )
-    }
+    lateinit var viewModelFactory: InjectedViewModelFactory
+    private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerDashboardComponent.builder()
-            .appDependencies(
-                EntryPointAccessors.fromApplication(
-                    requireContext(),
-                    DashboardModuleDependencies::class.java
-                )
-            ).build().inject(this)
+        inject()
         super.onCreate(savedInstanceState)
     }
 

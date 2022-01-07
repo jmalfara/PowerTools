@@ -1,6 +1,5 @@
 package com.jmat.conversions.di
 
-import androidx.fragment.app.Fragment
 import com.jmat.conversions.ui.fragment.ConversionKilometersToMilesFragment
 import com.jmat.conversions.ui.fragment.ConversionLiters100KmToMPGFragment
 import com.jmat.conversions.ui.fragment.ConversionMilliliterToOunceFragment

@@ -6,7 +6,7 @@ import dagger.Component
 
 @Component(
     dependencies = [DashboardModuleDependencies::class],
-    modules = [DashboardModule::class]
+    modules = [DashboardModule::class, DashboardViewModelsModule::class]
 )
 interface DashboardComponent {
     fun inject(fragment: DashboardFavouritesFragment)
