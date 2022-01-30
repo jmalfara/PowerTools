@@ -23,12 +23,12 @@ class DashboardActivity : AppCompatActivity() {
         val navigationRail = findViewById<NavigationRailView>(R.id.navigation_rail)
         navigationRail.setupWithNavController(navController)
 
-        navigationRail.menu.findItem(R.id.showcase).setOnMenuItemClickListener { item ->
+        navigationRail.menu.findItem(R.id.showcase).setOnMenuItemClickListener {
             navigateDeeplink(DEEPLINK_SHOWCASE)
             true
         }
 
-        navigationRail.menu.findItem(R.id.settings).setOnMenuItemClickListener { item ->
+        navigationRail.menu.findItem(R.id.settings).setOnMenuItemClickListener {
             navigateDeeplink(DEEPLINK_SETTINGS)
             true
         }

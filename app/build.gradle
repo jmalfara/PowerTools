@@ -33,6 +33,7 @@ android {
 
     kotlinOptions {
         jvmTarget = JDK_VERSION
+        freeCompilerArgs = ['-Xjvm-default=enable']
     }
 
     buildFeatures {
