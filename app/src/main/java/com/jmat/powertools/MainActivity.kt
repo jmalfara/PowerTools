@@ -3,16 +3,20 @@ package com.jmat.powertools
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.dashboard.DEEPLINK_DASHBOARD
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         setContentView(R.layout.activity_main)
 
-        splashScreen.setOnExitAnimationListener {
+        lifecycleScope.launch {
+            delay(2000)
             navigateDeeplink(DEEPLINK_DASHBOARD)
         }
     }

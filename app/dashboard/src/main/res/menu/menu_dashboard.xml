@@ -17,9 +17,16 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/encode"
+        android:icon="@drawable/ic_encode_24"
+        android:title="@string/menu_main_encode"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/showcase"
         android:icon="@drawable/ic_view_quilt_24"
-        android:title="@string/title_settings"
+        android:title="@string/menu_main_showcase"
         app:iconTint="?attr/colorOnPrimary"
         app:showAsAction="ifRoom" />
 

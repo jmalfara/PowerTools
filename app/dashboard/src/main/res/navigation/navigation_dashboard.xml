@@ -15,4 +15,9 @@
         android:name="com.jmat.dashboard.ui.fragment.DashboardConversionsFragment"
         tools:layout="@layout/fragment_dashboard_conversions"/>
 
+    <fragment
+        android:id="@id/encode"
+        android:name="com.jmat.dashboard.ui.fragment.DashboardEncodeFragment"
+        tools:layout="@layout/fragment_dashboard_encode"/>
+
 </navigation>

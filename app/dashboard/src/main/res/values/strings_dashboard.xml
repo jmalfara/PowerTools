@@ -9,4 +9,7 @@
     <string name="dashboard_conversion_tile_l_to_gal">Liters to Gallon</string>
     <string name="dashboard_conversion_title_l100km_to_mpg">L/100Km to MPG</string>
 
+    <!-- Encode -->
+    <string name="dashboard_encode_title_tinyurl">Tiny Url</string>
+
 </resources>
