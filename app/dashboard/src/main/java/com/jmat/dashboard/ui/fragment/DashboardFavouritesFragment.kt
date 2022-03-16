@@ -36,7 +36,13 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
     private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        inject()
+        DaggerDashboardComponent.builder()
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    requireContext(),
+                    DashboardModuleDependencies::class.java
+                )
+            ).build().inject(this)
         super.onCreate(savedInstanceState)
     }
 

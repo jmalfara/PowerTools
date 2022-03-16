@@ -14,6 +14,9 @@ val TRUTH_VERSION: String by project
 val MOCKK_VERSION: String by project
 val TURBINE_VERSION: String by project
 val NAVIGATION_VERSION: String by project
+val FRAGMENT_TESTING_VERSION: String by project
+val ANDROID_JUNIT_VERSION: String by project
+val ESPRESSO_VERSION: String by project
 
 android {
     compileSdk = TARGET_SDK.toInt()
@@ -47,10 +50,10 @@ dependencies {
     testImplementation ("io.mockk:mockk:${MOCKK_VERSION}")
     testImplementation ("app.cash.turbine:turbine:${TURBINE_VERSION}")
 
-    debugImplementation ("androidx.fragment:fragment-testing:1.4.0")
+    debugImplementation ("androidx.fragment:fragment-testing:${FRAGMENT_TESTING_VERSION}")
     androidTestImplementation ("com.google.truth:truth:${TRUTH_VERSION}")
     androidTestImplementation ("io.mockk:mockk-android:${MOCKK_VERSION}")
     androidTestImplementation ("androidx.navigation:navigation-testing:${NAVIGATION_VERSION}")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation ("androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:${ESPRESSO_VERSION}")
 }

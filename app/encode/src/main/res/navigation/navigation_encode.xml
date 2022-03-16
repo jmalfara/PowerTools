@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/encodeLandingFragment"
+    android:id="@+id/navigation_encode">
+
+    <fragment
+        android:id="@+id/encodeLandingFragment"
+        android:name="com.jmat.encode.ui.EncodeLandingFragment"
+        tools:layout="@layout/fragment_encode_landing"/>
+</navigation>
