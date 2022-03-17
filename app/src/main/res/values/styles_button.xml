@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Button" parent="Widget.MaterialComponents.Button">
-
-    </style>
-
-    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
-
-    </style>
-
-    <style name="Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
-
+    <style name="Button" parent="Widget.Material3.Button"/>
+    <style name="Button.Outlined" parent="Widget.Material3.Button.OutlinedButton"/>
+    <style name="Button.Text" parent="Widget.Material3.Button.TextButton"/>
+    <style name="Button.Icon" parent="Widget.Material3.Button.IconButton">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 </resources>

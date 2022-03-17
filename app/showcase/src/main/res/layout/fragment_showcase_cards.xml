@@ -28,35 +28,29 @@
             android:layout_margin="@dimen/layout_padding"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/Text.H1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/showcase_text_h1" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/layout_padding"
+                    android:text="@string/showcase_lorem" />
+            </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/Text.H1"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/showcase_text_h2" />
+                android:layout_marginTop="@dimen/layout_padding">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/showcase_lorem"/>
+            </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/Text.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/showcase_text_body1" />
-
-            <TextView
-                style="@style/Text.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/showcase_text_body2" />
-
-            <TextView
-                style="@style/Text.Caption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/showcase_text_caption" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="layout_margin">8dp</dimen>
     <dimen name="layout_padding">16dp</dimen>
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="layout_gutter">16dp</dimen>
+    <dimen name="layout_column">70dp</dimen>
 </resources>

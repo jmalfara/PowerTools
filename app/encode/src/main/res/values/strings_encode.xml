@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Encode</string>
-    <string name="encode_tiny_url_api_key">Tiny Url Api Key</string>
+    <string name="encode_tinyurl_encoded">Your Tiny Urls</string>
+    <string name="encode_tinyurl_add">Add TinyUrl</string>
 </resources>

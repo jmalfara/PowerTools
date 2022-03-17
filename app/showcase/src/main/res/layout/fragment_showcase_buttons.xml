@@ -29,31 +29,31 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.H2"
+                style="@style/Text.H1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/showcase_buttons_single_title" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/showcase_action_primary" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 style="@style/Button.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/showcase_action_secondary" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 style="@style/Button.Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/showcase_action_tertiary" />
 
             <TextView
-                style="@style/Text.H2"
+                style="@style/Text.H1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/showcase_buttons_bars_title" />
@@ -63,13 +63,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/showcase_action_tertiary" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,13 +81,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/showcase_action_tertiary" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,13 +99,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/showcase_action_secondary" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

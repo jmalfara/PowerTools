@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/encodeLandingFragment"
+    app:startDestination="@id/encodeTinyUrlFragment"
     android:id="@+id/navigation_encode">
 
     <fragment
-        android:id="@+id/encodeLandingFragment"
-        android:name="com.jmat.encode.ui.EncodeLandingFragment"
-        tools:layout="@layout/fragment_encode_landing"/>
+        android:id="@+id/encodeTinyUrlFragment"
+        android:name="com.jmat.encode.ui.EncodeTinyUrlFragment"
+        tools:layout="@layout/fragment_encode_tinyurl"/>
 </navigation>
