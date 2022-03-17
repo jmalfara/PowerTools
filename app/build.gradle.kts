@@ -24,6 +24,7 @@ val LIFECYCLE_VERSION: String by project
 val SPLASHSCREEN_VERSION: String by project
 val JUNIT_VERSION: String by project
 val RETROFIT_VERSION: String by project
+val MOSHI_VERSION: String by project
 
 android {
     compileSdk = TARGET_SDK.toInt()
@@ -90,6 +91,8 @@ dependencies {
     api ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
 
     api ("com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}")
+    api ("com.squareup.retrofit2:converter-moshi:2.4.0")
+    api ("com.squareup.moshi:moshi-kotlin:${MOSHI_VERSION}")
 
     api ("androidx.datastore:datastore:${DATASTORE_VERSION}")
     api ("androidx.datastore:datastore-core:${DATASTORE_VERSION}")
