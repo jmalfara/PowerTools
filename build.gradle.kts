@@ -2,6 +2,7 @@
 buildscript {
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-alpha03")
     }
 }
 
@@ -16,5 +17,4 @@ plugins {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
-
 

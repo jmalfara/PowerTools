@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "PowerTools"
 include ':app'
 include ':app:dashboard'

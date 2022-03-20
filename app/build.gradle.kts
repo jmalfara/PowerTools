@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id ("com.android.application")
     id ("dagger.hilt.android.plugin")
+    id ("androidx.navigation.safeargs.kotlin")
     id ("com.google.protobuf") version "0.8.17"
 }
 
@@ -93,6 +94,7 @@ dependencies {
     api ("com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}")
     api ("com.squareup.retrofit2:converter-moshi:2.4.0")
     api ("com.squareup.moshi:moshi-kotlin:${MOSHI_VERSION}")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
     api ("androidx.datastore:datastore:${DATASTORE_VERSION}")
     api ("androidx.datastore:datastore-core:${DATASTORE_VERSION}")

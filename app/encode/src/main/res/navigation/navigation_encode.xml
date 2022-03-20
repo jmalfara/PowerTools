@@ -8,5 +8,14 @@
     <fragment
         android:id="@+id/encodeTinyUrlFragment"
         android:name="com.jmat.encode.ui.EncodeTinyUrlFragment"
-        tools:layout="@layout/fragment_encode_tinyurl"/>
+        tools:layout="@layout/fragment_encode_tinyurl">
+        <action
+            android:id="@+id/encodeTinyUrlFragment_to_encodeTinyUrlCreateFragment"
+            app:destination="@+id/encodeTinyUrlCreateFragment"/>
+    </fragment>
+
+    <dialog
+        android:id="@+id/encodeTinyUrlCreateFragment"
+        android:name="com.jmat.encode.ui.EncodeTinyUrlCreateFragment"
+        tools:layout="@layout/fragment_encode_tinyurl_create"/>
 </navigation>

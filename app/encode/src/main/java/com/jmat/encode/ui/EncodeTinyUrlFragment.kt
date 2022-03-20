@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.jmat.encode.R
 import com.jmat.encode.databinding.FragmentEncodeTinyurlBinding
 import com.jmat.powertools.base.delegate.viewBinding
@@ -19,7 +20,10 @@ class EncodeTinyUrlFragment : Fragment(R.layout.fragment_encode_tinyurl) {
         }
 
         binding.addTinyUrl.setOnClickListener {
-            Toast.makeText(requireContext(), "Add Url", Toast.LENGTH_LONG).show()
+            findNavController().navigate(
+                EncodeTinyUrlFragmentDirections
+                    .encodeTinyUrlFragmentToEncodeTinyUrlCreateFragment()
+            )
         }
     }
 }
