@@ -1,14 +1,16 @@
 plugins {
+    id ("com.android.dynamic-feature")
     kotlin("android")
     kotlin("kapt")
-    id ("com.android.dynamic-feature")
     id ("dagger.hilt.android.plugin")
     id ("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 val TARGET_SDK: String by project
 val MIN_SDK: String by project
 val HILT_VERSION: String by project
+val MOSHI_VERSION: String by project
 
 android {
     compileSdk = TARGET_SDK.toInt()
@@ -43,6 +45,7 @@ dependencies {
     implementation (project(":app"))
     implementation ("com.google.dagger:hilt-android:${HILT_VERSION}")
     kapt ("com.google.dagger:hilt-compiler:${HILT_VERSION}")
+    ksp ("com.squareup.moshi:moshi-kotlin-codegen:${MOSHI_VERSION}")
 
     implementation ("androidx.core:core-ktx:1.7.0")
     implementation ("androidx.appcompat:appcompat:1.4.1")

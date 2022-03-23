@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/encodeTinyUrlFragment"
-        android:name="com.jmat.encode.ui.EncodeTinyUrlFragment"
+        android:name="com.jmat.encode.ui.fragment.EncodeTinyUrlFragment"
         tools:layout="@layout/fragment_encode_tinyurl">
         <action
             android:id="@+id/encodeTinyUrlFragment_to_encodeTinyUrlCreateFragment"
@@ -16,6 +16,6 @@
 
     <dialog
         android:id="@+id/encodeTinyUrlCreateFragment"
-        android:name="com.jmat.encode.ui.EncodeTinyUrlCreateFragment"
+        android:name="com.jmat.encode.ui.fragment.EncodeTinyUrlCreateFragment"
         tools:layout="@layout/fragment_encode_tinyurl_create"/>
 </navigation>

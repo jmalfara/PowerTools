@@ -8,6 +8,7 @@ suspend fun <T> safeApiCall(
     return try {
         ApiSuccess(call())
     } catch (e: Exception) {
+        e.printStackTrace()
         ApiError(e)
     }
 }

@@ -95,6 +95,7 @@ dependencies {
     api ("com.squareup.retrofit2:converter-moshi:2.4.0")
     api ("com.squareup.moshi:moshi-kotlin:${MOSHI_VERSION}")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
+//    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
     api ("androidx.datastore:datastore:${DATASTORE_VERSION}")
     api ("androidx.datastore:datastore-core:${DATASTORE_VERSION}")

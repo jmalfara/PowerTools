@@ -1,5 +1,8 @@
 package com.jmat.encode.data.model
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class TinyUrlCreateRequest(
     val url: String,
     val domain: String,
@@ -7,20 +10,9 @@ data class TinyUrlCreateRequest(
     val tags: String
 )
 
+@JsonClass(generateAdapter = true)
 data class TinyUrlCreateResponse(
     val data: String,
     val code: Int,
     val errors: String
 )
-
-//"data": {
-//    "url": "string",
-//    "domain": "string",
-//    "alias": "string",
-//    "tags": [
-//    "string"
-//    ],
-//    "tiny_url": "string"
-//},
-//"code": 0,
-//"errors": []

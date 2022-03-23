@@ -1,8 +1,7 @@
-package com.jmat.encode.ui
+package com.jmat.encode.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jmat.encode.R
