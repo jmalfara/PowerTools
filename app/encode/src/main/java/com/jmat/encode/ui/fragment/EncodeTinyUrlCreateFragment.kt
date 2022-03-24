@@ -25,8 +25,8 @@ class EncodeTinyUrlCreateFragment : DialogFragment(R.layout.fragment_encode_tiny
     private val binding: FragmentEncodeTinyurlCreateBinding by viewBinding(FragmentEncodeTinyurlCreateBinding::bind)
 
     @Inject
-    lateinit var factory: InjectedViewModelFactory
-    private val viewModel: EncodeTinyUrlCreateViewModel by viewModels { factory }
+    lateinit var viewModelFactory: InjectedViewModelFactory
+    private val viewModel: EncodeTinyUrlCreateViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

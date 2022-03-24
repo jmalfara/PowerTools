@@ -8,6 +8,14 @@ message Favourite {
   string deeplink = 2;
 }
 
+message TinyUrl {
+  string id = 1;
+  string url = 2;
+  string originalUrl = 3;
+  string createdAt = 4;
+}
+
 message UserPreferences {
   repeated Favourite favourites = 1;
+  repeated TinyUrl tinyUrls = 2;
 }

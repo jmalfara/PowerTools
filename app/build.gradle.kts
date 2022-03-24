@@ -80,6 +80,7 @@ dependencies {
     api ("androidx.navigation:navigation-fragment-ktx:${NAVIGATION_VERSION}")
     api ("androidx.navigation:navigation-ui-ktx:${NAVIGATION_VERSION}")
     api ("androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}")
+    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
 
 //    // Compose
     api ("androidx.compose.ui:ui:1.0.5")

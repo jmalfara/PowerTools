@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.30974358974358973" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/drawable/ic_swap_vertical_circle_24.xml" value="0.167" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/activity_conversions.xml" value="0.25" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/conversions/src/main/res/layout/fragment_conversion_km_to_m.xml" value="0.1578125" />
@@ -44,9 +45,14 @@
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_encode.xml" value="0.22" />
         <entry key="app/dashboard/src/main/res/menu/menu_dashboard.xml" value="0.1" />
         <entry key="app/encode/src/main/res/layout/activity_encode.xml" value="0.1" />
+        <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl.xml" value="0.13905775075987842" />
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl_create.xml" value="0.15715579710144928" />
+        <entry key="app/encode/src/main/res/layout/layout_encode_tinyurl_row.xml" value="0.1" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />
+        <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13496376811594202" />
+        <entry key="app/src/main/res/menu/menu_delete_actionmode.xml" value="0.1" />
       </map>
     </option>
   </component>
