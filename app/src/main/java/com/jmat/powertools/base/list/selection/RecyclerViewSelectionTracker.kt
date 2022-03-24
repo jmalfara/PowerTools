@@ -19,7 +19,8 @@ class RecyclerViewSelectionTracker<T>(
         recyclerView,
         StableIdKeyProvider(recyclerView),
         ViewModelItemDetailsLookup(recyclerView),
-        StorageStrategy.createLongStorage())
+        StorageStrategy.createLongStorage()
+    )
         .withSelectionPredicate(MultiSelectPredicate())
         .build()
 

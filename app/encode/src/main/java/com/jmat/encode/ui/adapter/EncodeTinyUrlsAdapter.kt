@@ -1,15 +1,10 @@
 package com.jmat.encode.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
-import androidx.recyclerview.selection.SelectionTracker.SelectionPredicate
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jmat.encode.R
 import com.jmat.encode.databinding.LayoutEncodeTinyurlRowBinding
 import com.jmat.powertools.TinyUrl
 import com.jmat.powertools.base.adapter.GenericDiffer
@@ -37,7 +32,6 @@ class EncodeTinyUrlsAdapter : ListAdapter<TinyUrl, TinyUrlViewHolder>(
         val item = getItem(position)
         val selected = selectionTracker.isSelected(holder.getItemDetails().selectionKey)
         holder.bind(item, selected)
-        currentList
     }
 }
 

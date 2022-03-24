@@ -27,7 +27,7 @@ class AppModule {
     ): DataStore<UserPreferences> {
         return DataStoreFactory.create(
             serializer = UserPreferencesSerializer,
-            produceFile = { context.dataStoreFile("user_prefs.pb")}
+            produceFile = { context.dataStoreFile("user_prefs.pb") }
         )
     }
 

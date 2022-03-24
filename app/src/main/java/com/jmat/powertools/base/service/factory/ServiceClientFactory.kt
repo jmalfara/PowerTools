@@ -2,7 +2,6 @@ package com.jmat.powertools.base.service.factory
 
 import androidx.annotation.VisibleForTesting
 import com.jmat.powertools.base.service.client.OkHttpProvider
-import com.jmat.powertools.base.service.retrofit.RetrofitProvider
 import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -28,7 +27,7 @@ object ServiceClientFactory {
         baseUrl: String,
         networkInterceptors: List<Interceptor> = listOf(),
         applicationInterceptors: List<Interceptor> = listOf()
-    ) : T {
+    ): T {
         val okHttp = clientProvider.okHttpClient.newBuilder()
             .apply {
                 networkInterceptors().addAll(networkInterceptors)

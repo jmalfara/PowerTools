@@ -3,7 +3,6 @@ package com.jmat.powertools.data.preferences
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
-import com.jmat.powertools.Favourite
 import com.jmat.powertools.UserPreferences
 import java.io.InputStream
 import java.io.OutputStream

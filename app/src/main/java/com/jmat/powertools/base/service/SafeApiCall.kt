@@ -1,10 +1,8 @@
 package com.jmat.powertools.base.service
 
-import java.lang.Exception
-
 suspend fun <T> safeApiCall(
     call: suspend () -> T
-) : ApiResult<T> {
+): ApiResult<T> {
     return try {
         ApiSuccess(call())
     } catch (e: Exception) {

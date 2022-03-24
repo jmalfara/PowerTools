@@ -24,7 +24,7 @@ fun AppCompatActivity.setupSupportActionbar(
     setSupportActionBar(toolbar)
     supportActionBar?.title = title
 
-    when(navigationMode) {
+    when (navigationMode) {
         NavigationMode.BACK -> {
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -46,10 +46,10 @@ fun Fragment.setupToolbar(
     toolbar: Toolbar,
     title: CharSequence? = null,
     navigationMode: NavigationMode,
-) : Toolbar {
+): Toolbar {
     title?.let { toolbar.title = it }
 
-    when(navigationMode) {
+    when (navigationMode) {
         NavigationMode.BACK -> {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24)
             toolbar.setNavigationOnClickListener {

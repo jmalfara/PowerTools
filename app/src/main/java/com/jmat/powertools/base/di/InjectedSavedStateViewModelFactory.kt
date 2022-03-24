@@ -5,7 +5,6 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import java.lang.IllegalArgumentException
 
 interface AssistedSavedStateViewModelFactory<T : ViewModel> {
     fun create(savedStateHandle: SavedStateHandle): T

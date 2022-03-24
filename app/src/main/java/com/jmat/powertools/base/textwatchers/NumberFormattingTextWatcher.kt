@@ -3,15 +3,15 @@ package com.jmat.powertools.base.textwatchers
 import android.text.Editable
 import android.text.TextWatcher
 import java.text.DecimalFormatSymbols
-import java.util.*
+import java.util.Locale
 
 class NumberFormattingTextWatcher @JvmOverloads constructor(
     locale: Locale = Locale.getDefault()
 ) : TextWatcher {
 
-    private val decimalSeparator = DecimalFormatSymbols.getInstance(locale).decimalSeparator;
+    private val decimalSeparator = DecimalFormatSymbols.getInstance(locale).decimalSeparator
     private val numberMatchRegex =
-        "[-+]?\\d*${decimalSeparator}\\d+|\\d+${decimalSeparator}?".toRegex()
+        "[-+]?\\d*${decimalSeparator}\\d+|\\d+$decimalSeparator?".toRegex()
     private var lastValidInput: String? = null
     private var selfChange = false
 

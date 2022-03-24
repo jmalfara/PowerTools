@@ -8,14 +8,14 @@ buildscript {
 
 // Define plugins but don't apply them
 plugins {
-    id ("com.android.application") version "7.1.2" apply false
-    id ("com.android.library") version "7.1.2" apply false
-    id ("com.android.dynamic-feature") version "7.1.2" apply false
-    id ("org.jetbrains.kotlin.android") version "1.6.10" apply false
+    id("com.android.application") version "7.1.2" apply false
+    id("com.android.library") version "7.1.2" apply false
+    id("com.android.dynamic-feature") version "7.1.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.6.10" apply false
     id("com.google.devtools.ksp") version "1.6.10-1.0.4" apply false
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
-
