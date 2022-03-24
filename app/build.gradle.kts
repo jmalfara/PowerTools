@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id ("com.android.application")
     id ("dagger.hilt.android.plugin")
+    id ("androidx.navigation.safeargs.kotlin")
     id ("com.google.protobuf") version "0.8.17"
 }
 
@@ -24,6 +25,7 @@ val LIFECYCLE_VERSION: String by project
 val SPLASHSCREEN_VERSION: String by project
 val JUNIT_VERSION: String by project
 val RETROFIT_VERSION: String by project
+val MOSHI_VERSION: String by project
 
 android {
     compileSdk = TARGET_SDK.toInt()
@@ -78,6 +80,7 @@ dependencies {
     api ("androidx.navigation:navigation-fragment-ktx:${NAVIGATION_VERSION}")
     api ("androidx.navigation:navigation-ui-ktx:${NAVIGATION_VERSION}")
     api ("androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}")
+    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
 
 //    // Compose
     api ("androidx.compose.ui:ui:1.0.5")
@@ -90,6 +93,10 @@ dependencies {
     api ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
 
     api ("com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}")
+    api ("com.squareup.retrofit2:converter-moshi:2.4.0")
+    api ("com.squareup.moshi:moshi-kotlin:${MOSHI_VERSION}")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
+//    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
     api ("androidx.datastore:datastore:${DATASTORE_VERSION}")
     api ("androidx.datastore:datastore-core:${DATASTORE_VERSION}")

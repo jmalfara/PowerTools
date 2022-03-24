@@ -3,6 +3,7 @@
     <string name="showcase_action_buttons">Buttons</string>
     <string name="showcase_buttons_single_title">Single Buttons</string>
     <string name="showcase_buttons_bars_title">Button Bars</string>
+    <string name="showcase_buttons_icon">Icon</string>
     <string name="showcase_action_primary">Primary</string>
     <string name="showcase_action_secondary">Secondary</string>
     <string name="showcase_action_tertiary">Tertiary</string>

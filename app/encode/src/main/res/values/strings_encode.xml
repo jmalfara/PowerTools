@@ -2,4 +2,10 @@
     <string name="app_name">Encode</string>
     <string name="encode_tinyurl_encoded">Your Tiny Urls</string>
     <string name="encode_tinyurl_add">Add TinyUrl</string>
+    <string name="encode_tinyurl_create_title">Create Tiny Url</string>
+    <string name="encode_tinyurl_create_url_label">Url</string>
+    <string name="encode_tinyurl_create_button_action">Create</string>
+    <string name="encode_tinyurl_create_button_cancel">Cancel</string>
+    <string name="encode_tinyurl_delete_title">%d Selected</string>
+
 </resources>
