@@ -1,8 +1,13 @@
 package com.jmat.encode.ui.fragment
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.view.ActionMode
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -60,7 +65,13 @@ class EncodeTinyUrlFragment : Fragment(R.layout.fragment_encode_tinyurl) {
             }
         }
 
-        val adapter = EncodeTinyUrlsAdapter()
+        val adapter = EncodeTinyUrlsAdapter { item ->
+            val clipboard = getSystemService(requireContext(), ClipboardManager::class.java)
+            val clip = ClipData.newPlainText("TinyUrl", item.url)
+            clipboard?.setPrimaryClip(clip)
+            Toast.makeText(requireContext(), item.url, Toast.LENGTH_SHORT).show()
+        }
+
         with(binding.tinyUrls) {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(requireContext())

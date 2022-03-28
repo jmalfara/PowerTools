@@ -11,7 +11,9 @@ import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.list.selection.SelectionAdapter
 import com.jmat.powertools.base.list.selection.ViewHolderItemDetails
 
-class EncodeTinyUrlsAdapter : ListAdapter<TinyUrl, TinyUrlViewHolder>(
+class EncodeTinyUrlsAdapter(
+    val onClick: (TinyUrl) -> Unit
+) : ListAdapter<TinyUrl, TinyUrlViewHolder>(
     GenericDiffer<TinyUrl>()
 ), SelectionAdapter<TinyUrl> {
     override lateinit var selectionTracker: SelectionTracker<Long>
@@ -31,7 +33,7 @@ class EncodeTinyUrlsAdapter : ListAdapter<TinyUrl, TinyUrlViewHolder>(
     override fun onBindViewHolder(holder: TinyUrlViewHolder, position: Int) {
         val item = getItem(position)
         val selected = selectionTracker.isSelected(holder.getItemDetails().selectionKey)
-        holder.bind(item, selected)
+        holder.bind(item, selected, onClick)
     }
 }
 
@@ -41,11 +43,14 @@ class TinyUrlViewHolder(
     override val viewHolder: RecyclerView.ViewHolder = this
     override var itemId: Long? = null
 
-    fun bind(item: TinyUrl, selected: Boolean) {
+    fun bind(item: TinyUrl, selected: Boolean, onClick: (TinyUrl) -> Unit) {
         itemId = item.id.hashCode().toLong()
         binding.originalUrl.text = item.originalUrl
         binding.tinyUrl.text = item.url
         binding.card.isChecked = selected
+        binding.card.setOnClickListener {
+            onClick(item)
+        }
     }
 
     companion object {
