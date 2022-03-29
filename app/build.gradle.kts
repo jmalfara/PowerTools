@@ -28,6 +28,9 @@ val NAVIGATION_VERSION: String by project
 val LIFECYCLE_VERSION: String by project
 val SPLASHSCREEN_VERSION: String by project
 val JUNIT_VERSION: String by project
+val TRUTH_VERSION: String by project
+val MOCKK_VERSION: String by project
+val TURBINE_VERSION: String by project
 val RETROFIT_VERSION: String by project
 val MOSHI_VERSION: String by project
 
@@ -112,7 +115,11 @@ dependencies {
     implementation("androidx.core:core-splashscreen:$SPLASHSCREEN_VERSION")
 
     debugImplementation("androidx.fragment:fragment-testing:1.4.1")
-    testImplementation("junit:junit:$JUNIT_VERSION")
+    testApi("junit:junit:$JUNIT_VERSION")
+    testApi("com.google.truth:truth:${TRUTH_VERSION}")
+    testApi("io.mockk:mockk:${MOCKK_VERSION}")
+    testApi("app.cash.turbine:turbine:${TURBINE_VERSION}")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }
