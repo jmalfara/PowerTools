@@ -13,7 +13,6 @@
 <!--        <item name="colorSurface">@color/surfaceDark</item>-->
 <!--        <item name="colorOnSurface">@color/white</item>-->
 <!--        <item name="colorSurfaceVariant">@color/surface</item>-->
-        <item name="colorSurface"
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

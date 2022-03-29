@@ -17,6 +17,10 @@
         <action
             android:id="@+id/showcaseLandingFragment_to_showcaseTextFragment"
             app:destination="@id/showcaseTextFragment"/>
+
+        <action
+            android:id="@+id/showcaseLandingFragment_to_showcaseTextInputFragment"
+            app:destination="@id/showcaseTextInputFragment"/>
     </fragment>
 
     <fragment
@@ -28,4 +32,9 @@
         android:id="@+id/showcaseTextFragment"
         android:name="com.jmat.showcase.ui.fragment.ShowcaseTextFragment"
         tools:layout="@layout/fragment_showcase_text"/>
+
+    <fragment
+        android:id="@+id/showcaseTextInputFragment"
+        android:name="com.jmat.showcase.ui.fragment.ShowcaseTextInputFragment"
+        tools:layout="@layout/fragment_showcase_text_input"/>
 </navigation>

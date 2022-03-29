@@ -49,6 +49,9 @@
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl_create.xml" value="0.15715579710144928" />
         <entry key="app/encode/src/main/res/layout/layout_encode_tinyurl_row.xml" value="0.1" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />
+        <entry key="app/showcase/src/main/res/layout/fragment_showcase_landing.xml" value="0.1" />
+        <entry key="app/showcase/src/main/res/layout/fragment_showcase_text_input.xml" value="0.25" />
+        <entry key="app/showcase/src/main/res/layout/fragment_showcase_textinput.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13496376811594202" />

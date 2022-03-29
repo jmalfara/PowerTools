@@ -27,5 +27,9 @@ class ShowcaseLandingFragment : Fragment(R.layout.fragment_showcase_landing) {
         binding.typographyAction.setOnClickListener {
             findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextFragment)
         }
+
+        binding.textInputAction.setOnClickListener {
+            findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextInputFragment)
+        }
     }
 }
