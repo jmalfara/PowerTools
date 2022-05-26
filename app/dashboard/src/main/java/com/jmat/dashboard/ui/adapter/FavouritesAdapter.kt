@@ -52,7 +52,11 @@ class FavouritesViewHolder private constructor(
             parent: ViewGroup
         ): FavouritesViewHolder {
             return FavouritesViewHolder(
-                LayoutDashboardFavouriteBinding.inflate(LayoutInflater.from(parent.context))
+                LayoutDashboardFavouriteBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             )
         }
     }

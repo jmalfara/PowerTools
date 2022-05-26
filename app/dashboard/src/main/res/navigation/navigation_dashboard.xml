@@ -3,21 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_dashboard"
-    app:startDestination="@id/favourites">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@id/favourites"
+        android:id="@id/home"
         android:name="com.jmat.dashboard.ui.fragment.DashboardFavouritesFragment"
         tools:layout="@layout/fragment_dashboard_favourites"/>
 
     <fragment
-        android:id="@id/conversions"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardConversionsFragment"
-        tools:layout="@layout/fragment_dashboard_conversions"/>
-
-    <fragment
-        android:id="@id/encode"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardEncodeFragment"
-        tools:layout="@layout/fragment_dashboard_encode"/>
-
+        android:id="@id/store"
+        android:name="com.jmat.dashboard.ui.fragment.DashboardStoreFragment"
+        tools:layout="@layout/fragment_dashboard_store"/>
 </navigation>

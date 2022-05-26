@@ -3,6 +3,7 @@ plugins {
     kotlin("kapt")
     id ("com.android.dynamic-feature")
     id ("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
 }
 
 val TARGET_SDK: String by project
@@ -30,7 +31,13 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
     kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
         freeCompilerArgs = listOf("-Xjvm-default=enable")
     }
 

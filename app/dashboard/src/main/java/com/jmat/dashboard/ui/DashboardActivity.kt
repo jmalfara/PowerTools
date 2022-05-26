@@ -4,12 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigationrail.NavigationRailView
+import com.google.android.material.navigation.NavigationBarView
 import com.jmat.dashboard.R
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.settings.DEEPLINK_SETTINGS
-import com.jmat.powertools.modules.showcase.DEEPLINK_SHOWCASE
-import dagger.hilt.android.AndroidEntryPoint
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +18,8 @@ class DashboardActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val navigationRail = findViewById<NavigationRailView>(R.id.navigation_rail)
+        val navigationRail = findViewById<NavigationBarView>(R.id.navigation_rail)
         navigationRail.setupWithNavController(navController)
-
-        navigationRail.menu.findItem(R.id.showcase).setOnMenuItemClickListener {
-            navigateDeeplink(DEEPLINK_SHOWCASE)
-            true
-        }
 
         navigationRail.menu.findItem(R.id.settings).setOnMenuItemClickListener {
             navigateDeeplink(DEEPLINK_SETTINGS)

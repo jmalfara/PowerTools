@@ -11,6 +11,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint")
+    id("com.google.devtools.ksp")
 }
 
 val TARGET_SDK: String by project
@@ -59,7 +60,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JDK_VERSION
+        jvmTarget = JavaVersion.VERSION_11.toString()
         freeCompilerArgs = listOf("-Xjvm-default=enable")
     }
 
@@ -87,27 +88,21 @@ dependencies {
     api("androidx.navigation:navigation-fragment-ktx:$NAVIGATION_VERSION")
     api("androidx.navigation:navigation-ui-ktx:$NAVIGATION_VERSION")
     api("androidx.lifecycle:lifecycle-runtime-ktx:$LIFECYCLE_VERSION")
-    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
-
-//    // Compose
-    api("androidx.compose.ui:ui:1.0.5")
-    api("androidx.compose.ui:ui-tooling:1.0.5")
-    api("androidx.compose.foundation:foundation:1.0.5")
-    api("androidx.compose.material:material:1.0.5")
-    api("androidx.compose.material:material-icons-core:1.0.5")
-    api("androidx.compose.material:material-icons-extended:1.0.5")
-    api("androidx.activity:activity-compose:1.3.1")
-    api("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    api("androidx.recyclerview:recyclerview-selection:1.1.0")
 
     api("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION")
     api("com.squareup.retrofit2:converter-moshi:2.4.0")
     api("com.squareup.moshi:moshi-kotlin:$MOSHI_VERSION")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VERSION")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
-//    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
     api("androidx.datastore:datastore:$DATASTORE_VERSION")
     api("androidx.datastore:datastore-core:$DATASTORE_VERSION")
     api("com.google.protobuf:protobuf-javalite:$PROTOBUF_VERSION")
+
+    api("com.github.bumptech.glide:glide:4.13.0")
+    kapt("com.github.bumptech.glide:compiler:4.13.0")
 
     implementation("com.google.dagger:hilt-android:$HILT_VERSION")
     kapt("com.google.dagger:hilt-compiler:$HILT_VERSION")

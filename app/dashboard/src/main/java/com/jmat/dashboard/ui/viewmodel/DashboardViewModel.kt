@@ -12,4 +12,6 @@ class DashboardViewModel @Inject constructor(
     val favourites = userPreferencesRepository.data.transform { preferences: UserPreferences ->
         emit( preferences.favouritesList)
     }
+
+
 }

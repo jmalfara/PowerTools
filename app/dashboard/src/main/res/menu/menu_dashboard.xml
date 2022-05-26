@@ -3,32 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/favourites"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home_24"
         android:title="@string/menu_main_dashboard"
         app:iconTint="?attr/colorOnPrimary"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/conversions"
+        android:id="@+id/store"
         android:icon="@drawable/ic_calculate_24"
         android:title="@string/menu_main_calculate"
         app:iconTint="?attr/colorOnPrimary"
         app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/encode"
-        android:icon="@drawable/ic_encode_24"
-        android:title="@string/menu_main_encode"
-        app:iconTint="?attr/colorOnPrimary"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/showcase"
-        android:icon="@drawable/ic_view_quilt_24"
-        android:title="@string/menu_main_showcase"
-        app:iconTint="?attr/colorOnPrimary"
-        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/settings"
