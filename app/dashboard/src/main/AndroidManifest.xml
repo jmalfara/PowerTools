@@ -21,7 +21,7 @@
         android:theme="@style/Theme.App">
         <activity
             android:name=".ui.DashboardActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.jmat.powertools.DASHBOARD" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -34,5 +34,9 @@
                 <data android:scheme="powertools" android:host="dashboard" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.DashboardModuleDetailsActivity"
+            android:exported="false"/>
     </application>
 </manifest>

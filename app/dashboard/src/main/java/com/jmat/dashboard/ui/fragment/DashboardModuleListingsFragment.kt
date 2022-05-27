@@ -1,5 +1,6 @@
 package com.jmat.dashboard.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardListingsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
+import com.jmat.dashboard.ui.DashboardModuleDetailsActivity
 import com.jmat.dashboard.ui.adapter.ModuleListingsAdapter
 import com.jmat.dashboard.ui.extensions.setupAppbar
 import com.jmat.dashboard.ui.model.TabData
@@ -55,7 +58,13 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
 
         with(binding) {
             with(recyclerView) {
-                adapter = ModuleListingsAdapter()
+                adapter = ModuleListingsAdapter { moduleData ->
+                    findNavController().navigate(
+                        DashboardModuleListingsFragmentDirections.listingsToModuleDetails(
+                            moduleData = moduleData
+                        )
+                    )
+                }
                 layoutManager = LinearLayoutManager(requireContext())
                 addItemDecoration(MarginItemDecoration(30))
             }

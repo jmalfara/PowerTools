@@ -11,7 +11,9 @@ import com.jmat.dashboard.databinding.LayoutDashboardStoreModulePreviewBinding
 import com.jmat.dashboard.ui.model.ModuleData
 import com.jmat.powertools.base.adapter.GenericDiffer
 
-class ModuleListingsAdapter : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
+class ModuleListingsAdapter(
+    val onClick: (ModuleData) -> Unit
+) : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
     GenericDiffer()
 ) {
     private val singleModuleViewType = 0
@@ -31,7 +33,7 @@ class ModuleListingsAdapter : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         when(holder) {
-            is SingleModuleViewHolder -> holder.bind(item)
+            is SingleModuleViewHolder -> holder.bind(item, onClick)
         }
     }
 
@@ -46,8 +48,9 @@ class ModuleListingsAdapter : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
 class SingleModuleViewHolder private constructor(
     private val binding: LayoutDashboardStoreModulePreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: ModuleData) {
+    fun bind(item: ModuleData, onClick: (ModuleData) -> Unit) {
         with(binding) {
+            card.setOnClickListener { onClick(item) }
             title.text = item.module.name
             caption.text = item.module.author
             description.text = item.module.shortDescription

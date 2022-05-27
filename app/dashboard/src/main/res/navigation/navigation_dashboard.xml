@@ -13,5 +13,20 @@
     <fragment
         android:id="@id/listings"
         android:name="com.jmat.dashboard.ui.fragment.DashboardModuleListingsFragment"
-        tools:layout="@layout/fragment_dashboard_listings"/>
+        tools:layout="@layout/fragment_dashboard_listings">
+
+        <action
+            android:id="@+id/listings_to_moduleDetails"
+            app:destination="@+id/moduleDetails"/>
+    </fragment>
+
+    <activity
+        android:id="@+id/moduleDetails"
+        android:name="com.jmat.dashboard.ui.DashboardModuleDetailsActivity"
+        tools:layout="@layout/fragment_dashboard_module_details">
+
+        <argument
+            android:name="moduleData"
+            app:argType="com.jmat.dashboard.ui.model.ModuleData"/>
+    </activity>
 </navigation>

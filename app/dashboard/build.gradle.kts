@@ -3,6 +3,7 @@ plugins {
     kotlin("kapt")
     id ("com.android.dynamic-feature")
     id ("dagger.hilt.android.plugin")
+    id ("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
 }
 
