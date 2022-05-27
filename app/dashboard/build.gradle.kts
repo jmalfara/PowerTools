@@ -58,6 +58,9 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:${HILT_VERSION}")
     ksp ("com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VERSION")
 
+    implementation ("com.google.android.play:feature-delivery:2.0.0")
+    implementation ("com.google.android.play:feature-delivery-ktx:2.0.0")
+
     testImplementation ("junit:junit:${JUNIT_VERSION}")
     testImplementation ("com.google.truth:truth:${TRUTH_VERSION}")
     testImplementation ("io.mockk:mockk:${MOCKK_VERSION}")

@@ -22,4 +22,5 @@
 
     <!--  custom colors  -->
     <color name="favourite">#FFC107</color>
+    <color name="success">#4CAF50</color>
 </resources>

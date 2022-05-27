@@ -2,14 +2,16 @@ package com.jmat.dashboard.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.databinding.LayoutDashboardStoreModulePreviewBinding
+import com.jmat.dashboard.ui.model.ModuleData
 import com.jmat.powertools.base.adapter.GenericDiffer
 
-class ModuleListingsAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
+class ModuleListingsAdapter : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
     GenericDiffer()
 ) {
     private val singleModuleViewType = 0
@@ -20,7 +22,7 @@ class ModuleListingsAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
-        return when (item.previewType) {
+        return when (item.module.previewType) {
             "SINGLE"  -> singleModuleViewType
             else -> singleModuleViewType
         }
@@ -29,7 +31,7 @@ class ModuleListingsAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         when(holder) {
-            is SingleModuleViewHolder -> holder.bind(item as Module)
+            is SingleModuleViewHolder -> holder.bind(item)
         }
     }
 
@@ -44,19 +46,20 @@ class ModuleListingsAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
 class SingleModuleViewHolder private constructor(
     private val binding: LayoutDashboardStoreModulePreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Module) {
+    fun bind(item: ModuleData) {
         with(binding) {
-            title.text = item.name
-            caption.text = item.author
-            description.text = item.shortDescription
+            title.text = item.module.name
+            caption.text = item.module.author
+            description.text = item.module.shortDescription
+            installed.isVisible = item.installed
 
             Glide.with(previewImage)
-                .load(item.previewUrls.first())
+                .load(item.module.previewUrls.first())
                 .fitCenter()
                 .into(previewImage)
 
             Glide.with(icon)
-                .load(item.iconUrl)
+                .load(item.module.iconUrl)
                 .fitCenter()
                 .into(icon)
         }

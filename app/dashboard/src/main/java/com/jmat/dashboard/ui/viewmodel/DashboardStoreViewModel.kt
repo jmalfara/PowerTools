@@ -1,20 +1,29 @@
 package com.jmat.dashboard.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.jmat.dashboard.data.ModuleRepository
 import com.jmat.dashboard.data.model.Module
+import com.jmat.dashboard.ui.model.ModuleData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardStoreViewModel @Inject constructor(
-    private val moduleRepository: ModuleRepository
+    private val moduleRepository: ModuleRepository,
+    private val splitInstallManager: SplitInstallManager
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(UiState.default)
     val uiState: StateFlow<UiState> = _uiState
 
+    init {
+        splitInstallManager.installedModules.forEach {
+            Log.d("SplitManager", it)
+        }
+    }
     fun showPopular(show: Boolean) {
         viewModelScope.launch {
             _uiState.emit(
@@ -37,8 +46,8 @@ class DashboardStoreViewModel @Inject constructor(
                 .onSuccess {
                     _uiState.emit(
                         _uiState.value.copy(
-                            newModules = it.newModules,
-                            popularModules = it.popularModules
+                            newModules = mapModules(it.newModules),
+                            popularModules = mapModules(it.popularModules)
                         )
                     )
                 }
@@ -59,11 +68,20 @@ class DashboardStoreViewModel @Inject constructor(
         }
     }
 
+    private fun mapModules(modules: List<Module>): List<ModuleData> {
+        return modules.map {
+            ModuleData(
+                module = it,
+                installed = splitInstallManager.installedModules.contains(it.name.lowercase())
+            )
+        }
+    }
+
     data class UiState(
         val loading: Boolean,
         val showingPopular: Boolean,
-        val popularModules: List<Module>,
-        val newModules: List<Module>
+        val popularModules: List<ModuleData>,
+        val newModules: List<ModuleData>
     ) {
         companion object {
             val default = UiState(
