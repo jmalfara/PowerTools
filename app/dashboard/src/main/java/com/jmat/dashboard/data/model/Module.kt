@@ -4,7 +4,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ModuleListings(
-    val modules: List<Module>
+    val popularModules: List<Module>,
+    val newModules: List<Module>
 )
 
 @JsonClass(generateAdapter = true)

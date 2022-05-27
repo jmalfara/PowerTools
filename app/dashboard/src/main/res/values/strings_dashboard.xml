@@ -3,6 +3,14 @@
     <string name="dashboard_title">Dashboard</string>
     <string name="dashboard_empty_content">You haven\'t added any shortcuts yet. Favourite\'d tools will appear here</string>
 
+    <string name="menu_main_dashboard">Dashboard</string>
+    <string name="menu_main_listings">Modules</string>
+
+    <string name="tab_favourites">Favourites</string>
+    <string name="tab_installed">Installed</string>
+    <string name="tab_popular">Popular</string>
+    <string name="tab_new">New</string>
+
     <!--  Conversions  -->
     <string name="dashboard_conversion_title_ml_to_oz">Milliliters to Ounce</string>
     <string name="dashboard_conversion_title_km_to_m">Kilometers to Miles</string>

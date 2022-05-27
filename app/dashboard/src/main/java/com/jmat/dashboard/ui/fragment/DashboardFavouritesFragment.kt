@@ -9,10 +9,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardFavouritesBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
 import com.jmat.dashboard.ui.adapter.FavouritesAdapter
+import com.jmat.dashboard.ui.extensions.setupAppbar
+import com.jmat.dashboard.ui.model.TabData
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
@@ -51,6 +55,25 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
             adapter = favouritesAdapter
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(MarginItemDecoration(30))
+
+            requireActivity().setupAppbar(
+                tabs = listOf(
+                    TabData(
+                        id = R.id.tab_favourites,
+                        text = getString(R.string.tab_favourites)
+                    ),
+                    TabData(
+                        id = R.id.tab_installed,
+                        text = getString(R.string.tab_installed)
+                    )
+                ),
+                onTabSelected = { tab ->
+                    when (tab.id) {
+                        R.id.tab_favourites -> {}
+                        R.id.tab_installed -> {}
+                    }
+                }
+            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

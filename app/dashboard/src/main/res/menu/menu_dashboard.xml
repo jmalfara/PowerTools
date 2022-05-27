@@ -10,9 +10,9 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/store"
-        android:icon="@drawable/ic_calculate_24"
-        android:title="@string/menu_main_calculate"
+        android:id="@+id/listings"
+        android:icon="@drawable/ic_baseline_store_24"
+        android:title="@string/menu_main_listings"
         app:iconTint="?attr/colorOnPrimary"
         app:showAsAction="ifRoom"/>
 

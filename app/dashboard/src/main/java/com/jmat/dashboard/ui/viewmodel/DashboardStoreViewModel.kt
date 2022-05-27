@@ -15,6 +15,16 @@ class DashboardStoreViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(UiState.default)
     val uiState: StateFlow<UiState> = _uiState
 
+    fun showPopular(show: Boolean) {
+        viewModelScope.launch {
+            _uiState.emit(
+                _uiState.value.copy(
+                    showingPopular = show
+                )
+            )
+        }
+    }
+
     fun fetchStoreDetails() {
         viewModelScope.launch {
             _uiState.emit(
@@ -27,14 +37,16 @@ class DashboardStoreViewModel @Inject constructor(
                 .onSuccess {
                     _uiState.emit(
                         _uiState.value.copy(
-                            modules = it.modules
+                            newModules = it.newModules,
+                            popularModules = it.popularModules
                         )
                     )
                 }
                 .onFailure {
                     _uiState.emit(
                         _uiState.value.copy(
-                            modules = listOf()
+                            newModules = listOf(),
+                            popularModules = listOf()
                         )
                     )
                 }
@@ -49,12 +61,16 @@ class DashboardStoreViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean,
-        val modules: List<Module>
+        val showingPopular: Boolean,
+        val popularModules: List<Module>,
+        val newModules: List<Module>
     ) {
         companion object {
             val default = UiState(
                 loading = true,
-                modules = listOf()
+                showingPopular = true,
+                popularModules = listOf(),
+                newModules = listOf()
             )
         }
     }

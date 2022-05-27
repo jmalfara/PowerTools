@@ -39,7 +39,10 @@
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/menu/menu_feature.xml" value="0.1578125" />
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/menu/menu_main.xml" value="0.165625" />
         <entry key="app/conversions/src/main/res/layout/activity_conversions.xml" value="0.1" />
-        <entry key="app/conversions/src/main/res/layout/fragment_conversion_km_to_m.xml" value="0.15715579710144928" />
+        <entry key="app/conversions/src/main/res/layout/fragment_conversion_km_to_m.xml" value="0.1" />
+        <entry key="app/dashboard/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="app/dashboard/src/main/res/drawable/ic_baseline_store_24.xml" value="0.1" />
+        <entry key="app/dashboard/src/main/res/drawable/ic_encode_24.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/drawable/ic_settings_24.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/drawable/ic_view_quilt_24.xml" value="0.131" />
         <entry key="app/dashboard/src/main/res/layout-w600dp/activity_dashboard.xml" value="0.12081128747795414" />
@@ -47,11 +50,13 @@
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_conversions.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_encode.xml" value="0.22" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_favourites.xml" value="0.182518115942029" />
+        <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_listings.xml" value="0.19655797101449277" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_store.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/layout/layout_dashboard_empty.xml" value="0.14412360688956433" />
         <entry key="app/dashboard/src/main/res/layout/layout_dashboard_favourite.xml" value="0.14412360688956433" />
         <entry key="app/dashboard/src/main/res/layout/layout_dashboard_store_module_preview.xml" value="0.182518115942029" />
         <entry key="app/dashboard/src/main/res/menu/menu_dashboard.xml" value="0.1" />
+        <entry key="app/dashboard/src/main/res/menu/menu_dashboard_toolbar.xml" value="0.1" />
         <entry key="app/encode/src/main/res/layout/activity_encode.xml" value="0.1" />
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl.xml" value="0.32950191570881227" />
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl_create.xml" value="0.15715579710144928" />
@@ -62,6 +67,7 @@
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_landing.xml" value="0.1" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_text_input.xml" value="0.25" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_textinput.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_calculate_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_star_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13496376811594202" />

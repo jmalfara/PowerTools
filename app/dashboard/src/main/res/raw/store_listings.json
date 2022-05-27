@@ -1,5 +1,5 @@
 {
-  "modules": [
+  "popularModules": [
     {
       "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
       "name": "Conversions",
@@ -13,7 +13,31 @@
     },
     {
       "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
+      "name": "Encode",
+      "author": "JMAT - Tools",
+      "shortDescription": "Encode / Decode values including base64, hex, urls and others.",
+      "iconUrl": "https://www.svgrepo.com/download/32178/android-hand-drawn-logo-outline.svg",
+      "previewUrls": [
+        "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
+      ],
+      "previewType": "SINGLE"
+    }
+  ],
+  "newModules": [
+    {
+      "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
       "name": "Conversions",
+      "author": "JMAT - Tools",
+      "shortDescription": "A variety of conversion tools to make your life easier.",
+      "iconUrl": "https://www.svgrepo.com/download/32178/android-hand-drawn-logo-outline.svg",
+      "previewUrls": [
+        "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
+      ],
+      "previewType": "SINGLE"
+    },
+    {
+      "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
+      "name": "Encode",
       "author": "JMAT - Tools",
       "shortDescription": "A variety of conversion tools to make your life easier.",
       "iconUrl": "https://www.svgrepo.com/download/32178/android-hand-drawn-logo-outline.svg",

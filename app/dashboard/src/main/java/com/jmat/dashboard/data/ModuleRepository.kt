@@ -13,7 +13,12 @@ class ModuleRepository @Inject constructor(
     suspend fun fetchModules(): Result<ModuleListings> {
         return resourceService.loadResource<ModuleListings>(R.raw.store_listings)
             .onSuccess { moduleListings ->
-                moduleListings.modules
+                moduleListings.newModules
+                    .forEach {
+                        imageDownloadService.downloadImages(listOf(it.iconUrl))
+                        imageDownloadService.downloadImages(it.previewUrls)
+                    }
+                moduleListings.popularModules
                     .forEach {
                         imageDownloadService.downloadImages(listOf(it.iconUrl))
                         imageDownloadService.downloadImages(it.previewUrls)

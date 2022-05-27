@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_dashboard_favourites"/>
 
     <fragment
-        android:id="@id/store"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardStoreFragment"
-        tools:layout="@layout/fragment_dashboard_store"/>
+        android:id="@id/listings"
+        android:name="com.jmat.dashboard.ui.fragment.DashboardModuleListingsFragment"
+        tools:layout="@layout/fragment_dashboard_listings"/>
 </navigation>
