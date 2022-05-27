@@ -11,11 +11,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.tabs.TabLayout
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardListingsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
-import com.jmat.dashboard.ui.adapter.StoreAdapter
+import com.jmat.dashboard.ui.adapter.ModuleListingsAdapter
 import com.jmat.dashboard.ui.extensions.setupAppbar
 import com.jmat.dashboard.ui.model.TabData
 import com.jmat.dashboard.ui.viewmodel.DashboardStoreViewModel
@@ -56,7 +55,7 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
 
         with(binding) {
             with(recyclerView) {
-                adapter = StoreAdapter()
+                adapter = ModuleListingsAdapter()
                 layoutManager = LinearLayoutManager(requireContext())
                 addItemDecoration(MarginItemDecoration(30))
             }
@@ -89,7 +88,7 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
                             uiState.popularModules
                         } else uiState.newModules
 
-                        (recyclerView.adapter as StoreAdapter).submitList(list)
+                        (recyclerView.adapter as ModuleListingsAdapter).submitList(list)
                         loader.isVisible = uiState.loading
                     }
                 }

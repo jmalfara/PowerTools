@@ -9,7 +9,7 @@ import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.databinding.LayoutDashboardStoreModulePreviewBinding
 import com.jmat.powertools.base.adapter.GenericDiffer
 
-class StoreAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
+class ModuleListingsAdapter : ListAdapter<Module, RecyclerView.ViewHolder>(
     GenericDiffer()
 ) {
     private val singleModuleViewType = 0
@@ -54,6 +54,11 @@ class SingleModuleViewHolder private constructor(
                 .load(item.previewUrls.first())
                 .fitCenter()
                 .into(previewImage)
+
+            Glide.with(icon)
+                .load(item.iconUrl)
+                .fitCenter()
+                .into(icon)
         }
     }
 
