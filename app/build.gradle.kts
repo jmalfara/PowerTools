@@ -2,6 +2,8 @@ import com.google.protobuf.gradle.builtins
 import com.google.protobuf.gradle.generateProtoTasks
 import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
+import java.util.Properties
+import java.io.FileInputStream
 
 plugins {
     kotlin("android")
@@ -17,6 +19,7 @@ plugins {
 val TARGET_SDK: String by project
 val MIN_SDK: String by project
 val APP_VERSION_CODE: String by project
+val APP_VERSION_NAME: String by project
 val JDK_VERSION: String by project
 val HILT_VERSION: String by project
 val DATASTORE_VERSION: String by project
@@ -35,6 +38,11 @@ val TURBINE_VERSION: String by project
 val RETROFIT_VERSION: String by project
 val MOSHI_VERSION: String by project
 
+val keystoreProperties = Properties().apply {
+    val keystorePropertiesFile = rootProject.file("keystore.properties")
+    load(FileInputStream(keystorePropertiesFile))
+}
+
 android {
     compileSdk = TARGET_SDK.toInt()
 
@@ -43,14 +51,28 @@ android {
         minSdk = MIN_SDK.toInt()
         targetSdk = TARGET_SDK.toInt()
         versionCode = APP_VERSION_CODE.toInt()
-        versionName = "APP_VERSION_NAME"
+        versionName = APP_VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+            storeFile = file(keystoreProperties.getProperty("storeFile"))
+            storePassword = keystoreProperties.getProperty("storePassword")
+        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = android.signingConfigs.getByName("release")
+        }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
     }
 
