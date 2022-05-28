@@ -17,5 +17,6 @@ data class Module(
     val iconUrl: String,
     val shortDescription: String,
     val previewUrls: List<String>,
-    val previewType: String
+    val previewType: String,
+    val installName: String
 ) : Serializable

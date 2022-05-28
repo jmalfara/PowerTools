@@ -2,6 +2,7 @@
   "popularModules": [
     {
       "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
+      "installName": "conversions",
       "name": "Conversions",
       "author": "JMAT - Tools",
       "shortDescription": "A variety of conversion tools to make your life easier.",
@@ -13,6 +14,7 @@
     },
     {
       "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
+      "installName": "encode",
       "name": "Encode",
       "author": "JMAT - Tools",
       "shortDescription": "Encode / Decode values including base64, hex, urls and others.",
@@ -26,6 +28,7 @@
   "newModules": [
     {
       "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
+      "installName": "conversions",
       "name": "Conversions",
       "author": "JMAT - Tools",
       "shortDescription": "A variety of conversion tools to make your life easier.",
@@ -37,6 +40,7 @@
     },
     {
       "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
+      "installName": "encode",
       "name": "Encode",
       "author": "JMAT - Tools",
       "shortDescription": "A variety of conversion tools to make your life easier.",

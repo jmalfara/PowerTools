@@ -1,11 +1,14 @@
 package com.jmat.dashboard.di
 
 import androidx.lifecycle.ViewModel
+import com.jmat.dashboard.ui.viewmodel.DashboardModuleDetailsViewModel
 import com.jmat.dashboard.ui.viewmodel.DashboardStoreViewModel
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
+import com.jmat.powertools.base.di.AssistedSavedStateViewModelFactory
 import com.jmat.powertools.base.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
+import dagger.assisted.AssistedFactory
 import dagger.hilt.migration.DisableInstallInCheck
 import dagger.multibindings.IntoMap
 
@@ -22,4 +25,12 @@ abstract class DashboardViewModelsModule {
     @IntoMap
     @ViewModelKey(DashboardStoreViewModel::class)
     abstract fun bindDashboardStoreViewModel(viewModel: DashboardStoreViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DashboardModuleDetailsViewModel::class)
+    abstract fun bindDashboardModuleDetailsViewModelFactory(factory: DashboardModuleDetailsViewModelFactory): AssistedSavedStateViewModelFactory<out ViewModel>
 }
+
+@AssistedFactory
+interface DashboardModuleDetailsViewModelFactory : AssistedSavedStateViewModelFactory<DashboardModuleDetailsViewModel>

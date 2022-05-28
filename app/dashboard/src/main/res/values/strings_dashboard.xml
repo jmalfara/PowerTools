@@ -11,6 +11,14 @@
     <string name="tab_popular">Popular</string>
     <string name="tab_new">New</string>
 
+    <!--  Details  -->
+    <string name="dashboard_details_install">Install</string>
+    <string name="dashboard_details_uninstall">Uninstall</string>
+
+    <string name="dashboard_details_installing">Installing</string>
+    <string name="dashboard_details_uninstalling">Uninstalling</string>
+    <string name="dashboard_details_error">Something went wrong</string>
+
     <!--  Conversions  -->
     <string name="dashboard_conversion_title_ml_to_oz">Milliliters to Ounce</string>
     <string name="dashboard_conversion_title_km_to_m">Kilometers to Miles</string>
