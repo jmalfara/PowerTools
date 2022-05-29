@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.base.extensions.NavigationMode
@@ -55,6 +56,11 @@ class SettingsLandingFragment : Fragment(R.layout.fragment_settings_landing) {
                 }
                 R.id.showcase -> {
                     requireActivity().navigateDeeplink(DEEPLINK_SHOWCASE)
+                }
+                R.id.debug -> {
+                    findNavController().navigate(
+                        R.id.settingsLandingFragment_to_settingsDebugFragment
+                    )
                 }
                 else -> {}
             }

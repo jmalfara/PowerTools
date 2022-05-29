@@ -59,10 +59,13 @@
         <entry key="app/dashboard/src/main/res/layout/layout_dashboard_store_module_preview.xml" value="0.25" />
         <entry key="app/dashboard/src/main/res/menu/menu_dashboard.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/menu/menu_dashboard_toolbar.xml" value="0.1" />
+        <entry key="app/debug/src/main/res/layout/activity_debug.xml" value="0.13333333333333333" />
         <entry key="app/encode/src/main/res/layout/activity_encode.xml" value="0.1" />
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl.xml" value="0.32950191570881227" />
         <entry key="app/encode/src/main/res/layout/fragment_encode_tinyurl_create.xml" value="0.15715579710144928" />
         <entry key="app/encode/src/main/res/layout/layout_encode_tinyurl_row.xml" value="0.1" />
+        <entry key="app/settings/src/main/res/layout/activity_settings.xml" value="0.1" />
+        <entry key="app/settings/src/main/res/layout/fragment_settings_debug.xml" value="0.1358695652173913" />
         <entry key="app/settings/src/main/res/layout/fragment_settings_landing.xml" value="0.14270833333333333" />
         <entry key="app/settings/src/main/res/menu/menu_settings.xml" value="0.14270833333333333" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />

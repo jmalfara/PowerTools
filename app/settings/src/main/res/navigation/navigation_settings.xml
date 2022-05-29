@@ -8,5 +8,15 @@
     <fragment
         android:id="@+id/settingsLandingFragment"
         android:name="com.jmat.settings.ui.fragment.SettingsLandingFragment"
-        tools:layout="@layout/fragment_settings_landing"/>
+        tools:layout="@layout/fragment_settings_landing">
+
+        <action
+            android:id="@+id/settingsLandingFragment_to_settingsDebugFragment"
+            app:destination="@+id/settingsDebugFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsDebugFragment"
+        android:name="com.jmat.settings.ui.fragment.SettingsDebugFragment"
+        tools:layout="@layout/fragment_settings_debug"/>
 </navigation>
