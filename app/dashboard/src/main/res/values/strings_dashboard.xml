@@ -17,6 +17,7 @@
 
     <string name="dashboard_details_installing">Installing</string>
     <string name="dashboard_details_uninstalling">Uninstalling</string>
+    <string name="dashboard_details_installed">Installed</string>
     <string name="dashboard_details_error">Something went wrong</string>
 
     <!--  Conversions  -->

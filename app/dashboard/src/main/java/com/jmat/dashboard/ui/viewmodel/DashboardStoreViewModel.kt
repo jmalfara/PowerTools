@@ -1,36 +1,37 @@
 package com.jmat.dashboard.ui.viewmodel
 
-import android.util.Log
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.jmat.dashboard.data.ModuleRepository
-import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.model.ModuleData
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.jmat.powertools.UserPreferences
+import com.jmat.powertools.base.extensions.contains
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardStoreViewModel @Inject constructor(
     private val moduleRepository: ModuleRepository,
-    private val splitInstallManager: SplitInstallManager
+    private val dataStore: DataStore<UserPreferences>
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(UiState.default)
     val uiState: StateFlow<UiState> = _uiState
 
+    var _showPopular: Boolean = false
+
     init {
-        splitInstallManager.installedModules.forEach {
-            Log.d("SplitManager", it)
+        viewModelScope.launch {
+            dataStore.data.map { it.modulesList }.collectLatest {
+                fetchStoreDetails()
+            }
         }
     }
+
     fun showPopular(show: Boolean) {
+        _showPopular = show
         viewModelScope.launch {
-            _uiState.emit(
-                _uiState.value.copy(
-                    showingPopular = show
-                )
-            )
+            fetchStoreDetails()
         }
     }
 
@@ -43,19 +44,31 @@ class DashboardStoreViewModel @Inject constructor(
             )
 
             moduleRepository.fetchModules()
-                .onSuccess {
-                    _uiState.emit(
-                        _uiState.value.copy(
-                            newModules = mapModules(it.newModules),
-                            popularModules = mapModules(it.popularModules)
+                .onSuccess { listings ->
+                    run {
+                        val modules = if (_showPopular) {
+                            listings.popularModules
+                        } else listings.newModules
+
+                        _uiState.emit(
+                            _uiState.value.copy(
+                                modules = modules.map { module ->
+                                    ModuleData(
+                                        module = module,
+                                        installed = dataStore.data.map { it.modulesList }
+                                            .first().contains {
+                                                module.installName ==  it.installName
+                                            }
+                                    )
+                                }
+                            )
                         )
-                    )
+                    }
                 }
                 .onFailure {
                     _uiState.emit(
                         _uiState.value.copy(
-                            newModules = listOf(),
-                            popularModules = listOf()
+                            modules = listOf()
                         )
                     )
                 }
@@ -68,27 +81,14 @@ class DashboardStoreViewModel @Inject constructor(
         }
     }
 
-    private fun mapModules(modules: List<Module>): List<ModuleData> {
-        return modules.map {
-            ModuleData(
-                module = it,
-                installed = splitInstallManager.installedModules.contains(it.name.lowercase())
-            )
-        }
-    }
-
     data class UiState(
         val loading: Boolean,
-        val showingPopular: Boolean,
-        val popularModules: List<ModuleData>,
-        val newModules: List<ModuleData>
+        val modules: List<ModuleData>
     ) {
         companion object {
             val default = UiState(
-                loading = true,
-                showingPopular = true,
-                popularModules = listOf(),
-                newModules = listOf()
+                loading = false,
+                modules = listOf()
             )
         }
     }

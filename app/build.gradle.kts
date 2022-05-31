@@ -112,8 +112,7 @@ dependencies {
     api("androidx.lifecycle:lifecycle-runtime-ktx:$LIFECYCLE_VERSION")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
-    api("com.google.android.play:core:1.8.2")
-    implementation("com.google.android.gms:play-services-location:19.0.1")
+    api("com.google.android.play:core:1.10.3")
 
     api("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION")
     api("com.squareup.retrofit2:converter-moshi:2.4.0")

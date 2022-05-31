@@ -1,6 +1,5 @@
 package com.jmat.dashboard.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardListingsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
-import com.jmat.dashboard.ui.DashboardModuleDetailsActivity
 import com.jmat.dashboard.ui.adapter.ModuleListingsAdapter
 import com.jmat.dashboard.ui.extensions.setupAppbar
 import com.jmat.dashboard.ui.model.TabData
@@ -93,11 +91,9 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collectLatest { uiState ->
                     with(binding) {
-                        val list = if (uiState.showingPopular) {
-                            uiState.popularModules
-                        } else uiState.newModules
-
-                        (recyclerView.adapter as ModuleListingsAdapter).submitList(list)
+                        (recyclerView.adapter as ModuleListingsAdapter).submitList(
+                            uiState.modules
+                        )
                         loader.isVisible = uiState.loading
                     }
                 }

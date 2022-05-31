@@ -15,7 +15,12 @@ message TinyUrl {
   string createdAt = 4;
 }
 
+message Module {
+  string installName = 1;
+}
+
 message UserPreferences {
   repeated Favourite favourites = 1;
   repeated TinyUrl tinyUrls = 2;
+  repeated Module modules = 3;
 }

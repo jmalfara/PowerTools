@@ -10,19 +10,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardModuleDetailsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
 import com.jmat.dashboard.ui.DashboardModuleDetailsActivityArgs
 import com.jmat.dashboard.ui.viewmodel.DashboardModuleDetailsViewModel
+import com.jmat.powertools.base.data.getText
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.di.AssistedSavedStateViewModelFactory
 import com.jmat.powertools.base.di.InjectedSavedStateViewModelFactory
-import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.collectLatest
@@ -69,18 +66,6 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
                 .load(args.moduleData.module.iconUrl)
                 .fitCenter()
                 .into(icon)
-
-            action.text = if (args.moduleData.installed) {
-                "Uninstall"
-            } else "Install"
-
-            action.setOnClickListener {
-                if (args.moduleData.installed) {
-                    Toast.makeText(requireContext(), "Uninstall", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(requireContext(), "Install", Toast.LENGTH_LONG).show()
-                }
-            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -88,17 +73,23 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
                 viewModel.uiState.collectLatest { uiState ->
                     with(binding) {
                         action.text = getString(uiState.actionTextRes)
+                        action.isEnabled = uiState.installing.not()
 
                         if (uiState.installed) {
-                            action.isEnabled = false
+                            action.text = getString(R.string.dashboard_details_uninstall)
                             action.setOnClickListener {
-                                viewModel.uninstall()
+                                viewModel.uninstallModule(args.moduleData.module.installName)
                             }
                         } else {
-                            action.isEnabled = true
+                            action.text = getString(R.string.dashboard_details_install)
                             action.setOnClickListener {
-                                viewModel.install()
+                                viewModel.installModule(args.moduleData.module.installName)
                             }
+                        }
+
+                        uiState.notificationMessage?.let {
+                            Toast.makeText(requireContext(), getText(it), Toast.LENGTH_LONG).show()
+                            viewModel.consumeNotificationMessage()
                         }
                     }
                 }
