@@ -4,10 +4,8 @@ import android.util.Log
 import androidx.datastore.core.DataStore
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallRequest
-import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.model.ModuleListings
-import com.jmat.dashboard.ui.util.SplitInstallManagerDelegate
 import com.jmat.powertools.Module
 import com.jmat.powertools.UserPreferences
 import com.jmat.powertools.base.data.ImageDownloadService

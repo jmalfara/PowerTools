@@ -1,7 +1,5 @@
 package com.jmat.dashboard.ui.util
 
-import android.util.Log
-import androidx.datastore.core.DataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
@@ -10,7 +8,6 @@ import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
-import com.jmat.powertools.UserPreferences
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
