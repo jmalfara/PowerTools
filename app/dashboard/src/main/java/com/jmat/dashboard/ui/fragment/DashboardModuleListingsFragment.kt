@@ -16,7 +16,7 @@ import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardListingsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
 import com.jmat.dashboard.ui.adapter.ModuleListingsAdapter
-import com.jmat.dashboard.ui.extensions.setupAppbar
+import com.jmat.dashboard.ui.extensions.setupTabs
 import com.jmat.dashboard.ui.model.TabData
 import com.jmat.dashboard.ui.viewmodel.DashboardStoreViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
@@ -67,7 +67,7 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
                 addItemDecoration(MarginItemDecoration(30))
             }
 
-            requireActivity().setupAppbar(
+            requireActivity().setupTabs(
                 tabs = listOf(
                     TabData(
                         id = R.id.tab_popular,

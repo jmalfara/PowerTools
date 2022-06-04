@@ -11,8 +11,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardFavouritesBinding
+import com.jmat.dashboard.databinding.FragmentDashboardInstalledBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
 import com.jmat.dashboard.ui.adapter.FavouritesAdapter
+import com.jmat.dashboard.ui.adapter.InstalledAdapter
 import com.jmat.dashboard.ui.extensions.setupTabs
 import com.jmat.dashboard.ui.model.TabData
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
@@ -25,9 +27,9 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favourites) {
-    private val binding: FragmentDashboardFavouritesBinding by viewBinding(
-        FragmentDashboardFavouritesBinding::bind
+class DashboardInstalledFragment : Fragment(R.layout.fragment_dashboard_installed) {
+    private val binding: FragmentDashboardInstalledBinding by viewBinding(
+        FragmentDashboardInstalledBinding::bind
     )
 
     @Inject
@@ -48,36 +50,17 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val favouritesAdapter = FavouritesAdapter()
+        val installedAdapter = InstalledAdapter()
         with(binding.recyclerView) {
-            adapter = favouritesAdapter
+            adapter = installedAdapter
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(MarginItemDecoration(30))
-
-//            requireActivity().setupTabs(
-//                tabs = listOf(
-//                    TabData(
-//                        id = R.id.tab_favourites,
-//                        text = getString(R.string.tab_favourites)
-//                    ),
-//                    TabData(
-//                        id = R.id.tab_installed,
-//                        text = getString(R.string.tab_installed)
-//                    )
-//                ),
-//                onTabSelected = { tab ->
-//                    when (tab.id) {
-//                        R.id.tab_favourites -> {}
-//                        R.id.tab_installed -> {}
-//                    }
-//                }
-//            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.favourites.collect { favourites ->
-                    favouritesAdapter.submitList(favourites)
+                    installedAdapter.submitList(favourites)
                     binding.emptyCard.isVisible = favourites.isEmpty()
                 }
             }

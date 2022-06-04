@@ -7,10 +7,10 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.jmat.dashboard.R
 import com.jmat.dashboard.ui.model.TabData
 
-fun Activity.setupAppbar(
+fun Activity.setupTabs(
     tabs: List<TabData>,
     onTabSelected: (tab: TabLayout.Tab) -> Unit = {}
-) {
+): TabLayout {
     val tabLayout = findViewById<TabLayout>(R.id.tabs)
     tabLayout.removeAllTabs()
     tabs.forEach {
@@ -31,4 +31,6 @@ fun Activity.setupAppbar(
         override fun onTabReselected(tab: TabLayout.Tab?) {}
     })
     tabLayout.isVisible = tabs.isEmpty().not()
+
+    return tabLayout
 }
