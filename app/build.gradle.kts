@@ -148,7 +148,7 @@ kapt {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.17.3"
+        artifact = "com.google.protobuf:protoc:${PROTOBUF_VERSION}"
     }
 
     // Generates the java Protobuf-lite code for the Protobufs in this project. See
