@@ -7,16 +7,11 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-val TARGET_SDK: String by project
-val MIN_SDK: String by project
-val HILT_VERSION: String by project
-val MOSHI_VERSION: String by project
-
 android {
-    compileSdk = TARGET_SDK.toInt()
+    compileSdk = ConfigData.targetSdkVersion
 
     defaultConfig {
-        minSdk = MIN_SDK.toInt()
+        minSdk = ConfigData.minSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -37,11 +32,9 @@ android {
 
 dependencies {
     implementation (project(":app"))
-    implementation ("com.google.dagger:hilt-android:${HILT_VERSION}")
-    kapt ("com.google.dagger:hilt-compiler:${HILT_VERSION}")
-    ksp ("com.squareup.moshi:moshi-kotlin-codegen:${MOSHI_VERSION}")
-
-//    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    implementation ("com.google.dagger:hilt-android:2.42")
+    kapt ("com.google.dagger:hilt-compiler:2.42")
+    ksp ("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
     testImplementation ("junit:junit:4.13.2")
     androidTestImplementation ("androidx.test.ext:junit:1.1.3")

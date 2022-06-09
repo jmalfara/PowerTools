@@ -16,42 +16,20 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-val TARGET_SDK: String by project
-val MIN_SDK: String by project
-val APP_VERSION_CODE: String by project
-val APP_VERSION_NAME: String by project
-val JDK_VERSION: String by project
-val HILT_VERSION: String by project
-val DATASTORE_VERSION: String by project
-val PROTOBUF_VERSION: String by project
-val KTX_CORE_VERSION: String by project
-val ANDROID_SUPPORT_PACKAGE_VERSION: String by project
-val MATERIAL_VERSION: String by project
-val CONSTRAINT_LAYOUT_VERSION: String by project
-val NAVIGATION_VERSION: String by project
-val LIFECYCLE_VERSION: String by project
-val SPLASHSCREEN_VERSION: String by project
-val JUNIT_VERSION: String by project
-val TRUTH_VERSION: String by project
-val MOCKK_VERSION: String by project
-val TURBINE_VERSION: String by project
-val RETROFIT_VERSION: String by project
-val MOSHI_VERSION: String by project
-
 val keystoreProperties = Properties().apply {
     val keystorePropertiesFile = rootProject.file("keystore.properties")
     load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
-    compileSdk = TARGET_SDK.toInt()
+    compileSdk = ConfigData.targetSdkVersion
 
     defaultConfig {
         applicationId = "com.jmat.powertools"
-        minSdk = MIN_SDK.toInt()
-        targetSdk = TARGET_SDK.toInt()
-        versionCode = APP_VERSION_CODE.toInt()
-        versionName = APP_VERSION_NAME
+        minSdk = ConfigData.minSdkVersion
+        targetSdk = ConfigData.targetSdkVersion
+        versionCode = ConfigData.versionCode
+        versionName = ConfigData.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -103,40 +81,40 @@ android {
 }
 
 dependencies {
-    api("androidx.core:core-ktx:$KTX_CORE_VERSION")
-    api("androidx.appcompat:appcompat:$ANDROID_SUPPORT_PACKAGE_VERSION")
-    api("com.google.android.material:material:$MATERIAL_VERSION")
-    api("androidx.constraintlayout:constraintlayout:$CONSTRAINT_LAYOUT_VERSION")
-    api("androidx.navigation:navigation-fragment-ktx:$NAVIGATION_VERSION")
-    api("androidx.navigation:navigation-ui-ktx:$NAVIGATION_VERSION")
-    api("androidx.lifecycle:lifecycle-runtime-ktx:$LIFECYCLE_VERSION")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    api("androidx.core:core-ktx:1.8.0")
+    api("androidx.appcompat:appcompat:1.4.2")
+    api("com.google.android.material:material:1.6.1")
+    api("androidx.constraintlayout:constraintlayout:2.1.4")
+    api("androidx.navigation:navigation-fragment-ktx:2.4.2")
+    api("androidx.navigation:navigation-ui-ktx:2.4.2")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
     api("com.google.android.play:core:1.10.3")
 
-    api("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION")
-    api("com.squareup.retrofit2:converter-moshi:2.4.0")
-    api("com.squareup.moshi:moshi-kotlin:$MOSHI_VERSION")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VERSION")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    api("com.squareup.retrofit2:retrofit:2.9.0")
+    api("com.squareup.retrofit2:converter-moshi:2.9.0")
+    api("com.squareup.moshi:moshi-kotlin:1.13.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
 
-    api("androidx.datastore:datastore:$DATASTORE_VERSION")
-    api("androidx.datastore:datastore-core:$DATASTORE_VERSION")
-    api("com.google.protobuf:protobuf-javalite:$PROTOBUF_VERSION")
+    api("androidx.datastore:datastore:1.0.0")
+    api("androidx.datastore:datastore-core:1.0.0")
+    api("com.google.protobuf:protobuf-javalite:3.17.3")
 
-    api("com.github.bumptech.glide:glide:4.13.0")
-    kapt("com.github.bumptech.glide:compiler:4.13.0")
+    api("com.github.bumptech.glide:glide:4.13.2")
+    kapt("com.github.bumptech.glide:compiler:4.13.2")
 
-    implementation("com.google.dagger:hilt-android:$HILT_VERSION")
-    kapt("com.google.dagger:hilt-compiler:$HILT_VERSION")
+    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-compiler:2.42")
 
-    implementation("androidx.core:core-splashscreen:$SPLASHSCREEN_VERSION")
+    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
 
     debugImplementation("androidx.fragment:fragment-testing:1.4.1")
-    testApi("junit:junit:$JUNIT_VERSION")
-    testApi("com.google.truth:truth:${TRUTH_VERSION}")
-    testApi("io.mockk:mockk:${MOCKK_VERSION}")
-    testApi("app.cash.turbine:turbine:${TURBINE_VERSION}")
+    testApi("junit:junit:4.13.2")
+    testApi("com.google.truth:truth:1.1.3")
+    testApi("io.mockk:mockk:1.12.4")
+    testApi("app.cash.turbine:turbine:0.8.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
@@ -148,7 +126,7 @@ kapt {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:${PROTOBUF_VERSION}"
+        artifact = "com.google.protobuf:protoc:3.17.3"
     }
 
     // Generates the java Protobuf-lite code for the Protobufs in this project. See

@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.jmat.dashboard.ui.fragment.DashboardConversionsFragment
 import com.jmat.dashboard.ui.fragment.DashboardFavouritesFragment
+import com.jmat.dashboard.ui.fragment.DashboardInstalledFragment
 
 public class DashboardLandingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -17,7 +18,7 @@ public class DashboardLandingViewPagerAdapter(fragmentManager: FragmentManager, 
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return DashboardFavouritesFragment()
-            1 -> return DashboardConversionsFragment()
+            1 -> return DashboardInstalledFragment()
         }
         throw RuntimeException("Invalid Tab")
     }

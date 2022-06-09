@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/app/encode" />
             <option value="$PROJECT_DIR$/app/settings" />
             <option value="$PROJECT_DIR$/app/showcase" />
+            <option value="$PROJECT_DIR$/buildSrc" />
           </set>
         </option>
       </GradleProjectSettings>

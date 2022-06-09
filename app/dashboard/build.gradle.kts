@@ -7,25 +7,11 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-val TARGET_SDK: String by project
-val MIN_SDK: String by project
-val HILT_VERSION: String by project
-val GRID_LAYOUT_VERSION: String by project
-val JUNIT_VERSION: String by project
-val TRUTH_VERSION: String by project
-val MOCKK_VERSION: String by project
-val MOSHI_VERSION: String by project
-val TURBINE_VERSION: String by project
-val NAVIGATION_VERSION: String by project
-val FRAGMENT_TESTING_VERSION: String by project
-val ANDROID_JUNIT_VERSION: String by project
-val ESPRESSO_VERSION: String by project
-
 android {
-    compileSdk = TARGET_SDK.toInt()
+    compileSdk = ConfigData.targetSdkVersion
 
     defaultConfig {
-        minSdk = MIN_SDK.toInt()
+        minSdk = ConfigData.minSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,21 +32,21 @@ android {
 
 dependencies {
     implementation (project(":app"))
-    implementation ("androidx.gridlayout:gridlayout:${GRID_LAYOUT_VERSION}")
+    implementation ("androidx.gridlayout:gridlayout:1.0.0")
 
-    implementation ("com.google.dagger:hilt-android:${HILT_VERSION}")
-    kapt ("com.google.dagger:hilt-compiler:${HILT_VERSION}")
-    ksp ("com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VERSION")
+    implementation ("com.google.dagger:hilt-android:2.42")
+    kapt ("com.google.dagger:hilt-compiler:2.42")
+    ksp ("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
 
-    testImplementation ("junit:junit:${JUNIT_VERSION}")
-    testImplementation ("com.google.truth:truth:${TRUTH_VERSION}")
-    testImplementation ("io.mockk:mockk:${MOCKK_VERSION}")
-    testImplementation ("app.cash.turbine:turbine:${TURBINE_VERSION}")
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("com.google.truth:truth:1.1.3")
+    testImplementation ("io.mockk:mockk:1.12.4")
+    testImplementation ("app.cash.turbine:turbine:0.8.0")
 
-    debugImplementation ("androidx.fragment:fragment-testing:${FRAGMENT_TESTING_VERSION}")
-    androidTestImplementation ("com.google.truth:truth:${TRUTH_VERSION}")
-    androidTestImplementation ("io.mockk:mockk-android:${MOCKK_VERSION}")
-    androidTestImplementation ("androidx.navigation:navigation-testing:${NAVIGATION_VERSION}")
-    androidTestImplementation ("androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:${ESPRESSO_VERSION}")
+    debugImplementation ("androidx.fragment:fragment-testing:1.4.1")
+    androidTestImplementation ("com.google.truth:truth:1.1.3")
+    androidTestImplementation ("io.mockk:mockk-android:1.12.4")
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.4.2")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
 }

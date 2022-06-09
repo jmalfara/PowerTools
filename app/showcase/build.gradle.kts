@@ -3,15 +3,11 @@ plugins {
     id ("com.android.dynamic-feature")
 }
 
-val TARGET_SDK: String by project
-val MIN_SDK: String by project
-val HILT_VERSION: String by project
-
 android {
-    compileSdk = TARGET_SDK.toInt()
+    compileSdk = ConfigData.targetSdkVersion
 
     defaultConfig {
-        minSdk = MIN_SDK.toInt()
+        minSdk = ConfigData.minSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
