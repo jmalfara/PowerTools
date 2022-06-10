@@ -8,7 +8,6 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jmat.dashboard.R
-import com.jmat.dashboard.di.inject
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.Favourite
 import com.jmat.powertools.UserPreferences
@@ -33,9 +32,9 @@ class DashboardFavouritesFragmentTest {
     @Before
     fun setup() {
         mockkStatic("com.jmat.dashboard.di.DashboardDiExtensionsKt")
-        every { any<DashboardFavouritesFragment>().inject() } answers {
-            // Block the Injection
-        }
+//        every { any<DashboardFavouritesFragment>().inject() } answers {
+//            // Block the Injection
+//        }
 
         mockkStatic("com.jmat.powertools.base.extensions.ContextExtensionsKt")
         every { any<Context>().navigateDeeplink(any()) } returns Unit

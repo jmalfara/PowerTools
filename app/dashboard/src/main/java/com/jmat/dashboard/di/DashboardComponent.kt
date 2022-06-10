@@ -6,8 +6,6 @@ import com.jmat.dashboard.ui.fragment.DashboardModuleDetailsFragment
 import com.jmat.dashboard.ui.fragment.DashboardModuleListingsFragment
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.Component
-import dagger.hilt.android.scopes.ActivityScoped
-import javax.inject.Singleton
 
 @Component(
     dependencies = [DashboardModuleDependencies::class],
