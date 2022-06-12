@@ -10,10 +10,6 @@
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
 
-<!--        <item name="colorSurface">@color/surfaceDark</item>-->
-<!--        <item name="colorOnSurface">@color/white</item>-->
-<!--        <item name="colorSurfaceVariant">@color/surface</item>-->
-
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -25,9 +21,15 @@
         <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
     </style>
 
-    <style name="Theme.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <style name="Theme.Toolbar" parent="Widget.Material3.Toolbar.Surface">
+        <item name="materialThemeOverlay">@style/Theme.ToolbarOverlay</item>
         <item name="navigationIconTint">?attr/colorOnPrimary</item>
         <item name="titleCentered">true</item>
+    </style>
+
+    <style name="Theme.ToolbarOverlay" parent="">
+        <item name="colorSurface">@color/primaryDarkColor</item>
+        <item name="colorOnSurface">@color/primaryTextColor</item>
     </style>
 
 </resources>

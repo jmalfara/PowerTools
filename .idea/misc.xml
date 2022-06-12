@@ -70,11 +70,17 @@
         <entry key="app/settings/src/main/res/layout/fragment_settings_debug.xml" value="0.1358695652173913" />
         <entry key="app/settings/src/main/res/layout/fragment_settings_landing.xml" value="0.14270833333333333" />
         <entry key="app/settings/src/main/res/menu/menu_settings.xml" value="0.14270833333333333" />
+        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/theme/AppTheme.kt" value="0.25" />
+        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/topbar/AppTopBar.kt" value="0.225" />
+        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/topbar/TitleTopBar.kt" value="0.1425925925925926" />
+        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextFragment.kt" value="0.25" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />
+        <entry key="app/showcase/src/main/res/layout/fragment_showcase_cards.xml" value="0.13541666666666666" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_landing.xml" value="0.1" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_text.xml" value="0.12310030395136778" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_text_input.xml" value="0.25" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_textinput.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_calculate_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_24.xml" value="0.14" />
