@@ -21,6 +21,10 @@
         <action
             android:id="@+id/showcaseLandingFragment_to_showcaseTextInputFragment"
             app:destination="@id/showcaseTextInputFragment"/>
+
+        <action
+            android:id="@+id/showcaseLandingFragment_to_showcaseTextInputComposeFragment"
+            app:destination="@id/showcaseTextInputComposeFragment"/>
     </fragment>
 
     <fragment
@@ -37,4 +41,8 @@
         android:id="@+id/showcaseTextInputFragment"
         android:name="com.jmat.showcase.ui.fragment.ShowcaseTextInputFragment"
         tools:layout="@layout/fragment_showcase_text_input"/>
+
+    <fragment
+        android:id="@+id/showcaseTextInputComposeFragment"
+        android:name="com.jmat.showcase.ui.fragment.ShowcaseTextInputComposeFragment"/>
 </navigation>

@@ -12,7 +12,7 @@ import com.jmat.showcase.R
 import com.jmat.showcase.databinding.FragmentShowcaseTextInputBinding
 
 class ShowcaseTextInputFragment : Fragment(R.layout.fragment_showcase_text_input) {
-    val binding: FragmentShowcaseTextInputBinding by viewBinding(FragmentShowcaseTextInputBinding::bind)
+    private val binding: FragmentShowcaseTextInputBinding by viewBinding(FragmentShowcaseTextInputBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

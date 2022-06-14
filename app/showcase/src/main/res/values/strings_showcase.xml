@@ -21,6 +21,7 @@
 
 
     <string name="showcase_action_text_input">TextInput</string>
+    <string name="showcase_action_text_input_compose">TextInput Compose</string>
     <string name="showcase_text_input_number_formatter">Number Formatter</string>
     <string name="showcase_text_input_four_digit_card_formatter">Four Digit Card Formatter</string>
 
