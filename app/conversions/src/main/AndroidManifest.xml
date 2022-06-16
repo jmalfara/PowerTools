@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity
-            android:name=".ui.ConversionsActivity"
+            android:name=".ConversionsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.jmat.powertools.CONVERSIONS" />
@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="powertools" android:host="conversions" />
             </intent-filter>
+            <nav-graph android:value="@navigation/navigation_conversion" />
         </activity>
     </application>
 </manifest>

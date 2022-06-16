@@ -40,6 +40,8 @@
         <entry key="..\:/Users/jorda/Documents/Android/PowerTools/app/src/main/res/menu/menu_main.xml" value="0.165625" />
         <entry key="app/conversions/src/main/res/layout/activity_conversions.xml" value="0.1" />
         <entry key="app/conversions/src/main/res/layout/fragment_conversion_km_to_m.xml" value="0.1" />
+        <entry key="app/conversions/src/main/res/layout/fragment_conversion_ml_to_oz.xml" value="0.1" />
+        <entry key="app/conversions/src/main/res/layout/fragment_conversions_landing.xml" value="0.12259371833839919" />
         <entry key="app/dashboard/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/drawable/ic_baseline_store_24.xml" value="0.1" />
         <entry key="app/dashboard/src/main/res/drawable/ic_encode_24.xml" value="0.1" />
@@ -74,7 +76,7 @@
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/topbar/AppTopBar.kt" value="0.225" />
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/topbar/TitleTopBar.kt" value="0.1425925925925926" />
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextFragment.kt" value="0.25" />
-        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextInputComposeFragment.kt" value="0.45" />
+        <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextInputComposeFragment.kt" value="0.165" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_cards.xml" value="0.13541666666666666" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_landing.xml" value="0.1" />
@@ -91,7 +93,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

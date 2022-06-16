@@ -19,10 +19,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jmat.showcase.R
 import com.jmat.powertools.R as AppR
-import com.jmat.showcase.ui.compose.theme.AppTheme
-import com.jmat.showcase.ui.compose.topbar.TitleTopBar
+import com.jmat.powertools.base.compose.theme.AppTheme
+import com.jmat.powertools.base.compose.topbar.TitleTopBar
 
-//R.layout.fragment_showcase_text
 class ShowcaseTextFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

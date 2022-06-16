@@ -20,3 +20,15 @@ plugins {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+allprojects {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        with(kotlinOptions) {
+            freeCompilerArgs = listOf(
+                "-Xjvm-default=enable",
+                "-opt-in=kotlin.RequiresOptIn"
+            )
+            jvmTarget = JavaVersion.VERSION_11.toString()
+        }
+    }
+}

@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="@dimen/layout_padding"
-                android:text="@string/dashboard_encode_title_tinyurl" />
+                android:text="@string/encode_tinyurl_title" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

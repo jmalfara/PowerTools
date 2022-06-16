@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.DashboardModuleDetailsActivityArgs
 import com.jmat.powertools.base.data.TextResource
 import dagger.assisted.Assisted
@@ -13,7 +14,6 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 class DashboardModuleDetailsViewModel @AssistedInject constructor(
     @Assisted val savedStateHandle: SavedStateHandle,
@@ -32,7 +32,7 @@ class DashboardModuleDetailsViewModel @AssistedInject constructor(
     )
     val uiState: StateFlow<UiState> = _uiState
 
-    fun installModule(module: String) {
+    fun installModule(module: Module) {
         viewModelScope.launch {
             _uiState.emit(
                 _uiState.value.copy(
@@ -68,9 +68,9 @@ class DashboardModuleDetailsViewModel @AssistedInject constructor(
         }
     }
 
-    fun uninstallModule(module: String) {
+    fun uninstallModule(module: Module) {
         viewModelScope.launch {
-            moduleRepository.uninstallModule(module)
+            moduleRepository.uninstallModule(module.installName)
                 .onSuccess {
                     _uiState.emit(
                         _uiState.value.copy(

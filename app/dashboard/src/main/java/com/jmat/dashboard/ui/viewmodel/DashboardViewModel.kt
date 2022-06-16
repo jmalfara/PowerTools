@@ -1,6 +1,7 @@
 package com.jmat.dashboard.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.jmat.dashboard.data.ModuleRepository
 import com.jmat.powertools.UserPreferences
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.flow.filter

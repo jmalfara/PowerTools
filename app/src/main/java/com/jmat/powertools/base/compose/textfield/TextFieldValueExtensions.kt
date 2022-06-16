@@ -1,4 +1,4 @@
-package com.jmat.showcase.ui.compose.textfield
+package com.jmat.powertools.base.compose.textfield
 
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue

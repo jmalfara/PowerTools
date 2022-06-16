@@ -59,13 +59,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-        freeCompilerArgs = listOf("-Xjvm-default=enable")
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0-beta03"
     }
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 
     dynamicFeatures.addAll(
@@ -91,6 +91,21 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
     api("com.google.android.play:core:1.10.3")
+
+    // Compose
+    api("androidx.compose.ui:ui:1.1.1")
+    api("androidx.compose.ui:ui-tooling:1.1.1")
+    api("androidx.compose.foundation:foundation:1.1.1")
+    api("androidx.compose.material3:material3:1.0.0-alpha13")
+    api("androidx.compose.material:material-icons-core:1.1.1")
+    api("androidx.compose.material:material-icons-extended:1.1.1")
+    api("androidx.compose.runtime:runtime-livedata:1.1.1")
+    api("androidx.compose.runtime:runtime-rxjava2:1.1.1")
+    api("androidx.activity:activity-compose:1.4.0")
+    api("androidx.compose.animation:animation:1.1.1")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.11")
+    api("com.google.android.material:compose-theme-adapter:1.1.11")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")
@@ -118,6 +133,7 @@ dependencies {
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 }
 
 kapt {

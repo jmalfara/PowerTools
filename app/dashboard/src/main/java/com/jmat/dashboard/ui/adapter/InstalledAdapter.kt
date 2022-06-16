@@ -7,20 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.LayoutDashboardFavouriteBinding
 import com.jmat.powertools.Favourite
+import com.jmat.powertools.Module
 import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_L100KM_TO_MPG
 import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_KM_TO_MILES
 
-class InstalledAdapter : ListAdapter<Favourite, FavouritesViewHolder>(
+class InstalledAdapter : ListAdapter<Module, InstalledViewHolder>(
     GenericDiffer()
 ) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
-        return FavouritesViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstalledViewHolder {
+        return InstalledViewHolder(parent)
     }
 
-    override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: InstalledViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
@@ -30,20 +31,13 @@ class InstalledViewHolder private constructor(
     private val binding: LayoutDashboardFavouriteBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Favourite) {
-        binding.title.text = item.deeplink
+    fun bind(item: Module) {
+        binding.title.text = item.name
         with(binding) {
             root.setOnClickListener {
-                root.context.navigateDeeplink(item.deeplink)
+                root.context.navigateDeeplink(item.entrypoint)
             }
-
-            val titleRes = when(item.id) {
-                ID_CONVERSIONS_KM_TO_MILES -> R.string.dashboard_conversion_title_km_to_m
-                ID_CONVERSIONS_L100KM_TO_MPG -> R.string.dashboard_conversion_title_l100km_to_mpg
-                ID_CONVERSIONS_ML_TO_OUNCES -> R.string.dashboard_conversion_title_ml_to_oz
-                else -> R.string.dashboard_empty_content
-            }
-            title.setText(titleRes)
+            title.text = item.name
         }
     }
 

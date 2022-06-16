@@ -1,4 +1,4 @@
-package com.jmat.showcase.ui.compose.theme
+package com.jmat.powertools.base.compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -80,6 +80,5 @@ fun PreviewAppThemeTopBar() {
             )
         }
     }
-
 }
 

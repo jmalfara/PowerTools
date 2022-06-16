@@ -59,9 +59,9 @@ class DashboardInstalledFragment : Fragment(R.layout.fragment_dashboard_installe
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.favourites.collect { favourites ->
-                    installedAdapter.submitList(favourites)
-                    binding.emptyCard.isVisible = favourites.isEmpty()
+                viewModel.installedModules.collect { modules ->
+                    installedAdapter.submitList(modules)
+                    binding.emptyCard.isVisible = modules.isEmpty()
                 }
             }
         }

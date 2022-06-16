@@ -2,8 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/encodeTinyUrlFragment"
+    app:startDestination="@id/encodeLandingFragment"
     android:id="@+id/navigation_encode">
+
+    <fragment
+        android:id="@+id/encodeLandingFragment"
+        android:name="com.jmat.encode.ui.fragment.EncodeLandingFragment"
+        tools:layout="@layout/fragment_encode_landing">
+        <action
+            android:id="@+id/encodeLandingFragment_to_encodeTinyUrlFragment"
+            app:destination="@+id/encodeTinyUrlFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/encodeTinyUrlFragment"
@@ -11,7 +20,10 @@
         tools:layout="@layout/fragment_encode_tinyurl">
         <action
             android:id="@+id/encodeTinyUrlFragment_to_encodeTinyUrlCreateFragment"
-            app:destination="@+id/encodeTinyUrlCreateFragment"/>
+            app:destination="@+id/encodeTinyUrlCreateFragment" />
+        <deepLink
+            android:id="@+id/encodeTinyUrlDeeplink"
+            app:uri="powertools://encode/tinyUrl" />
     </fragment>
 
     <dialog

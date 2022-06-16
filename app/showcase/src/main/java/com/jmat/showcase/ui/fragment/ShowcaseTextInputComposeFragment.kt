@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -19,11 +22,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.jmat.showcase.ui.compose.theme.AppTheme
-import com.jmat.showcase.ui.compose.topbar.TitleTopBar
+import com.jmat.powertools.R as AppR
+import com.jmat.powertools.base.compose.theme.AppTheme
+import com.jmat.powertools.base.compose.topbar.TitleTopBar
 import com.jmat.showcase.R
-import com.jmat.showcase.ui.compose.textfield.formatFourDigitCard
-import com.jmat.showcase.ui.compose.textfield.formatNumber
+import com.jmat.powertools.base.compose.textfield.formatFourDigitCard
+import com.jmat.powertools.base.compose.textfield.formatNumber
 import java.util.*
 
 class ShowcaseTextInputComposeFragment : Fragment() {
@@ -53,6 +57,8 @@ fun ShowcaseTextInputScreen(
 ) {
     var numberText by remember { mutableStateOf(TextFieldValue()) }
     var fourDigitCardText by remember { mutableStateOf(TextFieldValue()) }
+    val scrollState = rememberScrollState()
+
     Scaffold(
         topBar = {
             TitleTopBar(
@@ -63,8 +69,10 @@ fun ShowcaseTextInputScreen(
         },
         content = {
             Column(
-                modifier = Modifier.padding(it)
-                    .padding(16.dp)
+                modifier = Modifier
+                    .padding(it)
+                    .padding(dimensionResource(id = AppR.dimen.layout_padding))
+                    .verticalScroll(scrollState)
             ) {
                 Text(
                     text = stringResource(id = R.string.showcase_text_input_number_formatter),
@@ -104,6 +112,18 @@ fun ShowcaseTextInputScreen(
 @Composable
 fun ShowcaseTextInputScreenPreview() {
     AppTheme {
+        ShowcaseTextInputScreen(
+            onBackPressed = { }
+        )
+    }
+}
+
+@Preview
+@Composable
+fun ShowcaseTextInputScreenDarkPreview() {
+    AppTheme(
+        darkTheme = true
+    ) {
         ShowcaseTextInputScreen(
             onBackPressed = { }
         )

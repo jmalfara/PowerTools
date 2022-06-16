@@ -33,6 +33,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="powertools" android:host="encode" />
             </intent-filter>
+            <nav-graph android:value="@navigation/navigation_encode" />
         </activity>
     </application>
 
