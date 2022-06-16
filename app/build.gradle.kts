@@ -22,14 +22,14 @@ val keystoreProperties = Properties().apply {
 }
 
 android {
-    compileSdk = ConfigData.targetSdkVersion
+    compileSdk = com.jmat.powertools.ConfigData.targetSdkVersion
 
     defaultConfig {
         applicationId = "com.jmat.powertools"
-        minSdk = ConfigData.minSdkVersion
-        targetSdk = ConfigData.targetSdkVersion
-        versionCode = ConfigData.versionCode
-        versionName = ConfigData.versionName
+        minSdk = com.jmat.powertools.ConfigData.minSdkVersion
+        targetSdk = com.jmat.powertools.ConfigData.targetSdkVersion
+        versionCode = com.jmat.powertools.ConfigData.versionCode
+        versionName = com.jmat.powertools.ConfigData.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

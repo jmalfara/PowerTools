@@ -8,10 +8,10 @@ plugins {
 }
 
 android {
-    compileSdk = ConfigData.targetSdkVersion
+    compileSdk = com.jmat.powertools.ConfigData.targetSdkVersion
 
     defaultConfig {
-        minSdk = ConfigData.minSdkVersion
+        minSdk = com.jmat.powertools.ConfigData.minSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -4,15 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.LayoutDashboardFavouriteBinding
-import com.jmat.powertools.Favourite
 import com.jmat.powertools.Module
 import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
-import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_L100KM_TO_MPG
-import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_ML_TO_OUNCES
-import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_KM_TO_MILES
 
 class InstalledAdapter : ListAdapter<Module, InstalledViewHolder>(
     GenericDiffer()

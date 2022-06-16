@@ -83,6 +83,7 @@
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_text.xml" value="0.12310030395136778" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_text_input.xml" value="0.25" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_textinput.xml" value="0.25" />
+        <entry key="app/src/main/java/com/jmat/powertools/base/compose/theme/AppTheme.kt" value="0.8237410071942446" />
         <entry key="app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_calculate_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1" />

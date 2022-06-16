@@ -3,15 +3,15 @@ buildscript {
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.1")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-rc01")
-        classpath("com.android.tools.build:gradle:7.0.0")
+        classpath("com.android.tools.build:gradle:7.2.1")
     }
 }
 
 // Define plugins but don't apply them
 plugins {
-    id("com.android.application") version "7.2.1" apply false
-    id("com.android.library") version "7.2.1" apply false
-    id("com.android.dynamic-feature") version "7.2.1" apply false
+    id("com.android.application") apply false
+    id("com.android.library") apply false
+    id("com.android.dynamic-feature") apply false
     id("org.jetbrains.kotlin.android") version "1.6.21" apply false
     id("com.google.devtools.ksp") version "1.6.21-1.0.5" apply false
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"

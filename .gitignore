@@ -12,3 +12,4 @@ local.properties
 keystore.properties
 fastlane_service_account.json
 upload-keystore.jks
+/buildSrc/build/*
