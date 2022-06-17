@@ -14,6 +14,7 @@ plugins {
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint")
     id("com.google.devtools.ksp")
+    id("com.jmat.powertools.application")
 }
 
 val keystoreProperties = Properties().apply {
@@ -22,17 +23,6 @@ val keystoreProperties = Properties().apply {
 }
 
 android {
-    compileSdk = com.jmat.powertools.ConfigData.targetSdkVersion
-
-    defaultConfig {
-        applicationId = "com.jmat.powertools"
-        minSdk = com.jmat.powertools.ConfigData.minSdkVersion
-        targetSdk = com.jmat.powertools.ConfigData.targetSdkVersion
-        versionCode = com.jmat.powertools.ConfigData.versionCode
-        versionName = com.jmat.powertools.ConfigData.versionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
     signingConfigs {
         create("release") {
             keyAlias = keystoreProperties.getProperty("keyAlias")
@@ -52,15 +42,6 @@ android {
             applicationIdSuffix = ".debug"
             isDebuggable = true
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-beta03"
     }
 
     buildFeatures {

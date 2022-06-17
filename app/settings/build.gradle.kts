@@ -1,22 +1,8 @@
 plugins {
+    id("com.jmat.powertools.dynamic-feature")
     kotlin("android")
     kotlin("kapt")
-    id ("com.android.dynamic-feature")
     id ("dagger.hilt.android.plugin")
-}
-
-android {
-    compileSdk = com.jmat.powertools.ConfigData.targetSdkVersion
-
-    defaultConfig {
-        minSdk = com.jmat.powertools.ConfigData.minSdkVersion
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {

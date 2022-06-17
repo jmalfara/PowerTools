@@ -1,28 +1,10 @@
 plugins {
+    id("com.jmat.powertools.dynamic-feature")
     kotlin("android")
     kotlin("kapt")
-    id ("com.android.dynamic-feature")
     id ("dagger.hilt.android.plugin")
     id ("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
-}
-
-android {
-    compileSdk = com.jmat.powertools.ConfigData.targetSdkVersion
-
-    defaultConfig {
-        minSdk = com.jmat.powertools.ConfigData.minSdkVersion
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
