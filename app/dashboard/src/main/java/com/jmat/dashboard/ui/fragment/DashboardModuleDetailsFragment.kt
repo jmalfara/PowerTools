@@ -78,12 +78,12 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
                         if (uiState.installed) {
                             action.text = getString(R.string.dashboard_details_uninstall)
                             action.setOnClickListener {
-                                viewModel.uninstallModule(args.moduleData.module.installName)
+                                viewModel.uninstallModule(args.moduleData.module)
                             }
                         } else {
                             action.text = getString(R.string.dashboard_details_install)
                             action.setOnClickListener {
-                                viewModel.installModule(args.moduleData.module.installName)
+                                viewModel.installModule(args.moduleData.module)
                             }
                         }
 

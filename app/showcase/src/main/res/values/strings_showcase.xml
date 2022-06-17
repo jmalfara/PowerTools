@@ -11,12 +11,17 @@
     <string name="showcase_action_typography">Typography</string>
     <string name="showcase_text_h1">H1</string>
     <string name="showcase_text_h2">H2</string>
+    <string name="showcase_text_h3">H3</string>
+    <string name="showcase_text_h4">H4</string>
+    <string name="showcase_text_h5">H5</string>
+    <string name="showcase_text_h6">H6</string>
     <string name="showcase_text_body1" tools:ignore="Typos">Body1</string>
     <string name="showcase_text_body2">Body2</string>
     <string name="showcase_text_caption">Caption</string>
 
 
     <string name="showcase_action_text_input">TextInput</string>
+    <string name="showcase_action_text_input_compose">TextInput Compose</string>
     <string name="showcase_text_input_number_formatter">Number Formatter</string>
     <string name="showcase_text_input_four_digit_card_formatter">Four Digit Card Formatter</string>
 

@@ -21,9 +21,10 @@ message Module {
   string author = 3;
   string iconUrl = 4;
   string shortDescription = 5;
-  string previewUrls = 6;
+  repeated string previewUrls = 6;
   string previewType = 7;
   string installName = 8;
+  string entrypoint = 9;
 }
 
 message UserPreferences {

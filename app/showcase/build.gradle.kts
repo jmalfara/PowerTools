@@ -1,21 +1,7 @@
 plugins {
-    kotlin("android")
-    id ("com.android.dynamic-feature")
-}
-
-android {
-    compileSdk = ConfigData.targetSdkVersion
-
-    defaultConfig {
-        minSdk = ConfigData.minSdkVersion
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
+    id("com.jmat.powertools.dynamic-feature")
 }
 
 dependencies {
-    implementation (project(":app"))
+    implementation(project(":app"))
 }

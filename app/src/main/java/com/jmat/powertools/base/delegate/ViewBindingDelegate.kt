@@ -10,6 +10,7 @@ import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+//https://zhuinden.medium.com/simple-one-liner-viewbinding-in-fragments-and-activities-with-kotlin-961430c6c07c
 class ViewBindingDelegate<T : ViewBinding>(
     fragment: Fragment,
     private val onBind: ((View) -> T)?

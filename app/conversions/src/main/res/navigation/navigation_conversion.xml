@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/conversionMillilitersToOunceFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/conversionLandingFragment">
 
-<!--    <fragment-->
-<!--        android:id="@+id/dashboardConversion"-->
-<!--        android:name="com.jmat.conversion.ui.fragment.ConversionFragment"-->
-<!--        tools:layout="@layout/fragment_conversion">-->
+    <fragment
+        android:id="@+id/conversionLandingFragment"
+        android:name="com.jmat.conversions.ui.fragment.ConversionsLandingFragment"
+        tools:layout="@layout/fragment_conversions_landing">
 
-<!--        <action-->
-<!--            android:id="@+id/dashboardConversion_to_conversionMillilitersToOunceFragment"-->
-<!--            app:destination="@+id/conversionMillilitersToOunceFragment" />-->
+        <action
+            android:id="@+id/conversionLandingFragment_to_conversionMillilitersToOunceFragment"
+            app:destination="@+id/conversionMillilitersToOunceFragment" />
 
-<!--        <action-->
-<!--            android:id="@+id/dashboardConversion_to_conversionKilometersToMilesFragment"-->
-<!--            app:destination="@+id/conversionKilometersToMilesFragment" />-->
+        <action
+            android:id="@+id/conversionLandingFragment_to_conversionKilometersToMilesFragment"
+            app:destination="@+id/conversionKilometersToMilesFragment" />
 
-<!--        <action-->
-<!--            android:id="@+id/dashboardConversion_to_conversionLiters100KmToMPGFragment"-->
-<!--            app:destination="@+id/conversionLiters100KmToMPGFragment" />-->
-<!--    </fragment>-->
+        <action
+            android:id="@+id/conversionLandingFragment_to_conversionLiters100KmToMPGFragment"
+            app:destination="@+id/conversionLiters100KmToMPGFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/conversionMillilitersToOunceFragment"
         android:name="com.jmat.conversions.ui.fragment.ConversionMilliliterToOunceFragment"
-        tools:layout="@layout/fragment_conversion_ml_to_oz"/>
+        tools:layout="@layout/fragment_conversion_ml_to_oz">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="powertools://conversions/ml_to_ounces" />
+    </fragment>
 
     <fragment
         android:id="@+id/conversionKilometersToMilesFragment"
         android:name="com.jmat.conversions.ui.fragment.ConversionKilometersToMilesFragment"
-        tools:layout="@layout/fragment_conversion_km_to_m"/>
+        tools:layout="@layout/fragment_conversion_km_to_m">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="powertools://conversions/km_to_miles" />
+    </fragment>
 
     <fragment
         android:id="@+id/conversionLiters100KmToMPGFragment"
         android:name="com.jmat.conversions.ui.fragment.ConversionLiters100KmToMPGFragment"
-        tools:layout="@layout/fragment_conversion_l100km_to_mpg"/>
+        tools:layout="@layout/fragment_conversion_l100km_to_mpg">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="powertools://conversions/l100km_to_mpg" />
+    </fragment>
 </navigation>

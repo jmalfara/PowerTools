@@ -8,12 +8,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardPagerBinding
 import com.jmat.dashboard.ui.adapter.DashboardLandingViewPagerAdapter
-import com.jmat.dashboard.ui.extensions.setupTabs
-import com.jmat.dashboard.ui.model.TabData
 import com.jmat.powertools.base.delegate.viewBinding
 
 class DashboardHomeFragment : Fragment(R.layout.fragment_dashboard_pager) {
-    val binding: FragmentDashboardPagerBinding by viewBinding(
+    private val binding: FragmentDashboardPagerBinding by viewBinding(
         FragmentDashboardPagerBinding::bind
     )
 

@@ -1,16 +1,14 @@
 package com.jmat.dashboard.data
 
 import android.util.Log
-import androidx.datastore.core.DataStore
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.jmat.dashboard.R
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.data.model.ModuleListings
-import com.jmat.powertools.Module
-import com.jmat.powertools.UserPreferences
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
-import com.jmat.powertools.base.extensions.findIndex
+import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
@@ -19,7 +17,7 @@ class ModuleRepository @Inject constructor(
     private val resourceService: ResourceService,
     private val imageDownloadService: ImageDownloadService,
     private val splitInstallManager: SplitInstallManager,
-    private val dataStore: DataStore<UserPreferences>
+    private val userPreferencesRepo: UserPreferencesRepository
 ) {
     suspend fun fetchModules(): Result<ModuleListings> {
         return resourceService.loadResource<ModuleListings>(R.raw.store_listings)
@@ -38,9 +36,9 @@ class ModuleRepository @Inject constructor(
             }
     }
 
-    suspend fun installModule(module: String): Result<Unit> {
+    suspend fun installModule(module: Module): Result<Unit> {
         val request = SplitInstallRequest.newBuilder()
-            .addModule(module)
+            .addModule(module.installName)
             .build()
 
         val result = suspendCancellableCoroutine<Result<Unit>> { continuation ->
@@ -55,24 +53,25 @@ class ModuleRepository @Inject constructor(
         }
 
         if (result.isSuccess) {
-            dataStore.updateData { preferences ->
-                preferences.toBuilder()
-                    .addModules(
-                        Module.getDefaultInstance()
-                            .toBuilder()
-                            .setInstallName(module)
-                            .build()
-                    )
-                    .build()
-            }
+            userPreferencesRepo.addModule(
+                id = module.id,
+                name = module.name,
+                author = module.author,
+                iconUrl = module.iconUrl,
+                shortDescription = module.shortDescription,
+                previewUrls = module.previewUrls,
+                previewType = module.previewType,
+                installName = module.installName,
+                entrypoint = module.entrypoint
+            )
         }
 
         return result
     }
 
-    suspend fun uninstallModule(module: String): Result<Unit> {
+    suspend fun uninstallModule(moduleInstallName: String): Result<Unit> {
         val result = suspendCancellableCoroutine<Result<Unit>> { continuation ->
-            splitInstallManager.deferredUninstall(listOf(module))
+            splitInstallManager.deferredUninstall(listOf(moduleInstallName))
                 .addOnSuccessListener {
                     continuation.resume(Result.success(Unit))
                 }
@@ -83,12 +82,9 @@ class ModuleRepository @Inject constructor(
         }
 
         if (result.isSuccess) {
-            dataStore.updateData { preferences ->
-                val index = preferences.modulesList.findIndex { it.installName == module }
-                preferences.toBuilder()
-                    .removeModules(index)
-                    .build()
-            }
+            userPreferencesRepo.removeModuleByInstallName(
+                installName = moduleInstallName
+            )
         }
 
         return result

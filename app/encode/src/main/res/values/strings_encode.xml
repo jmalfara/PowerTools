@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Encode</string>
+
+    <!-- Encode -->
+    <string name="encode_tinyurl_title">Tiny Url</string>
     <string name="encode_tinyurl_encoded">Your Tiny Urls</string>
     <string name="encode_tinyurl_add">Add TinyUrl</string>
     <string name="encode_tinyurl_create_title">Create Tiny Url</string>

@@ -15,6 +15,8 @@ import com.jmat.conversions.databinding.FragmentConversionMlToOzBinding
 import com.jmat.conversions.di.ConversionsComponent
 import com.jmat.conversions.di.ConversionsInjectionInitializer
 import com.jmat.conversions.di.InjectionInitializer
+import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
+import com.jmat.conversions.ui.ID_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
 import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
@@ -26,9 +28,6 @@ import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
 import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
-import com.jmat.powertools.modules.conversions.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
-import com.jmat.powertools.modules.conversions.ID_CONVERSIONS_ML_TO_OUNCES
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import javax.inject.Inject

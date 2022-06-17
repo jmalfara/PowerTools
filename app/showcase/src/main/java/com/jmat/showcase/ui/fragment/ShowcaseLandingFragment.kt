@@ -5,8 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.extensions.setupSupportActionbar
-import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.showcase.R
 import com.jmat.showcase.databinding.FragmentShowcaseLandingBinding
 
@@ -16,20 +14,26 @@ class ShowcaseLandingFragment : Fragment(R.layout.fragment_showcase_landing) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar.setNavigationOnClickListener {
-            requireActivity().finish()
-        }
+        with(binding) {
+            toolbar.setNavigationOnClickListener {
+                requireActivity().finish()
+            }
 
-        binding.buttonsAction.setOnClickListener {
-            findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseButtonsFragment)
-        }
+            buttonsAction.setOnClickListener {
+                findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseButtonsFragment)
+            }
 
-        binding.typographyAction.setOnClickListener {
-            findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextFragment)
-        }
+            typographyAction.setOnClickListener {
+                findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextFragment)
+            }
 
-        binding.textInputAction.setOnClickListener {
-            findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextInputFragment)
+            textInputAction.setOnClickListener {
+                findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextInputFragment)
+            }
+
+            textInputComposeAction.setOnClickListener {
+                findNavController().navigate(R.id.showcaseLandingFragment_to_showcaseTextInputComposeFragment)
+            }
         }
     }
 }

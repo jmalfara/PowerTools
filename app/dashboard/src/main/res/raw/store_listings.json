@@ -10,7 +10,8 @@
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE"
+      "previewType": "SINGLE",
+      "entrypoint": "powertools://conversions"
     },
     {
       "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
@@ -22,7 +23,8 @@
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE"
+      "previewType": "SINGLE",
+      "entrypoint": "powertools://encode"
     }
   ],
   "newModules": [
@@ -36,7 +38,8 @@
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE"
+      "previewType": "SINGLE",
+      "entrypoint": "powertools://conversions"
     },
     {
       "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
@@ -48,7 +51,8 @@
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE"
+      "previewType": "SINGLE",
+      "entrypoint": "powertools://encode"
     }
   ]
 }
