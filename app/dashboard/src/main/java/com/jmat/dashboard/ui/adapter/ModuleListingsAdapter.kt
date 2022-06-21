@@ -6,14 +6,13 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.databinding.LayoutDashboardStoreModulePreviewBinding
-import com.jmat.dashboard.ui.model.ModuleData
+import com.jmat.dashboard.ui.model.ListingData
 import com.jmat.powertools.base.adapter.GenericDiffer
 
 class ModuleListingsAdapter(
-    val onClick: (ModuleData) -> Unit
-) : ListAdapter<ModuleData, RecyclerView.ViewHolder>(
+    private val onClick: (ListingData) -> Unit
+) : ListAdapter<ListingData, RecyclerView.ViewHolder>(
     GenericDiffer()
 ) {
     private val singleModuleViewType = 0
@@ -24,7 +23,7 @@ class ModuleListingsAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
-        return when (item.module.previewType) {
+        return when (item.listing.previewType) {
             "SINGLE"  -> singleModuleViewType
             else -> singleModuleViewType
         }
@@ -48,7 +47,7 @@ class ModuleListingsAdapter(
 class SingleModuleViewHolder private constructor(
     private val binding: LayoutDashboardStoreModulePreviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: ModuleData, onClick: (ModuleData) -> Unit) {
+    fun bind(item: ListingData, onClick: (ListingData) -> Unit) {
         with(binding) {
             card.setOnClickListener { onClick(item) }
             title.text = item.module.name
@@ -57,7 +56,7 @@ class SingleModuleViewHolder private constructor(
             installed.isVisible = item.installed
 
             Glide.with(previewImage)
-                .load(item.module.previewUrls.first())
+                .load(item.listing.previewUrls.first())
                 .fitCenter()
                 .into(previewImage)
 

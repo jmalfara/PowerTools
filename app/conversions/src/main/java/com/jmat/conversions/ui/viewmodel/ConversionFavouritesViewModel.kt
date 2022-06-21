@@ -25,10 +25,10 @@ class ConversionFavouritesViewModel(
             if (isFavourite.first()) {
                 userPreferencesRepository.removeFavourite(favouriteId)
             } else {
-                userPreferencesRepository.addFavorite(
-                    id = favouriteId,
-                    deeplink = favouriteActionLink
-                )
+//                userPreferencesRepository.addFavorite(
+//                    id = favouriteId,
+//                    deeplink = favouriteActionLink
+//                )
             }
         }
     }

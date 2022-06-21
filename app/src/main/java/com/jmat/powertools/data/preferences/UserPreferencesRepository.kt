@@ -12,10 +12,17 @@ class UserPreferencesRepository @Inject constructor (
 ) {
     val data = dataStore.data
 
-    suspend fun addFavorite(id: String, deeplink: String) {
+    suspend fun addFavorite(
+        id: String,
+        iconUrl: String,
+        title: String,
+        deeplink: String,
+    ) {
         dataStore.updateData { preferences ->
             val favourite = Favourite.newBuilder()
                 .setId(id)
+                .setIconUrl(iconUrl)
+                .setTitle(title)
                 .setDeeplink(deeplink)
                 .build()
             preferences.toBuilder().addFavourites(favourite).build()
@@ -61,30 +68,21 @@ class UserPreferencesRepository @Inject constructor (
     }
 
     suspend fun addModule(
-        id: String,
+        installName: String,
         name: String,
         author: String,
         iconUrl: String,
         shortDescription: String,
-        previewUrls: List<String>,
-        previewType: String,
-        installName: String,
         entrypoint: String
     ) {
         dataStore.updateData { preferences ->
             val moduleBuilder = Module.newBuilder()
-                .setId(id)
                 .setName(name)
                 .setAuthor(author)
                 .setIconUrl(iconUrl)
                 .setShortDescription(shortDescription)
-                .setPreviewType(previewType)
                 .setInstallName(installName)
                 .setEntrypoint(entrypoint)
-
-            previewUrls.forEach { url ->
-                moduleBuilder.addPreviewUrls(url)
-            }
 
             preferences.toBuilder().addModules(
                 moduleBuilder.build()

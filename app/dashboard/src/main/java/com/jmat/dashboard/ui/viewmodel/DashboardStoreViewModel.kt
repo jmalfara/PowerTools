@@ -4,7 +4,8 @@ import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
-import com.jmat.dashboard.ui.model.ModuleData
+import com.jmat.dashboard.data.model.Module
+import com.jmat.dashboard.ui.model.ListingData
 import com.jmat.powertools.UserPreferences
 import com.jmat.powertools.base.extensions.contains
 import kotlinx.coroutines.flow.*
@@ -18,24 +19,13 @@ class DashboardStoreViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(UiState.default)
     val uiState: StateFlow<UiState> = _uiState
 
-    var _showPopular: Boolean = false
-
-    init {
-        viewModelScope.launch {
-            dataStore.data.map { it.modulesList }.collectLatest {
-                fetchStoreDetails()
-            }
-        }
-    }
-
     fun showPopular(show: Boolean) {
-        _showPopular = show
         viewModelScope.launch {
-            fetchStoreDetails()
+            fetchStoreDetails(show)
         }
     }
 
-    fun fetchStoreDetails() {
+    fun fetchStoreDetails(popular: Boolean) {
         viewModelScope.launch {
             _uiState.emit(
                 _uiState.value.copy(
@@ -43,24 +33,30 @@ class DashboardStoreViewModel @Inject constructor(
                 )
             )
 
-            moduleRepository.fetchModules()
+            val modules = moduleRepository.fetchModules().getOrNull()?.modules
+
+            moduleRepository.fetchModuleListings()
                 .onSuccess { listings ->
                     run {
-                        val modules = if (_showPopular) {
-                            listings.popularModules
-                        } else listings.newModules
-
                         _uiState.emit(
                             _uiState.value.copy(
-                                modules = modules.map { module ->
-                                    ModuleData(
-                                        module = module,
-                                        installed = dataStore.data.map { it.modulesList }
-                                            .first().contains {
-                                                module.installName ==  it.installName
-                                            }
-                                    )
-                                }
+                                listings = listings.popular.map { listing ->
+                                    modules?.find {
+                                        it.installName == listing.installName
+                                    }?.let { module ->
+                                        val installed = dataStore.data.map {
+                                            it.modulesList
+                                        }.first().contains {
+                                            it.installName == module.installName
+                                        }
+
+                                        ListingData(
+                                            module = module,
+                                            listing = listing,
+                                            installed = installed
+                                        )
+                                    }
+                                }.filterNotNull()
                             )
                         )
                     }
@@ -68,7 +64,7 @@ class DashboardStoreViewModel @Inject constructor(
                 .onFailure {
                     _uiState.emit(
                         _uiState.value.copy(
-                            modules = listOf()
+                            listings = listOf()
                         )
                     )
                 }
@@ -83,12 +79,12 @@ class DashboardStoreViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean,
-        val modules: List<ModuleData>
+        val listings: List<ListingData>
     ) {
         companion object {
             val default = UiState(
                 loading = false,
-                modules = listOf()
+                listings = listOf()
             )
         }
     }

@@ -5,7 +5,9 @@ option java_multiple_files = true;
 
 message Favourite {
   string id = 1;
-  string deeplink = 2;
+  string iconUrl = 2;
+  string title = 3;
+  string deeplink = 4;
 }
 
 message TinyUrl {

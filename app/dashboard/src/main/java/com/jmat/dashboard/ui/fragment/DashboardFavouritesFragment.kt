@@ -53,25 +53,6 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
             adapter = favouritesAdapter
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(MarginItemDecoration(30))
-
-//            requireActivity().setupTabs(
-//                tabs = listOf(
-//                    TabData(
-//                        id = R.id.tab_favourites,
-//                        text = getString(R.string.tab_favourites)
-//                    ),
-//                    TabData(
-//                        id = R.id.tab_installed,
-//                        text = getString(R.string.tab_installed)
-//                    )
-//                ),
-//                onTabSelected = { tab ->
-//                    when (tab.id) {
-//                        R.id.tab_favourites -> {}
-//                        R.id.tab_installed -> {}
-//                    }
-//                }
-//            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
