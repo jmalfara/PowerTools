@@ -15,7 +15,7 @@ import com.jmat.conversions.databinding.FragmentConversionL100kmToMpgBinding
 import com.jmat.conversions.di.ConversionsComponent
 import com.jmat.conversions.di.ConversionsInjectionInitializer
 import com.jmat.conversions.di.InjectionInitializer
-import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_L100KM_TO_MPG
+import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_L100KM_TO_MPG
 import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
@@ -45,8 +45,8 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
-            favouriteId = ID_CONVERSIONS_L100KM_TO_MPG,
-            favouriteActionLink = DEEPLINK_CONVERSIONS_L100KM_TO_MPG
+            featureId = ID_CONVERSIONS_L100KM_TO_MPG,
+            moduleName = CONVERSION_MODULE_NAME
         )
     }
 

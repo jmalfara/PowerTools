@@ -28,8 +28,8 @@
             android:text="@string/placeholder_content"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/icon"
-            app:layout_constraintBottom_toBottomOf="@+id/icon" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

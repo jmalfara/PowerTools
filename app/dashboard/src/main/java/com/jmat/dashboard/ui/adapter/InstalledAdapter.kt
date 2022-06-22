@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jmat.dashboard.databinding.LayoutDashboardFavouriteBinding
-import com.jmat.powertools.Module
 import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
+import com.jmat.powertools.data.model.Module
 
 class InstalledAdapter : ListAdapter<Module, InstalledViewHolder>(
     GenericDiffer()
@@ -33,6 +34,11 @@ class InstalledViewHolder private constructor(
                 root.context.navigateDeeplink(item.entrypoint)
             }
             title.text = item.name
+
+            Glide.with(root)
+                .load(item.iconUrl)
+                .fitCenter()
+                .into(icon)
         }
     }
 

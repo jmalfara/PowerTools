@@ -4,43 +4,48 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jmat.dashboard.databinding.LayoutDashboardFavouriteBinding
-import com.jmat.powertools.Favourite
 import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
+import com.jmat.powertools.data.model.Feature
 
-class FavouritesAdapter : ListAdapter<Favourite, FavouritesViewHolder>(
+class FeatureAdapter : ListAdapter<Feature, FeatureViewHolder>(
     GenericDiffer()
 ) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
-        return FavouritesViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeatureViewHolder {
+        return FeatureViewHolder(parent)
     }
 
-    override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FeatureViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 }
 
-class FavouritesViewHolder private constructor(
+class FeatureViewHolder private constructor(
     private val binding: LayoutDashboardFavouriteBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Favourite) {
-        binding.title.text = item.deeplink
+    fun bind(item: Feature) {
         with(binding) {
             root.setOnClickListener {
-                root.context.navigateDeeplink(item.deeplink)
+                root.context.navigateDeeplink(item.entrypoint)
             }
-            title.text = item.deeplink
+            title.text = item.title
+
+            Glide.with(root)
+                .load(item.iconUrl)
+                .fitCenter()
+                .into(icon)
         }
     }
 
     companion object {
         operator fun invoke(
             parent: ViewGroup
-        ): FavouritesViewHolder {
-            return FavouritesViewHolder(
+        ): FeatureViewHolder {
+            return FeatureViewHolder(
                 LayoutDashboardFavouriteBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,

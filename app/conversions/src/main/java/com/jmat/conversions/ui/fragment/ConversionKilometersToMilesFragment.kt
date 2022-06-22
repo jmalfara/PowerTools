@@ -17,7 +17,7 @@ import com.jmat.powertools.R as AppR
 
 import com.jmat.conversions.databinding.FragmentConversionKmToMBinding
 import com.jmat.conversions.di.*
-import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_KM_TO_MILES
+import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_KM_TO_MILES
 import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
@@ -45,8 +45,8 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
-            favouriteId = ID_CONVERSIONS_KM_TO_MILES,
-            favouriteActionLink = DEEPLINK_CONVERSIONS_KM_TO_MILES
+            featureId = ID_CONVERSIONS_KM_TO_MILES,
+            moduleName = CONVERSION_MODULE_NAME
         )
     }
 

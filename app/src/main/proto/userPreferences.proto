@@ -4,10 +4,8 @@ option java_package = "com.jmat.powertools";
 option java_multiple_files = true;
 
 message Favourite {
-  string id = 1;
-  string iconUrl = 2;
-  string title = 3;
-  string deeplink = 4;
+  string moduleName = 1;
+  string featureId = 2;
 }
 
 message TinyUrl {
@@ -18,19 +16,29 @@ message TinyUrl {
 }
 
 message Module {
+  string name = 1;
+  string author = 2;
+  string iconUrl = 3;
+  string shortDescription = 4;
+  string installName = 5;
+  string entrypoint = 6;
+  repeated Feature features = 7;
+}
+
+message Feature {
   string id = 1;
-  string name = 2;
-  string author = 3;
-  string iconUrl = 4;
-  string shortDescription = 5;
-  repeated string previewUrls = 6;
-  string previewType = 7;
-  string installName = 8;
-  string entrypoint = 9;
+  string title = 2;
+  string iconUrl = 3;
+  string entrypoint = 4;
+}
+
+message InstalledModule {
+  string moduleName = 1;
 }
 
 message UserPreferences {
   repeated Favourite favourites = 1;
   repeated TinyUrl tinyUrls = 2;
   repeated Module modules = 3;
+  repeated InstalledModule installedModules = 4;
 }

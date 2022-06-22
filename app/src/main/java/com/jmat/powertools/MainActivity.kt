@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         lifecycleScope.launch {
-            delay(2000)
+            delay(500)
             navigateDeeplink(DEEPLINK_DASHBOARD)
         }
     }
