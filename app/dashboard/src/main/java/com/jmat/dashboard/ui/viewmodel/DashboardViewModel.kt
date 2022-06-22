@@ -8,6 +8,7 @@ import com.jmat.powertools.data.model.Module
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.extensions.toUiFeature
 import com.jmat.powertools.extensions.toUiModule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -17,12 +18,17 @@ class DashboardViewModel @Inject constructor(
     userPreferencesRepository: UserPreferencesRepository,
     private val moduleRepository: ModuleRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(UiState.default)
-    val uiState: StateFlow<UiState> = _uiState
+    val modules = userPreferencesRepository.data
+        .map { it.modulesList }
+        .distinctUntilChanged()
 
-    val modules = userPreferencesRepository.data.map { it.modulesList }
-    private val installedModules = userPreferencesRepository.data.map { it.installedModulesList }
-    val favourites = userPreferencesRepository.data.map { it.favouritesList }
+    private val installedModules = userPreferencesRepository.data
+        .map { it.installedModulesList }
+        .distinctUntilChanged()
+
+    val favourites = userPreferencesRepository.data
+        .map { it.favouritesList }
+        .distinctUntilChanged()
 
     private val installedModulesData = combineTransform(
         modules,
@@ -33,7 +39,7 @@ class DashboardViewModel @Inject constructor(
                 ?.toUiModule()
         }
         emit(data)
-    }
+    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
 
     private val favouriteFeaturesData = combineTransform(
         modules,
@@ -45,6 +51,22 @@ class DashboardViewModel @Inject constructor(
                 ?.toUiFeature()
         }
         emit(data)
+    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
+
+    private val loading = MutableStateFlow(false)
+
+    val uiState = combineTransform(
+        loading,
+        installedModulesData,
+        favouriteFeaturesData,
+    ) { loading, installedModules, favouriteFeatures ->
+        emit(
+            UiState(
+                loading = loading,
+                installedModules = installedModules,
+                favouriteFeatures = favouriteFeatures
+            )
+        )
     }
 
     init {
@@ -57,43 +79,13 @@ class DashboardViewModel @Inject constructor(
                 }
             }
         }
-
-        viewModelScope.launch {
-            installedModulesData.collectLatest {
-                _uiState.emit(
-                    _uiState.value.copy(
-                        installedModules = it
-                    )
-                )
-            }
-        }
-
-        viewModelScope.launch {
-            favouriteFeaturesData.collectLatest {
-                _uiState.emit(
-                    _uiState.value.copy(
-                        favouriteFeatures = it
-                    )
-                )
-            }
-        }
     }
 
     fun downloadModuleCatalog() {
-        viewModelScope.launch {
-            _uiState.emit(
-                _uiState.value.copy(
-                    loading = true
-                )
-            )
-
+        viewModelScope.launch(Dispatchers.Default) {
+            loading.emit(true)
             moduleRepository.downloadModules()
-
-            _uiState.emit(
-                _uiState.value.copy(
-                    loading = false
-                )
-            )
+            loading.emit(false)
         }
     }
 
@@ -101,13 +93,5 @@ class DashboardViewModel @Inject constructor(
         val loading: Boolean,
         val favouriteFeatures: List<Feature>,
         val installedModules: List<Module>
-    ) {
-        companion object {
-            val default = UiState(
-                loading = false,
-                favouriteFeatures = listOf(),
-                installedModules = listOf()
-            )
-        }
-    }
+    )
 }

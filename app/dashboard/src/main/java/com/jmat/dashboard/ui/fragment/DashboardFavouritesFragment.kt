@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -16,20 +16,15 @@ import com.jmat.dashboard.ui.adapter.FeatureAdapter
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favourites) {
     private val binding: FragmentDashboardFavouritesBinding by viewBinding(
         FragmentDashboardFavouritesBinding::bind
     )
-
-    @Inject
-    lateinit var viewModelFactory: InjectedViewModelFactory
-    private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
+    private val viewModel: DashboardViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerDashboardComponent.builder()

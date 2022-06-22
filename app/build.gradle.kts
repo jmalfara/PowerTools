@@ -106,11 +106,13 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.0-rc01")
 
+    // Use BuildSrc to share dependacies
     debugImplementation("androidx.fragment:fragment-testing:1.4.1")
     testApi("junit:junit:4.13.2")
     testApi("com.google.truth:truth:1.1.3")
     testApi("io.mockk:mockk:1.12.4")
     testApi("app.cash.turbine:turbine:0.8.0")
+    testApi("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

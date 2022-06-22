@@ -55,6 +55,7 @@ internal fun Project.configureDependencies() = dependencies.apply{
     add("testImplementation", "com.google.truth:truth:1.1.3")
     add("testImplementation", "io.mockk:mockk:1.12.4")
     add("testImplementation", "app.cash.turbine:turbine:0.8.0")
+    add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
 
     if (project.containsAndroidPlugin()) {
         add("debugImplementation", "androidx.fragment:fragment-testing:1.4.1")
