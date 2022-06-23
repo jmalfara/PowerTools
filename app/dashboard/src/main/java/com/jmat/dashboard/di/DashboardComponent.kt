@@ -1,5 +1,6 @@
 package com.jmat.dashboard.di
 
+import com.jmat.dashboard.ui.DashboardActivity
 import com.jmat.dashboard.ui.fragment.DashboardFavouritesFragment
 import com.jmat.dashboard.ui.fragment.DashboardInstalledFragment
 import com.jmat.dashboard.ui.fragment.DashboardModuleDetailsFragment
@@ -12,6 +13,7 @@ import dagger.Component
     modules = [DashboardModule::class, DashboardViewModelsModule::class],
 )
 interface DashboardComponent {
+    fun inject(activity: DashboardActivity)
     fun inject(fragment: DashboardFavouritesFragment)
     fun inject(fragment: DashboardInstalledFragment)
     fun inject(fragment: DashboardModuleListingsFragment)

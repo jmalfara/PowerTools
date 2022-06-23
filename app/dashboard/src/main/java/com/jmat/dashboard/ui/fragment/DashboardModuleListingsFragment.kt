@@ -56,10 +56,10 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
 
         with(binding) {
             with(recyclerView) {
-                adapter = ModuleListingsAdapter { moduleData ->
+                adapter = ModuleListingsAdapter { listingData ->
                     findNavController().navigate(
                         DashboardModuleListingsFragmentDirections.listingsToModuleDetails(
-                            moduleData = moduleData
+                            listingData = listingData
                         )
                     )
                 }
@@ -92,7 +92,7 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
                 viewModel.uiState.collectLatest { uiState ->
                     with(binding) {
                         (recyclerView.adapter as ModuleListingsAdapter).submitList(
-                            uiState.modules
+                            uiState.listings
                         )
                         loader.isVisible = uiState.loading
                     }
@@ -101,7 +101,7 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
         }
 
         if (savedInstanceState == null) {
-            viewModel.fetchStoreDetails()
+            viewModel.fetchStoreDetails(true)
         }
     }
 }

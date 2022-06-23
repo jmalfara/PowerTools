@@ -1,58 +1,27 @@
 {
-  "popularModules": [
+  "popular": [
     {
-      "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
       "installName": "conversions",
-      "name": "Conversions",
-      "author": "JMAT - Tools",
-      "shortDescription": "A variety of conversion tools to make your life easier.",
-      "iconUrl": "https://www.svgrepo.com/download/32178/android-hand-drawn-logo-outline.svg",
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE",
-      "entrypoint": "powertools://conversions"
+      "previewType": "SINGLE"
     },
     {
-      "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
       "installName": "encode",
-      "name": "Encode",
-      "author": "JMAT - Tools",
-      "shortDescription": "Encode / Decode values including base64, hex, urls and others.",
-      "iconUrl": "https://avatars.githubusercontent.com/u/9324299?v=4",
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE",
-      "entrypoint": "powertools://encode"
+      "previewType": "SINGLE"
     }
   ],
-  "newModules": [
+  "new": [
     {
-      "id": "b823da24-698f-43b1-a7ba-da48a40ff4cb",
-      "installName": "conversions",
-      "name": "Conversions",
-      "author": "JMAT - Tools",
-      "shortDescription": "A variety of conversion tools to make your life easier.",
-      "iconUrl": "https://avatars.githubusercontent.com/u/6604930?v=4",
-      "previewUrls": [
-        "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
-      ],
-      "previewType": "SINGLE",
-      "entrypoint": "powertools://conversions"
-    },
-    {
-      "id": "e864cb7b-4286-4e8e-8b7e-e319e7b46722",
       "installName": "encode",
-      "name": "Encode",
-      "author": "JMAT - Tools",
-      "shortDescription": "A variety of conversion tools to make your life easier.",
-      "iconUrl": "https://avatars.githubusercontent.com/u/9324299?v=4",
       "previewUrls": [
         "https://www.lightstalking.com/wp-content/uploads/woman-3169726_1280-2.jpg"
       ],
-      "previewType": "SINGLE",
-      "entrypoint": "powertools://encode"
+      "previewType": "SINGLE"
     }
   ]
 }

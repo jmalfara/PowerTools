@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_dashboard_module_details">
 
         <argument
-            android:name="moduleData"
-            app:argType="com.jmat.dashboard.ui.model.ModuleData"/>
+            android:name="listingData"
+            app:argType="com.jmat.dashboard.ui.model.ListingData"/>
     </activity>
 </navigation>

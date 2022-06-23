@@ -2,6 +2,8 @@ package com.jmat.conversions.ui
 
 import com.jmat.powertools.DEEPLINK_BASE
 
+const val CONVERSION_MODULE_NAME = "conversions"
+
 const val ID_CONVERSIONS_KM_TO_MILES = "conversions_km_to_miles"
 const val DEEPLINK_CONVERSIONS_KM_TO_MILES = "$DEEPLINK_BASE://conversions/km_to_miles"
 

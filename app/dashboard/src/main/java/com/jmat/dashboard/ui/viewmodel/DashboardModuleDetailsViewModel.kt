@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
-import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.DashboardModuleDetailsActivityArgs
 import com.jmat.powertools.base.data.TextResource
+import com.jmat.powertools.data.model.Module
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,10 +23,10 @@ class DashboardModuleDetailsViewModel @AssistedInject constructor(
     private val _uiState = MutableStateFlow(
         UiState(
             installing = false,
-            actionTextRes = if (args.moduleData.installed) {
+            actionTextRes = if (args.listingData.installed) {
                 R.string.dashboard_details_uninstall
             } else R.string.dashboard_details_install,
-            installed = args.moduleData.installed,
+            installed = args.listingData.installed,
             notificationMessage = null
         )
     )

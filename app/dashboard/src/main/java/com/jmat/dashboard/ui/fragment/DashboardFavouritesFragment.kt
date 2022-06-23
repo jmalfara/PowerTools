@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -12,27 +12,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardFavouritesBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
-import com.jmat.dashboard.ui.adapter.FavouritesAdapter
-import com.jmat.dashboard.ui.extensions.setupTabs
-import com.jmat.dashboard.ui.model.TabData
+import com.jmat.dashboard.ui.adapter.FeatureAdapter
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favourites) {
     private val binding: FragmentDashboardFavouritesBinding by viewBinding(
         FragmentDashboardFavouritesBinding::bind
     )
-
-    @Inject
-    lateinit var viewModelFactory: InjectedViewModelFactory
-    private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
+    private val viewModel: DashboardViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerDashboardComponent.builder()
@@ -48,37 +40,18 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val favouritesAdapter = FavouritesAdapter()
+        val featureAdapter = FeatureAdapter()
         with(binding.recyclerView) {
-            adapter = favouritesAdapter
+            adapter = featureAdapter
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(MarginItemDecoration(30))
-
-//            requireActivity().setupTabs(
-//                tabs = listOf(
-//                    TabData(
-//                        id = R.id.tab_favourites,
-//                        text = getString(R.string.tab_favourites)
-//                    ),
-//                    TabData(
-//                        id = R.id.tab_installed,
-//                        text = getString(R.string.tab_installed)
-//                    )
-//                ),
-//                onTabSelected = { tab ->
-//                    when (tab.id) {
-//                        R.id.tab_favourites -> {}
-//                        R.id.tab_installed -> {}
-//                    }
-//                }
-//            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.favourites.collect { favourites ->
-                    favouritesAdapter.submitList(favourites)
-                    binding.emptyCard.isVisible = favourites.isEmpty()
+                viewModel.uiState.collect { uiState ->
+                    featureAdapter.submitList(uiState.favouriteFeatures)
+                    binding.emptyCard.isVisible = uiState.favouriteFeatures.isEmpty()
                 }
             }
         }

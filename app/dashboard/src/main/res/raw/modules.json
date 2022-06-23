@@ -1,0 +1,48 @@
+{
+  "modules": [
+    {
+      "installName": "conversions",
+      "name": "Conversions",
+      "author": "JMAT - Tools",
+      "shortDescription": "A variety of conversion tools to make your life easier.",
+      "iconUrl": "https://avatars.githubusercontent.com/u/9324299?v=4",
+      "entrypoint": "powertools://conversions",
+      "features": [
+        {
+          "id": "conversions_km_to_miles",
+          "title": "KM to Miles",
+          "iconUrl": "https://avatars.githubusercontent.com/u/6604930?v=4",
+          "entrypoint": "powertools://conversions/km_to_miles"
+        },
+        {
+          "id": "conversions_l100km_to_mpg",
+          "title": "Liters / 100KM to MPG",
+          "iconUrl": "https://avatars.githubusercontent.com/u/44845461?v=4",
+          "entrypoint": "powertools://conversions/l100km_to_mpg"
+        },
+        {
+          "id": "conversions_ml_to_ounces",
+          "title": "ML to Ounces",
+          "iconUrl": "https://avatars.githubusercontent.com/u/442640?v=4",
+          "entrypoint": "powertools://conversions/ml_to_ounces"
+        }
+      ]
+    },
+    {
+      "installName": "encode",
+      "name": "Encode",
+      "author": "JMAT - Tools",
+      "shortDescription": "A variety of conversion tools to make your life easier.",
+      "iconUrl": "https://avatars.githubusercontent.com/u/442640?v=4",
+      "entrypoint": "powertools://encode",
+      "features": [
+        {
+          "id": "conversions_km_to_miles",
+          "title": "KM to Miles",
+          "iconUrl": "https://avatars.githubusercontent.com/u/6604930?v=4",
+          "entrypoint": "powertools://encode/tinyUrl"
+        }
+      ]
+    }
+  ]
+}

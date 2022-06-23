@@ -15,7 +15,7 @@ import com.jmat.conversions.databinding.FragmentConversionMlToOzBinding
 import com.jmat.conversions.di.ConversionsComponent
 import com.jmat.conversions.di.ConversionsInjectionInitializer
 import com.jmat.conversions.di.InjectionInitializer
-import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
+import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
 import com.jmat.conversions.ui.model.ConversionEvent
@@ -45,8 +45,8 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
     private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
-            favouriteId = ID_CONVERSIONS_ML_TO_OUNCES,
-            favouriteActionLink = DEEPLINK_CONVERSIONS_ML_TO_OUNCES
+            featureId = ID_CONVERSIONS_ML_TO_OUNCES,
+            moduleName = CONVERSION_MODULE_NAME
         )
     }
 

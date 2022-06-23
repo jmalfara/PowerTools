@@ -12,22 +12,22 @@ import kotlinx.coroutines.launch
 
 class ConversionFavouritesViewModel(
     private val userPreferencesRepository: UserPreferencesRepository,
-    private val favouriteId: String,
-    private val favouriteActionLink: String
+    private val featureId: String,
+    private val moduleName: String
 ) : ViewModel() {
     val isFavourite: Flow<Boolean> = userPreferencesRepository.data.transform { data ->
-        val favourite = data.favouritesList.contains { it.id == favouriteId }
+        val favourite = data.favouritesList.contains { it.featureId == featureId }
         emit(favourite)
     }
 
     fun toggleFavourite() {
         viewModelScope.launch {
             if (isFavourite.first()) {
-                userPreferencesRepository.removeFavourite(favouriteId)
+                userPreferencesRepository.removeFavourite(featureId)
             } else {
                 userPreferencesRepository.addFavorite(
-                    id = favouriteId,
-                    deeplink = favouriteActionLink
+                    moduleName = moduleName,
+                    featureId = featureId
                 )
             }
         }
@@ -36,16 +36,16 @@ class ConversionFavouritesViewModel(
 
 class ConversionFavouritesViewModelFactory(
     private val userPreferencesRepository: UserPreferencesRepository,
-    val favouriteId: String,
-    private val favouriteActionLink: String
+    val featureId: String,
+    val moduleName: String
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ConversionFavouritesViewModel::class.java)) {
             return ConversionFavouritesViewModel(
                 userPreferencesRepository = userPreferencesRepository,
-                favouriteId = favouriteId,
-                favouriteActionLink = favouriteActionLink
+                featureId = featureId,
+                moduleName = moduleName
             ) as T
         } else throw RuntimeException("ConversionKilometersToMilesViewModelFactory not assignable")
     }

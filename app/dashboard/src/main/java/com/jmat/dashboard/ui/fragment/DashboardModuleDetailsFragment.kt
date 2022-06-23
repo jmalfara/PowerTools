@@ -58,12 +58,12 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
             toolbar.setNavigationOnClickListener {
                 requireActivity().onBackPressed()
             }
-            name.text = args.moduleData.module.name
-            description.text = args.moduleData.module.shortDescription
-            author.text = args.moduleData.module.author
+            name.text = args.listingData.module.name
+            description.text = args.listingData.module.shortDescription
+            author.text = args.listingData.module.author
 
             Glide.with(requireActivity())
-                .load(args.moduleData.module.iconUrl)
+                .load(args.listingData.module.iconUrl)
                 .fitCenter()
                 .into(icon)
         }
@@ -78,12 +78,12 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
                         if (uiState.installed) {
                             action.text = getString(R.string.dashboard_details_uninstall)
                             action.setOnClickListener {
-                                viewModel.uninstallModule(args.moduleData.module)
+                                viewModel.uninstallModule(args.listingData.module)
                             }
                         } else {
                             action.text = getString(R.string.dashboard_details_install)
                             action.setOnClickListener {
-                                viewModel.installModule(args.moduleData.module)
+                                viewModel.installModule(args.listingData.module)
                             }
                         }
 
