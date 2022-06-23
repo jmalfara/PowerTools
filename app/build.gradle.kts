@@ -6,15 +6,9 @@ import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
-    kotlin("android")
-    kotlin("kapt")
-    id("com.android.application")
-    id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs.kotlin")
+    id("com.jmat.powertools.application")
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint")
-    id("com.google.devtools.ksp")
-    id("com.jmat.powertools.application")
 }
 
 val keystoreProperties = Properties().apply {
@@ -63,9 +57,6 @@ android {
 
 dependencies {
     api("androidx.core:core-ktx:1.8.0")
-    api("androidx.appcompat:appcompat:1.4.2")
-    api("com.google.android.material:material:1.6.1")
-    api("androidx.constraintlayout:constraintlayout:2.1.4")
     api("androidx.navigation:navigation-fragment-ktx:2.4.2")
     api("androidx.navigation:navigation-ui-ktx:2.4.2")
     api("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
@@ -85,8 +76,8 @@ dependencies {
     api("androidx.activity:activity-compose:1.4.0")
     api("androidx.compose.animation:animation:1.1.1")
     api("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.11")
-    api("com.google.android.material:compose-theme-adapter:1.1.11")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.12")
+    api("com.google.android.material:compose-theme-adapter:1.1.12")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")
@@ -101,22 +92,7 @@ dependencies {
     api("com.github.bumptech.glide:glide:4.13.2")
     kapt("com.github.bumptech.glide:compiler:4.13.2")
 
-    implementation("com.google.dagger:hilt-android:2.42")
-    kapt("com.google.dagger:hilt-compiler:2.42")
-
     implementation("androidx.core:core-splashscreen:1.0.0-rc01")
-
-    // Use BuildSrc to share dependacies
-    debugImplementation("androidx.fragment:fragment-testing:1.4.1")
-    testApi("junit:junit:4.13.2")
-    testApi("com.google.truth:truth:1.1.3")
-    testApi("io.mockk:mockk:1.12.4")
-    testApi("app.cash.turbine:turbine:0.8.0")
-    testApi("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
-
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 }
 
 kapt {

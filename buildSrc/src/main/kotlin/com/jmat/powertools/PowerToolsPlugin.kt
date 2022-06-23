@@ -8,8 +8,19 @@ import org.gradle.kotlin.dsl.getByType
 
 open class PowerToolsPlugin : Plugin<Project> {
     override fun apply(project: Project) {
+        project.configurePlugins()
         project.configureAndroid()
+        project.configureDependencies()
     }
+}
+
+internal fun Project.configurePlugins() = plugins.apply {
+    apply("com.android.application")
+    apply("dagger.hilt.android.plugin")
+    apply("com.google.devtools.ksp")
+    apply("org.jetbrains.kotlin.android")
+    apply("org.jetbrains.kotlin.kapt")
+    apply("androidx.navigation.safeargs.kotlin")
 }
 
 internal fun Project.configureAndroid() = this.extensions.getByType<BaseExtension>().run {

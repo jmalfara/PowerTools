@@ -14,10 +14,16 @@ class EncodeLandingFragment : Fragment(R.layout.fragment_encode_landing) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tinyUrl.setOnClickListener {
-            findNavController().navigate(
-                EncodeLandingFragmentDirections.encodeLandingFragmentToEncodeTinyUrlFragment()
-            )
+        with(binding) {
+            toolbar.setNavigationOnClickListener {
+                requireActivity().finish()
+            }
+
+            tinyUrl.setOnClickListener {
+                findNavController().navigate(
+                    EncodeLandingFragmentDirections.encodeLandingFragmentToEncodeTinyUrlFragment()
+                )
+            }
         }
     }
 }

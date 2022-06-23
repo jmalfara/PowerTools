@@ -34,25 +34,25 @@ class DashboardFavouritesFragmentTest {
         every { any<Context>().navigateDeeplink(any()) } returns Unit
     }
 
-    @Test
-    fun test_DashboardFavouritesFragment_empty_state() {
-        val viewModel = DashboardViewModel(
-            userPreferencesRepository = mockk<UserPreferencesRepository>().apply {
-                every { data } returns flowOf(UserPreferences.getDefaultInstance())
-            }
-        )
-
-        launchFragmentInContainer(
-            themeResId = com.jmat.powertools.R.style.Theme_App
-        ) {
-            DashboardFavouritesFragment().apply {
-                viewModelFactory = mockk<InjectedViewModelFactory>().apply {
-                    every { create(DashboardViewModel::class.java) } returns viewModel
-                }
-            }
-        }
-        onView(withText(R.string.dashboard_empty_content)).perform(click())
-    }
+//    @Test
+//    fun test_DashboardFavouritesFragment_empty_state() {
+//        val viewModel = DashboardViewModel(
+//            userPreferencesRepository = mockk<UserPreferencesRepository>().apply {
+//                every { data } returns flowOf(UserPreferences.getDefaultInstance())
+//            }
+//        )
+//
+//        launchFragmentInContainer(
+//            themeResId = com.jmat.powertools.R.style.Theme_App
+//        ) {
+//            DashboardFavouritesFragment().apply {
+//                viewModelFactory = mockk<InjectedViewModelFactory>().apply {
+//                    every { create(DashboardViewModel::class.java) } returns viewModel
+//                }
+//            }
+//        }
+//        onView(withText(R.string.dashboard_empty_content)).perform(click())
+//    }
 
 //    @Test
 //    fun test_DashboardFavouritesFragment_list_of_favourites() {

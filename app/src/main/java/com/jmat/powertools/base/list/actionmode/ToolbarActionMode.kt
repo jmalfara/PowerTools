@@ -1,17 +1,18 @@
-package com.jmat.encode.ui.actionmode
+package com.jmat.powertools.base.list.actionmode
 
 import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import com.jmat.powertools.R
 
-class EncodeTinyUrlToolbarActionMode(
+class ToolbarActionMode(
     private val menuInflater: MenuInflater,
     private val deleteAction: () -> Unit,
     private val dismissActionMode: () -> Unit
 ) : ActionMode.Callback {
     override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        menuInflater.inflate(com.jmat.powertools.R.menu.menu_delete_actionmode, menu)
+        menuInflater.inflate(R.menu.menu_delete_actionmode, menu)
         return true
     }
 
@@ -21,7 +22,7 @@ class EncodeTinyUrlToolbarActionMode(
 
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
         return when (item?.itemId) {
-            com.jmat.powertools.R.id.delete -> {
+            R.id.delete -> {
                 deleteAction()
                 dismissActionMode()
                 true

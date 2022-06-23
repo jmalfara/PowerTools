@@ -14,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/ic_close_24"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
             app:title="@string/title_encode"/>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,8 +44,7 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_add_circle_outline_24"
                 android:contentDescription="@string/encode_tinyurl_add"
-                app:layout_constraintTop_toTopOf="@id/tinyUrlsTitle"
-                app:layout_constraintBottom_toBottomOf="@id/tinyUrlsTitle"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.recyclerview.widget.RecyclerView

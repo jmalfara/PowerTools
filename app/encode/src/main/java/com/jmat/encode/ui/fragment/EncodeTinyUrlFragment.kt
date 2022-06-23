@@ -2,7 +2,6 @@ package com.jmat.encode.ui.fragment
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.os.Bundle
 import android.view.ActionMode
 import android.view.View
@@ -18,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.encode.R
 import com.jmat.encode.databinding.FragmentEncodeTinyurlBinding
 import com.jmat.encode.di.DaggerEncodeComponent
-import com.jmat.encode.ui.actionmode.EncodeTinyUrlToolbarActionMode
+import com.jmat.powertools.base.list.actionmode.ToolbarActionMode
 import com.jmat.encode.ui.adapter.EncodeTinyUrlsAdapter
 import com.jmat.encode.ui.viewmodel.EncodeTinyUrlViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
@@ -27,7 +26,6 @@ import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.base.list.selection.RecyclerViewSelectionTracker
 import com.jmat.powertools.modules.encode.EncodeModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -55,7 +53,7 @@ class EncodeTinyUrlFragment : Fragment(R.layout.fragment_encode_tinyurl) {
 
         with(binding) {
             toolbar.setNavigationOnClickListener {
-                requireActivity().finish()
+                findNavController().popBackStack()
             }
             addTinyUrl.setOnClickListener {
                 findNavController().navigate(
@@ -84,7 +82,7 @@ class EncodeTinyUrlFragment : Fragment(R.layout.fragment_encode_tinyurl) {
             selectionAdapter = adapter,
             onStartSelection = { items, clearSelection ->
                 actionMode = binding.toolbar.startActionMode(
-                    EncodeTinyUrlToolbarActionMode(
+                    ToolbarActionMode(
                         menuInflater = requireActivity().menuInflater,
                         deleteAction = {
                             viewModel.deleteTinyUrls(
