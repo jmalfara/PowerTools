@@ -93,6 +93,7 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.13.2")
 
     implementation("androidx.core:core-splashscreen:1.0.0-rc01")
+    testApi(fileTree("${project.rootDir}/buildSrc/build/"))
 }
 
 kapt {

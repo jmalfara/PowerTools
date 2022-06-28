@@ -8,8 +8,8 @@ import java.util.*
 fun TextFieldValue.formatNumber(
     locale: Locale
 ): TextFieldValue {
-    val decimalSeparator = "\\${DecimalFormatSymbols.getInstance(locale).decimalSeparator}"
-    val numberMatchRegex = "[-+]?\\d*${decimalSeparator}\\d+|\\d+$decimalSeparator?".toRegex()
+    val decimalSeparator = DecimalFormatSymbols.getInstance(locale).decimalSeparator
+    val numberMatchRegex = "[-+]?\\d*\\$decimalSeparator\\d+|\\d+\\$decimalSeparator?".toRegex()
     return copy(
         text = numberMatchRegex.find(text, 0)?.groupValues?.first() ?: ""
     )
