@@ -80,6 +80,7 @@
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/component/topbar/TitleTopBar.kt" value="0.1425925925925926" />
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextFragment.kt" value="0.25" />
         <entry key="app/showcase/src/main/java/com/jmat/showcase/ui/fragment/ShowcaseTextInputComposeFragment.kt" value="0.165" />
+        <entry key="app/showcase/src/main/res/layout/activity_showcase.xml" value="0.1" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_buttons.xml" value="0.13905775075987842" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_cards.xml" value="0.13541666666666666" />
         <entry key="app/showcase/src/main/res/layout/fragment_showcase_landing.xml" value="0.1" />

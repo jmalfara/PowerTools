@@ -28,7 +28,7 @@ import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
 import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
-import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
+import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import javax.inject.Inject
 
@@ -116,7 +116,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
 
         with(binding) {
             fromAmount.showEndIconOnFocus()
-            fromAmount.editText?.addTextChangedListener(NumberFormattingTextWatcher())
+            fromAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
             fromAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount =
                     s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
@@ -124,7 +124,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
             }
 
             toAmount.showEndIconOnFocus()
-            toAmount.editText?.addTextChangedListener(NumberFormattingTextWatcher())
+            toAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
             toAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount =
                     s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO

@@ -26,8 +26,8 @@ import com.jmat.powertools.R as AppR
 import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.compose.topbar.TitleTopBar
 import com.jmat.showcase.R
-import com.jmat.powertools.base.compose.textfield.formatFourDigitCard
-import com.jmat.powertools.base.compose.textfield.formatNumber
+import com.jmat.powertools.base.textfieldformatting.decimal.formatDecimal
+import com.jmat.powertools.base.textfieldformatting.fourdigitcard.formatFourDigitCard
 import java.util.*
 
 class ShowcaseTextInputComposeFragment : Fragment() {
@@ -82,7 +82,7 @@ fun ShowcaseTextInputScreen(
                     modifier = Modifier.fillMaxWidth(),
                     value = numberText,
                     onValueChange = { changeText ->
-                        numberText = changeText.formatNumber(Locale.getDefault())
+                        numberText = changeText.formatDecimal(Locale.getDefault())
                     },
                     label = { Text("Label") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -98,7 +98,7 @@ fun ShowcaseTextInputScreen(
                     modifier = Modifier.fillMaxWidth(),
                     value = fourDigitCardText,
                     onValueChange = { changeText ->
-                        fourDigitCardText = changeText.formatFourDigitCard(fourDigitCardText)
+                        fourDigitCardText = changeText.formatFourDigitCard()
                     },
                     label = { Text("Label") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)

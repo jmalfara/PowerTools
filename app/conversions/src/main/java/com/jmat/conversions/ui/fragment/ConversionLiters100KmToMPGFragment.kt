@@ -21,12 +21,12 @@ import com.jmat.conversions.ui.model.ConversionEvent
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionL100KmToMPGViewModel
-import com.jmat.powertools.base.textwatchers.NumberFormattingTextWatcher
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
 import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
+import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
@@ -116,14 +116,14 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
 
         with(binding) {
             fromAmount.showEndIconOnFocus()
-            fromAmount.editText?.addTextChangedListener(NumberFormattingTextWatcher())
+            fromAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
             fromAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount = s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
                 viewModel.calculateMpg(amount)
             }
 
             toAmount.showEndIconOnFocus()
-            toAmount.editText?.addTextChangedListener(NumberFormattingTextWatcher())
+            toAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
             toAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount = s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
                 viewModel.calculateL100Km(amount)
