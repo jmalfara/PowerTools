@@ -55,6 +55,8 @@
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_favourites.xml" value="0.182518115942029" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_home.xml" value="0.13632246376811594" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_installed.xml" value="0.13632246376811594" />
+        <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_listing_new.xml" value="0.15715579710144928" />
+        <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_listing_popular.xml" value="0.15715579710144928" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_listings.xml" value="0.19655797101449277" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_module_details.xml" value="0.14166666666666666" />
         <entry key="app/dashboard/src/main/res/layout/fragment_dashboard_pager.xml" value="0.16259057971014493" />

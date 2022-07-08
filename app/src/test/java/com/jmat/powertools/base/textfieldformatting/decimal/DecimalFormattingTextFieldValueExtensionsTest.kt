@@ -3,7 +3,6 @@ package com.jmat.powertools.base.textfieldformatting.decimal
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import com.google.common.truth.Truth.assertThat
-import com.jmat.powertools.base.textfieldformatting.decimal.formatDecimal
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -121,9 +120,9 @@ class DecimalFormattingTextFieldValueExtensionsTest {
         val result = textFieldValue.formatDecimal(Locale.CANADA)
 
         with(result) {
-            assertThat(text).isEqualTo(".00")
-            assertThat(selection.start).isEqualTo(3)
-            assertThat(selection.end).isEqualTo(3)
+            assertThat(text).isEqualTo("0.00")
+            assertThat(selection.start).isEqualTo(4)
+            assertThat(selection.end).isEqualTo(4)
         }
     }
 

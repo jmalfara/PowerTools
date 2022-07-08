@@ -116,14 +116,22 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
 
         with(binding) {
             fromAmount.showEndIconOnFocus()
-            fromAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
+            fromAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = fromAmount.editText!!
+                )
+            )
             fromAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount = s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
                 viewModel.calculateMpg(amount)
             }
 
             toAmount.showEndIconOnFocus()
-            toAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
+            toAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = toAmount.editText!!
+                )
+            )
             toAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount = s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
                 viewModel.calculateL100Km(amount)

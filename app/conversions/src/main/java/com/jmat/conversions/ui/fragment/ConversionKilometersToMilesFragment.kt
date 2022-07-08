@@ -116,7 +116,11 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
 
         with(binding) {
             fromAmount.showEndIconOnFocus()
-            fromAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
+            fromAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = fromAmount.editText!!
+                )
+            )
             fromAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount =
                     s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
@@ -124,7 +128,11 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
             }
 
             toAmount.showEndIconOnFocus()
-            toAmount.editText?.addTextChangedListener(DecimalFormattingTextWatcher())
+            toAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = toAmount.editText!!
+                )
+            )
             toAmount.editText?.addFocusedOnTextChangeListener { s ->
                 val amount =
                     s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
