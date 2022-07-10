@@ -23,6 +23,8 @@ fun Feature.toUiFeature(): UiFeature {
     return UiFeature(
         id = id,
         title = title,
+        description = description,
+        module = module,
         iconUrl = iconUrl,
         entrypoint = entrypoint
     )

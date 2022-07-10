@@ -12,15 +12,16 @@ import com.jmat.dashboard.ui.fragment.DashboardModuleListingsPopularFragment
 class DashboardModuleListingsViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
+    private val fragments = listOf(
+        DashboardModuleListingsPopularFragment::class.java,
+        DashboardModuleListingsNewFragment::class.java,
+    )
+
     override fun getItemCount(): Int {
-        return 2
+        return fragments.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return DashboardModuleListingsPopularFragment()
-            1 -> return DashboardModuleListingsNewFragment()
-        }
-        throw RuntimeException("Invalid Tab")
+        return fragments[position].newInstance()
     }
 }

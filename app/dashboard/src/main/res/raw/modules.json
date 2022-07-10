@@ -11,18 +11,24 @@
         {
           "id": "conversions_km_to_miles",
           "title": "KM to Miles",
+          "description": "Convert Kilometers to Miles",
+          "module": "Conversions",
           "iconUrl": "https://avatars.githubusercontent.com/u/6604930?v=4",
           "entrypoint": "powertools://conversions/km_to_miles"
         },
         {
           "id": "conversions_l100km_to_mpg",
           "title": "Liters / 100KM to MPG",
+          "description": "Convert Liters per 100 KMs to Miles per Gallon",
+          "module": "Conversions",
           "iconUrl": "https://avatars.githubusercontent.com/u/44845461?v=4",
           "entrypoint": "powertools://conversions/l100km_to_mpg"
         },
         {
           "id": "conversions_ml_to_ounces",
           "title": "ML to Ounces",
+          "description": "Convert Milliliters to Ounces",
+          "module": "Conversions",
           "iconUrl": "https://avatars.githubusercontent.com/u/442640?v=4",
           "entrypoint": "powertools://conversions/ml_to_ounces"
         }
@@ -32,13 +38,15 @@
       "installName": "encode",
       "name": "Encode",
       "author": "JMAT - Tools",
-      "shortDescription": "A variety of conversion tools to make your life easier.",
+      "shortDescription": "Encode data in specific ways.",
       "iconUrl": "https://avatars.githubusercontent.com/u/442640?v=4",
       "entrypoint": "powertools://encode",
       "features": [
         {
-          "id": "conversions_km_to_miles",
-          "title": "KM to Miles",
+          "id": "encode_tinyurl",
+          "title": "Encode TinyUrl",
+          "description": "Create a TinyUrl",
+          "module": "Encode",
           "iconUrl": "https://avatars.githubusercontent.com/u/6604930?v=4",
           "entrypoint": "powertools://encode/tinyUrl"
         }

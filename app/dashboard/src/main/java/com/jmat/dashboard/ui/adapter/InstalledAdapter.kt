@@ -34,6 +34,8 @@ class InstalledViewHolder private constructor(
                 root.context.navigateDeeplink(item.entrypoint)
             }
             title.text = item.name
+            description.text = item.shortDescription
+            module.text = item.author
 
             Glide.with(root)
                 .load(item.iconUrl)

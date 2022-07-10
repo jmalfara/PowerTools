@@ -10,7 +10,7 @@ import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.data.model.Feature
 
-class FeatureAdapter : ListAdapter<Feature, FeatureViewHolder>(
+class FavouritesAdapter : ListAdapter<Feature, FeatureViewHolder>(
     GenericDiffer()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeatureViewHolder {
@@ -33,6 +33,8 @@ class FeatureViewHolder private constructor(
                 root.context.navigateDeeplink(item.entrypoint)
             }
             title.text = item.title
+            description.text = item.description
+            module.text = item.module
 
             Glide.with(root)
                 .load(item.iconUrl)

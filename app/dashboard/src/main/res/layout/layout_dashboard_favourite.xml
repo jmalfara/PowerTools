@@ -12,24 +12,52 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="84dp"
-            android:layout_height="wrap_content"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:src="@tools:sample/avatars"
-            android:contentDescription="TODO" />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/title"
+            style="@style/Text.H1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="@dimen/layout_padding"
+            android:paddingHorizontal="@dimen/layout_padding"
             android:text="@string/placeholder_content"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/Text.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingHorizontal="@dimen/layout_padding"
+            android:text="@string/placeholder_content"
+            android:lines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <TextView
+            android:id="@+id/module"
+            style="@style/Text.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="8dp"
+            android:paddingHorizontal="@dimen/layout_padding"
+            android:text="@string/placeholder_content"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintVertical_bias="1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

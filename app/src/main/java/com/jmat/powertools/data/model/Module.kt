@@ -18,6 +18,8 @@ data class Module(
 data class Feature(
     val id: String,
     val title: String,
+    val description: String,
+    val module: String,
     val iconUrl: String,
     val entrypoint: String
 ) : Serializable

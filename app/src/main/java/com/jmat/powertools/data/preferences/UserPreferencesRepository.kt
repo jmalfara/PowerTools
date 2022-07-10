@@ -81,6 +81,8 @@ class UserPreferencesRepository @Inject constructor(
                     Feature.newBuilder()
                         .setId(it.id)
                         .setTitle(it.title)
+                        .setDescription(it.description)
+                        .setModule(it.module)
                         .setIconUrl(it.iconUrl)
                         .setEntrypoint(it.entrypoint)
                         .build()

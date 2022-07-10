@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardFavouritesBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
-import com.jmat.dashboard.ui.adapter.FeatureAdapter
+import com.jmat.dashboard.ui.adapter.FavouritesAdapter
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
@@ -40,9 +40,9 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val featureAdapter = FeatureAdapter()
+        val favouritesAdapter = FavouritesAdapter()
         with(binding.recyclerView) {
-            adapter = featureAdapter
+            adapter = favouritesAdapter
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(MarginItemDecoration(30))
         }
@@ -50,7 +50,7 @@ class DashboardFavouritesFragment : Fragment(R.layout.fragment_dashboard_favouri
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.uiState.collect { uiState ->
-                    featureAdapter.submitList(uiState.favouriteFeatures)
+                    favouritesAdapter.submitList(uiState.favouriteFeatures)
                     binding.emptyCard.isVisible = uiState.favouriteFeatures.isEmpty()
                 }
             }

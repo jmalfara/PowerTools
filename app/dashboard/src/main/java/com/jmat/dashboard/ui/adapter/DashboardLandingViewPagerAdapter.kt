@@ -6,19 +6,22 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.jmat.dashboard.ui.fragment.DashboardFavouritesFragment
 import com.jmat.dashboard.ui.fragment.DashboardInstalledFragment
+import com.jmat.dashboard.ui.fragment.DashboardModuleListingsNewFragment
+import com.jmat.dashboard.ui.fragment.DashboardModuleListingsPopularFragment
 
 class DashboardLandingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
+    private val fragments = listOf(
+        DashboardFavouritesFragment::class.java,
+        DashboardInstalledFragment::class.java,
+    )
+
     override fun getItemCount(): Int {
-        return 2
+        return fragments.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return DashboardFavouritesFragment()
-            1 -> return DashboardInstalledFragment()
-        }
-        throw RuntimeException("Invalid Tab")
+        return fragments[position].newInstance()
     }
 }

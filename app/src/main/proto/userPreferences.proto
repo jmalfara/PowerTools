@@ -28,8 +28,10 @@ message Module {
 message Feature {
   string id = 1;
   string title = 2;
-  string iconUrl = 3;
-  string entrypoint = 4;
+  string description = 3;
+  string module = 4;
+  string iconUrl = 5;
+  string entrypoint = 6;
 }
 
 message InstalledModule {
