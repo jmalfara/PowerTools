@@ -11,7 +11,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
 import com.jmat.conversions.R
 import com.jmat.powertools.R as AppR
 
@@ -24,10 +23,7 @@ import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionKilometersToMilesViewModel
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.extensions.NavigationMode
-import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
-import com.jmat.powertools.base.extensions.setupToolbar
-import com.jmat.powertools.base.extensions.showEndIconOnFocus
+import com.jmat.powertools.base.extensions.*
 import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import javax.inject.Inject
@@ -98,13 +94,13 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
                         when (event) {
                             is ConversionEvent.UpdateToAmount -> {
                                 binding.toAmount.editText?.setText(
-                                    event.amount.toPlainString(),
+                                    event.amount,
                                     TextView.BufferType.EDITABLE
                                 )
                             }
                             is ConversionEvent.UpdateFromAmount -> {
                                 binding.fromAmount.editText?.setText(
-                                    event.amount.toPlainString(),
+                                    event.amount,
                                     TextView.BufferType.EDITABLE
                                 )
                             }
@@ -122,8 +118,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
                 )
             )
             fromAmount.editText?.addFocusedOnTextChangeListener { s ->
-                val amount =
-                    s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
+                val amount = s.toString().toCleanBigDecimal()
                 viewModel.setKilometers(amount)
             }
 
@@ -134,8 +129,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
                 )
             )
             toAmount.editText?.addFocusedOnTextChangeListener { s ->
-                val amount =
-                    s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
+                val amount = s.toString().toCleanBigDecimal()
                 viewModel.setMiles(amount)
             }
         }

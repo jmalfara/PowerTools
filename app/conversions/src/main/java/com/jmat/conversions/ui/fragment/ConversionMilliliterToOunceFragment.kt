@@ -22,10 +22,7 @@ import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionMilliliterToOunceViewModel
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.extensions.NavigationMode
-import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
-import com.jmat.powertools.base.extensions.setupToolbar
-import com.jmat.powertools.base.extensions.showEndIconOnFocus
+import com.jmat.powertools.base.extensions.*
 import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.launch
@@ -73,6 +70,30 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
             }
         }
 
+        with(binding) {
+            fromAmount.showEndIconOnFocus()
+            fromAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = fromAmount.editText!!
+                )
+            )
+            fromAmount.editText?.addFocusedOnTextChangeListener { s ->
+                val amount = s.toString().toCleanBigDecimal()
+                viewModel.setMilliliters(amount)
+            }
+
+            toAmount.showEndIconOnFocus()
+            toAmount.editText?.addTextChangedListener(
+                DecimalFormattingTextWatcher(
+                    editText = toAmount.editText!!
+                )
+            )
+            toAmount.editText?.addFocusedOnTextChangeListener { s ->
+                val amount = s.toString().toCleanBigDecimal()
+                viewModel.setOunces(amount)
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
@@ -103,45 +124,19 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
                         when (event) {
                             is ConversionEvent.UpdateToAmount -> {
                                 binding.toAmount.editText?.setText(
-                                    event.amount.toPlainString(),
+                                    event.amount,
                                     TextView.BufferType.EDITABLE
                                 )
                             }
                             is ConversionEvent.UpdateFromAmount -> {
                                 binding.fromAmount.editText?.setText(
-                                    event.amount.toPlainString(),
+                                    event.amount,
                                     TextView.BufferType.EDITABLE
                                 )
                             }
                         }
                     }
                 }
-            }
-        }
-
-        with(binding) {
-            fromAmount.showEndIconOnFocus()
-            fromAmount.editText?.addTextChangedListener(
-                DecimalFormattingTextWatcher(
-                    editText = fromAmount.editText!!
-                )
-            )
-            fromAmount.editText?.addFocusedOnTextChangeListener { s ->
-                val amount =
-                    s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
-                viewModel.setMilliliters(amount)
-            }
-
-            toAmount.showEndIconOnFocus()
-            toAmount.editText?.addTextChangedListener(
-                DecimalFormattingTextWatcher(
-                    editText = toAmount.editText!!
-                )
-            )
-            toAmount.editText?.addFocusedOnTextChangeListener { s ->
-                val amount =
-                    s.toString().takeIf { it.isEmpty().not() }?.toBigDecimal() ?: BigDecimal.ZERO
-                viewModel.setOunces(amount)
             }
         }
     }

@@ -17,6 +17,8 @@ val keystoreProperties = Properties().apply {
 }
 
 android {
+    namespace = "com.jmat.powertools"
+
     signingConfigs {
         create("release") {
             keyAlias = keystoreProperties.getProperty("keyAlias")
@@ -68,16 +70,16 @@ dependencies {
     api("androidx.compose.ui:ui:1.1.1")
     api("androidx.compose.ui:ui-tooling:1.1.1")
     api("androidx.compose.foundation:foundation:1.1.1")
-    api("androidx.compose.material3:material3:1.0.0-alpha13")
+    api("androidx.compose.material3:material3:1.0.0-alpha14")
     api("androidx.compose.material:material-icons-core:1.1.1")
     api("androidx.compose.material:material-icons-extended:1.1.1")
     api("androidx.compose.runtime:runtime-livedata:1.1.1")
     api("androidx.compose.runtime:runtime-rxjava2:1.1.1")
-    api("androidx.activity:activity-compose:1.4.0")
+    api("androidx.activity:activity-compose:1.5.0")
     api("androidx.compose.animation:animation:1.1.1")
-    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.12")
-    api("com.google.android.material:compose-theme-adapter:1.1.12")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.14")
+    api("com.google.android.material:compose-theme-adapter:1.1.14")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")

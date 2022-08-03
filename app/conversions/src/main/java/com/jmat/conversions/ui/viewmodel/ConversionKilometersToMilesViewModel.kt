@@ -22,7 +22,10 @@ class ConversionKilometersToMilesViewModel : ViewModel() {
 
     fun setKilometers(kilometers: BigDecimal) {
         viewModelScope.launch {
-            val totalMiles = kilometers.multiply(milesPerKm).setScale(scale, RoundingMode.FLOOR)
+            val totalMiles = kilometers
+                .multiply(milesPerKm).setScale(scale, RoundingMode.FLOOR)
+                .toPlainString()
+
             _events.emit(
                 ConversionEvent.UpdateToAmount(totalMiles)
             )
@@ -31,9 +34,10 @@ class ConversionKilometersToMilesViewModel : ViewModel() {
 
     fun setMiles(miles: BigDecimal) {
         viewModelScope.launch {
-            val totalKms = miles.multiply(
-                BigDecimal.ONE.divide(milesPerKm, scale, RoundingMode.FLOOR)
-            ).setScale(scale, RoundingMode.FLOOR)
+            val totalKms = miles.multiply(BigDecimal.ONE.divide(milesPerKm, scale, RoundingMode.FLOOR))
+                .setScale(scale, RoundingMode.FLOOR)
+                .toPlainString()
+
             _events.emit(
                 ConversionEvent.UpdateFromAmount(totalKms)
             )

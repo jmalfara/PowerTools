@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.jmat.conversions">
+    xmlns:dist="http://schemas.android.com/apk/distribution">
 
     <dist:module
         dist:instant="false"
@@ -12,7 +11,6 @@
         <dist:fusing dist:include="true" />
     </dist:module>
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity
-            android:name=".ConversionsActivity"
+            android:name="com.jmat.conversions.ConversionsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.jmat.powertools.CONVERSIONS" />

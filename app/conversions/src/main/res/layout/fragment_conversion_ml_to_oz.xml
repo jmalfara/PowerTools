@@ -48,11 +48,13 @@
                     android:layout_height="wrap_content"
                     app:endIconMode="clear_text"
                     android:hint="@string/conversion_hint_ml">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"/>
+                        android:digits="0123456789.,"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
@@ -73,6 +75,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
+                        android:digits="0123456789.,"
                         android:importantForAutofill="no"/>
                 </com.google.android.material.textfield.TextInputLayout>
 

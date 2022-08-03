@@ -3,6 +3,7 @@ package com.jmat.conversions.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.conversions.ui.model.ConversionEvent
+import com.jmat.powertools.base.extensions.isZeroScaled
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -17,7 +18,13 @@ class ConversionMilliliterToOunceViewModel : ViewModel() {
 
     fun setMilliliters(mils: BigDecimal) {
         viewModelScope.launch {
-            val totalOunces = mils.multiply(ouncePerMil).setScale(scale, RoundingMode.FLOOR)
+            val totalOunces = mils
+                .multiply(ouncePerMil)
+                .setScale(scale, RoundingMode.FLOOR)
+                .takeIf { it.isZeroScaled().not() }
+                ?.toPlainString()
+                ?: ""
+
             _events.emit(
                 ConversionEvent.UpdateToAmount(totalOunces)
             )
@@ -26,9 +33,13 @@ class ConversionMilliliterToOunceViewModel : ViewModel() {
 
     fun setOunces(ounces: BigDecimal) {
         viewModelScope.launch {
-            val totalMils = ounces.multiply(
-                BigDecimal.ONE.divide(ouncePerMil, scale, RoundingMode.FLOOR)
-            ).setScale(scale, RoundingMode.FLOOR)
+            val totalMils = ounces
+                .multiply(BigDecimal.ONE.divide(ouncePerMil, scale, RoundingMode.FLOOR))
+                .setScale(scale, RoundingMode.FLOOR)
+                .takeIf { it.isZeroScaled().not() }
+                ?.toPlainString()
+                ?: ""
+
             _events.emit(
                 ConversionEvent.UpdateFromAmount(totalMils)
             )

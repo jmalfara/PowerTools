@@ -14,3 +14,5 @@ fastlane_service_account.json
 upload-keystore.jks
 /buildSrc/build/*
 /.idea/
+
+./fastlane/report.xml

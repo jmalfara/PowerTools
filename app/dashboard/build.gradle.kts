@@ -2,6 +2,10 @@ plugins {
     id("com.jmat.powertools.dynamic-feature")
 }
 
+android {
+    namespace = "com.jmat.dashboard"
+}
+
 dependencies {
     implementation(project(":app"))
     implementation("androidx.gridlayout:gridlayout:1.0.0")

@@ -33,8 +33,8 @@ class ConversionL100KmToMPGViewModel : ViewModel() {
         } else impGallonConstant
 
         viewModelScope.launch {
-            _events.emit(ConversionEvent.UpdateFromAmount(BigDecimal.ZERO))
-            _events.emit(ConversionEvent.UpdateToAmount(BigDecimal.ZERO))
+            _events.emit(ConversionEvent.UpdateFromAmount(""))
+            _events.emit(ConversionEvent.UpdateToAmount(""))
         }
     }
 
@@ -42,13 +42,16 @@ class ConversionL100KmToMPGViewModel : ViewModel() {
         viewModelScope.launch {
             if (l100km.isZeroScaled()) {
                 _events.emit(
-                    ConversionEvent.UpdateToAmount(BigDecimal.ZERO)
+                    ConversionEvent.UpdateToAmount("")
                 )
                 return@launch
             }
 
             // mpg = GC / L100Km
-            val mpg = gallonConstant.divide(l100km, scale, RoundingMode.FLOOR)
+            val mpg = gallonConstant
+                .divide(l100km, scale, RoundingMode.FLOOR)
+                .toPlainString()
+
             _events.emit(
                 ConversionEvent.UpdateToAmount(mpg)
             )
@@ -59,13 +62,16 @@ class ConversionL100KmToMPGViewModel : ViewModel() {
         viewModelScope.launch {
             if (mpg.isZeroScaled()) {
                 _events.emit(
-                    ConversionEvent.UpdateFromAmount(BigDecimal.ZERO)
+                    ConversionEvent.UpdateFromAmount("")
                 )
                 return@launch
             }
 
             // l100Km = GC / mgp
-            val l100km = gallonConstant.divide(mpg, scale, RoundingMode.FLOOR)
+            val l100km = gallonConstant
+                .divide(mpg, scale, RoundingMode.FLOOR)
+                .toPlainString()
+
             _events.emit(
                 ConversionEvent.UpdateFromAmount(l100km)
             )

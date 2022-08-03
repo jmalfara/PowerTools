@@ -6,8 +6,8 @@ buildscript {
             mavenCentral()
         }
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.1")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-rc01")
-        classpath("com.android.tools.build:gradle:7.2.1")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0")
+        classpath("com.android.tools.build:gradle:7.4.0-alpha08")
     }
 }
 
