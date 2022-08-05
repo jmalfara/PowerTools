@@ -6,7 +6,6 @@ import com.jmat.powertools.Feature
 import com.jmat.powertools.InstalledModule
 import com.jmat.powertools.Module
 import com.jmat.powertools.data.model.Module as UiModule
-import com.jmat.powertools.TinyUrl
 import com.jmat.powertools.UserPreferences
 import javax.inject.Inject
 
@@ -44,27 +43,27 @@ class UserPreferencesRepository @Inject constructor(
         originalUrl: String,
         createdAt: String
     ) {
-        dataStore.updateData { preferences ->
-            val tinyUrl = TinyUrl.newBuilder()
-                .setId(id)
-                .setUrl(url)
-                .setOriginalUrl(originalUrl)
-                .setCreatedAt(createdAt)
-                .build()
-            preferences.toBuilder().addTinyUrls(tinyUrl).build()
-        }
+//        dataStore.updateData { preferences ->
+//            val tinyUrl = TinyUrl.newBuilder()
+//                .setId(id)
+//                .setUrl(url)
+//                .setOriginalUrl(originalUrl)
+//                .setCreatedAt(createdAt)
+//                .build()
+//            preferences.toBuilder().addTinyUrls(tinyUrl).build()
+//        }
     }
 
-    suspend fun deleteTinyUrls(
-        urls: List<TinyUrl>
-    ) {
-        dataStore.updateData { preferences ->
-            urls.foldRight(preferences.toBuilder()) { tinyUrl, builder ->
-                val index = preferences.tinyUrlsList.indexOf(tinyUrl)
-                builder.removeTinyUrls(index)
-            }.build()
-        }
-    }
+//    suspend fun deleteTinyUrls(
+//        urls: List<TinyUrl>
+//    ) {
+////        dataStore.updateData { preferences ->
+////            urls.foldRight(preferences.toBuilder()) { tinyUrl, builder ->
+////                val index = preferences.tinyUrlsList.indexOf(tinyUrl)
+////                builder.removeTinyUrls(index)
+////            }.build()
+////        }
+//    }
 
     suspend fun resetModules(
         uiModules: List<UiModule>

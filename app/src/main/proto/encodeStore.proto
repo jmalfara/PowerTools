@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "com.jmat.powertools";
+option java_multiple_files = true;
+
+message TinyUrl {
+  string id = 1;
+  string url = 2;
+  string originalUrl = 3;
+  string createdAt = 4;
+}
+
+message EncodeStore {
+  repeated TinyUrl tinyUrls = 1;
+}

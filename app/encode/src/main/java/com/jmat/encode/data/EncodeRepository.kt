@@ -1,12 +1,12 @@
 package com.jmat.encode.data
 
+import com.jmat.encode.data.datastore.EncodeStoreService
 import com.jmat.encode.data.model.TinyUrlCreateRequest
 import com.jmat.encode.data.service.TinyUrlService
 import com.jmat.powertools.TinyUrl
 import com.jmat.powertools.base.service.ApiResult
 import com.jmat.powertools.base.service.ApiSuccess
 import com.jmat.powertools.base.service.safeApiCall
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 import java.util.*
@@ -14,12 +14,13 @@ import javax.inject.Inject
 
 class EncodeRepository @Inject constructor (
     private val tinyUrlService: TinyUrlService,
-    private val userPreferencesRepository: UserPreferencesRepository
+    private val encodeStoreService: EncodeStoreService
 ) {
-    val tinyUrls: Flow<List<TinyUrl>> = userPreferencesRepository.data.transform { data ->
+    val tinyUrls: Flow<List<TinyUrl>> = encodeStoreService.data.transform { data ->
         emit(data.tinyUrlsList)
     }
 
+    // Oh no. A free apiKey... Move to build config at some point
     private val apiKey = "VB2WNMfCApvfVywGhw403yQIL9VbtUtJp6qtKUMeRsv5DWpqUpQMlL0iY41h"
 
     suspend fun createTinyUrl(request: TinyUrlCreateRequest) : ApiResult<Unit> {
@@ -29,7 +30,7 @@ class EncodeRepository @Inject constructor (
                 request
             ).data
 
-            userPreferencesRepository.addTinyUrl(
+            encodeStoreService.addTinyUrl(
                 id = UUID.randomUUID().toString(),
                 createdAt = response.created_at,
                 url = response.tiny_url,
@@ -39,7 +40,7 @@ class EncodeRepository @Inject constructor (
     }
 
     suspend fun deleteTinyUrls(urls: List<TinyUrl>) : ApiResult<Unit> {
-        userPreferencesRepository.deleteTinyUrls(urls)
+        encodeStoreService.deleteTinyUrls(urls)
         return ApiSuccess(Unit)
     }
 }

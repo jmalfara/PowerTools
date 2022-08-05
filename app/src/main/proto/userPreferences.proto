@@ -8,12 +8,13 @@ message Favourite {
   string featureId = 2;
 }
 
-message TinyUrl {
-  string id = 1;
-  string url = 2;
-  string originalUrl = 3;
-  string createdAt = 4;
-}
+//// TODO Move this to TinyUrls
+//message TinyUrl {
+//  string id = 1;
+//  string url = 2;
+//  string originalUrl = 3;
+//  string createdAt = 4;
+//}
 
 message Module {
   string name = 1;
@@ -40,7 +41,6 @@ message InstalledModule {
 
 message UserPreferences {
   repeated Favourite favourites = 1;
-  repeated TinyUrl tinyUrls = 2;
-  repeated Module modules = 3;
-  repeated InstalledModule installedModules = 4;
+  repeated Module modules = 2;
+  repeated InstalledModule installedModules = 3;
 }
