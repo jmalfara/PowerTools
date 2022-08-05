@@ -9,4 +9,3 @@ data class TextFieldSelection(
     val start: Int,
     val end: Int = start
 )
-

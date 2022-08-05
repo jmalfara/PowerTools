@@ -1,23 +1,11 @@
 package com.jmat.dashboard.ui.fragment
 
 import android.content.Context
-import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jmat.dashboard.R
-import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
-import com.jmat.powertools.UserPreferences
-import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.base.extensions.navigateDeeplink
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import io.mockk.every
-import io.mockk.mockk
 import io.mockk.mockkStatic
-import kotlinx.coroutines.flow.flowOf
 import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)

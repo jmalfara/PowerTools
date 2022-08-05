@@ -9,7 +9,7 @@ import com.jmat.powertools.base.service.ApiSuccess
 import com.jmat.powertools.base.service.safeApiCall
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
-import java.util.*
+import java.util.UUID
 import javax.inject.Inject
 
 class EncodeRepository @Inject constructor (

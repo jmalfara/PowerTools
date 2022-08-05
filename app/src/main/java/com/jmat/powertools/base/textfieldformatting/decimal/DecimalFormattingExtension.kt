@@ -3,7 +3,7 @@ package com.jmat.powertools.base.textfieldformatting.decimal
 import com.jmat.powertools.base.textfieldformatting.TextFieldData
 import com.jmat.powertools.base.textfieldformatting.TextFieldSelection
 import java.text.DecimalFormatSymbols
-import java.util.*
+import java.util.Locale
 
 fun TextFieldData.formatDecimal(
     locale: Locale

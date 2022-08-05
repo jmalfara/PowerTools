@@ -5,9 +5,9 @@ import com.jmat.powertools.Favourite
 import com.jmat.powertools.Feature
 import com.jmat.powertools.InstalledModule
 import com.jmat.powertools.Module
-import com.jmat.powertools.data.model.Module as UiModule
 import com.jmat.powertools.UserPreferences
 import javax.inject.Inject
+import com.jmat.powertools.data.model.Module as UiModule
 
 class UserPreferencesRepository @Inject constructor(
     private val dataStore: DataStore<UserPreferences>
@@ -57,12 +57,12 @@ class UserPreferencesRepository @Inject constructor(
 //    suspend fun deleteTinyUrls(
 //        urls: List<TinyUrl>
 //    ) {
-////        dataStore.updateData { preferences ->
-////            urls.foldRight(preferences.toBuilder()) { tinyUrl, builder ->
-////                val index = preferences.tinyUrlsList.indexOf(tinyUrl)
-////                builder.removeTinyUrls(index)
-////            }.build()
-////        }
+// //        dataStore.updateData { preferences ->
+// //            urls.foldRight(preferences.toBuilder()) { tinyUrl, builder ->
+// //                val index = preferences.tinyUrlsList.indexOf(tinyUrl)
+// //                builder.removeTinyUrls(index)
+// //            }.build()
+// //        }
 //    }
 
     suspend fun resetModules(
@@ -76,16 +76,18 @@ class UserPreferencesRepository @Inject constructor(
                 .setShortDescription(module.shortDescription)
                 .setInstallName(module.installName)
                 .setEntrypoint(module.entrypoint)
-                .addAllFeatures(module.features.map {
-                    Feature.newBuilder()
-                        .setId(it.id)
-                        .setTitle(it.title)
-                        .setDescription(it.description)
-                        .setModule(it.module)
-                        .setIconUrl(it.iconUrl)
-                        .setEntrypoint(it.entrypoint)
-                        .build()
-                }).build()
+                .addAllFeatures(
+                    module.features.map {
+                        Feature.newBuilder()
+                            .setId(it.id)
+                            .setTitle(it.title)
+                            .setDescription(it.description)
+                            .setModule(it.module)
+                            .setIconUrl(it.iconUrl)
+                            .setEntrypoint(it.entrypoint)
+                            .build()
+                    }
+                ).build()
         }
 
         dataStore.updateData { preferences ->

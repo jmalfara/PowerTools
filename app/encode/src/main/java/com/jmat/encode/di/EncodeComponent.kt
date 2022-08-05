@@ -5,7 +5,6 @@ import com.jmat.encode.ui.fragment.EncodeTinyUrlCreateFragment
 import com.jmat.encode.ui.fragment.EncodeTinyUrlFragment
 import com.jmat.powertools.modules.encode.EncodeModuleDependencies
 import dagger.Component
-import javax.inject.Singleton
 
 @Component(
     dependencies = [EncodeModuleDependencies::class],

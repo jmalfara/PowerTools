@@ -51,7 +51,7 @@ class AppModule {
     @Provides
     fun provideImageDownloadService(
         @ApplicationContext context: Context
-    ) : ImageDownloadService {
+    ): ImageDownloadService {
         return ImageDownloadService(
             requestManager = Glide.with(context)
         )

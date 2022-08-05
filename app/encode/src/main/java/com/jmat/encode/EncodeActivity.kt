@@ -1,10 +1,7 @@
 package com.jmat.encode
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jmat.encode.di.DaggerEncodeComponent
-import com.jmat.powertools.modules.encode.EncodeModuleDependencies
-import dagger.hilt.android.EntryPointAccessors
+import androidx.appcompat.app.AppCompatActivity
 
 class EncodeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

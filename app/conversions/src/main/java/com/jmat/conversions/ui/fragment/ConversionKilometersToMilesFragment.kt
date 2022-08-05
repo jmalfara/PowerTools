@@ -10,12 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import kotlinx.coroutines.launch
 import com.jmat.conversions.R
-import com.jmat.powertools.R as AppR
-
 import com.jmat.conversions.databinding.FragmentConversionKmToMBinding
-import com.jmat.conversions.di.*
+import com.jmat.conversions.di.ConversionsComponent
+import com.jmat.conversions.di.ConversionsInjectionInitializer
+import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_KM_TO_MILES
 import com.jmat.conversions.ui.model.ConversionEvent
@@ -23,10 +22,16 @@ import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionKilometersToMilesViewModel
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.extensions.*
+import com.jmat.powertools.base.extensions.NavigationMode
+import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
+import com.jmat.powertools.base.extensions.setupToolbar
+import com.jmat.powertools.base.extensions.showEndIconOnFocus
+import com.jmat.powertools.base.extensions.toCleanBigDecimal
 import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jmat.powertools.R as AppR
 
 class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversion_km_to_m),
     InjectionInitializer<ConversionsComponent> by ConversionsInjectionInitializer() {

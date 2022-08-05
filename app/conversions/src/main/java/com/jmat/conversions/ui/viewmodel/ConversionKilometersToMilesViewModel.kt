@@ -1,15 +1,10 @@
 package com.jmat.conversions.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.jmat.conversions.ui.model.ConversionEvent
-import com.jmat.powertools.base.extensions.contains
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.math.RoundingMode

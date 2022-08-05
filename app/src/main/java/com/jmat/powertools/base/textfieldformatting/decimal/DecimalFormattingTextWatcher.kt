@@ -5,7 +5,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import com.jmat.powertools.base.textfieldformatting.TextFieldData
 import com.jmat.powertools.base.textfieldformatting.TextFieldSelection
-import java.util.*
+import java.util.Locale
 
 class DecimalFormattingTextWatcher @JvmOverloads constructor(
     val locale: Locale = Locale.getDefault(),

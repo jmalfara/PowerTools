@@ -11,7 +11,6 @@ import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.base.extensions.setupToolbar
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.modules.settings.SettingsModuleDependencies
 import com.jmat.powertools.modules.showcase.DEEPLINK_SHOWCASE
 import com.jmat.settings.R

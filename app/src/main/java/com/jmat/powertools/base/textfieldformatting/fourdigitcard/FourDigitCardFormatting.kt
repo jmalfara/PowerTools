@@ -2,7 +2,6 @@ package com.jmat.powertools.base.textfieldformatting.fourdigitcard
 
 import com.jmat.powertools.base.textfieldformatting.TextFieldData
 import com.jmat.powertools.base.textfieldformatting.TextFieldSelection
-import java.util.Locale
 
 class FourDigitCardFormatting(
     private val maxBlocks: Int = 4,

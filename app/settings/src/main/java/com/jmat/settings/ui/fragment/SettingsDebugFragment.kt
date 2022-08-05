@@ -10,7 +10,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.di.InjectedViewModelFactory
-import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import com.jmat.powertools.modules.settings.SettingsModuleDependencies
 import com.jmat.settings.R
 import com.jmat.settings.databinding.FragmentSettingsDebugBinding

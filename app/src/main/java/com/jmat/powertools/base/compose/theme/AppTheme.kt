@@ -2,7 +2,13 @@ package com.jmat.powertools.base.compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.*
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -48,7 +54,7 @@ fun PreviewAppThemeTopBar() {
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = {  },
+                        onClick = { },
                         content = {
                             Icon(
                                 painter = painterResource(R.drawable.ic_arrow_back_24),
@@ -68,7 +74,7 @@ fun PreviewAppThemeTopBar() {
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = {  },
+                        onClick = { },
                         content = {
                             Icon(
                                 painter = painterResource(R.drawable.ic_arrow_back_24),
@@ -81,4 +87,3 @@ fun PreviewAppThemeTopBar() {
         }
     }
 }
-

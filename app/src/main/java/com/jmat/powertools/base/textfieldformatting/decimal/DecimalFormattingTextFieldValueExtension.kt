@@ -4,7 +4,7 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import com.jmat.powertools.base.textfieldformatting.TextFieldData
 import com.jmat.powertools.base.textfieldformatting.TextFieldSelection
-import java.util.*
+import java.util.Locale
 
 fun TextFieldValue.formatDecimal(
     locale: Locale

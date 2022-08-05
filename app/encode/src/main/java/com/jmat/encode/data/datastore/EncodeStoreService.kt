@@ -4,7 +4,6 @@ import androidx.datastore.core.DataStore
 import com.jmat.powertools.EncodeStore
 import com.jmat.powertools.TinyUrl
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class EncodeStoreService @Inject constructor(
     private val dataStore: DataStore<EncodeStore>

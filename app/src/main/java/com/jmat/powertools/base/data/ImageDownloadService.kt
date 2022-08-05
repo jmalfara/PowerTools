@@ -4,7 +4,9 @@ import android.graphics.drawable.Drawable
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import kotlinx.coroutines.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.suspendCancellableCoroutine
 import java.io.File
 import kotlin.coroutines.resume
 
@@ -24,7 +26,7 @@ class ImageDownloadService(
         suspendCancellableCoroutine<Unit> { continuation ->
             requestManager.downloadOnly()
                 .load(imageUrl)
-                .into(object : CustomTarget<File>(){
+                .into(object : CustomTarget<File>() {
                     override fun onResourceReady(resource: File, transition: Transition<in File>?) {
                         continuation.resume(Unit)
                     }

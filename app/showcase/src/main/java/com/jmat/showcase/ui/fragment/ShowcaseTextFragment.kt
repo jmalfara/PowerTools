@@ -17,10 +17,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.jmat.showcase.R
-import com.jmat.powertools.R as AppR
 import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.compose.topbar.TitleTopBar
+import com.jmat.showcase.R
+import com.jmat.powertools.R as AppR
 
 class ShowcaseTextFragment : Fragment() {
     override fun onCreateView(

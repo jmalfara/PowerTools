@@ -5,16 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.jmat.encode.data.EncodeRepository
 import com.jmat.encode.data.model.TinyUrlCreateRequest
 import com.jmat.powertools.TinyUrl
-import com.jmat.powertools.UserPreferences
 import com.jmat.powertools.base.service.ApiError
 import com.jmat.powertools.base.service.ApiSuccess
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 class EncodeTinyUrlCreateViewModel @Inject constructor(

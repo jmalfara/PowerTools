@@ -1,9 +1,6 @@
 package com.jmat.powertools.modules.encode
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import com.jmat.powertools.UserPreferences
-import com.jmat.powertools.data.memorycache.MemoryCache
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext

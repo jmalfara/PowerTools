@@ -6,10 +6,10 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.conversions.R
 import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_KM_TO_MILES
 import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_L100KM_TO_MPG
+import com.jmat.conversions.ui.DEEPLINK_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import io.mockk.every
 import io.mockk.mockkStatic

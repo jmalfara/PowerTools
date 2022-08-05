@@ -12,14 +12,14 @@ import com.jmat.encode.R
 import com.jmat.encode.databinding.FragmentEncodeTinyurlCreateBinding
 import com.jmat.encode.di.DaggerEncodeComponent
 import com.jmat.encode.ui.viewmodel.EncodeTinyUrlCreateViewModel
+import com.jmat.encode.ui.viewmodel.EncodeTinyUrlCreateViewModel.Event.Error
+import com.jmat.encode.ui.viewmodel.EncodeTinyUrlCreateViewModel.Event.UrlCreated
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.di.InjectedViewModelFactory
 import com.jmat.powertools.modules.encode.EncodeModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.jmat.encode.ui.viewmodel.EncodeTinyUrlCreateViewModel.Event.*
 
 class EncodeTinyUrlCreateFragment : DialogFragment(R.layout.fragment_encode_tinyurl_create) {
     private val binding: FragmentEncodeTinyurlCreateBinding by viewBinding(FragmentEncodeTinyurlCreateBinding::bind)

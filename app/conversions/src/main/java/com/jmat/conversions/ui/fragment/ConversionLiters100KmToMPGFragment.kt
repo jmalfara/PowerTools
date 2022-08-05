@@ -22,11 +22,14 @@ import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionL100KmToMPGViewModel
 import com.jmat.powertools.base.delegate.viewBinding
-import com.jmat.powertools.base.extensions.*
+import com.jmat.powertools.base.extensions.NavigationMode
+import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
+import com.jmat.powertools.base.extensions.setupToolbar
+import com.jmat.powertools.base.extensions.showEndIconOnFocus
+import com.jmat.powertools.base.extensions.toCleanBigDecimal
 import com.jmat.powertools.base.textfieldformatting.decimal.DecimalFormattingTextWatcher
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
 import javax.inject.Inject
 
 class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion_l100km_to_mpg),

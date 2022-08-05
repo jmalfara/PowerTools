@@ -1,7 +1,7 @@
 package com.jmat.settings.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.jmat.settings.R
 
 class SettingsActivity : AppCompatActivity() {

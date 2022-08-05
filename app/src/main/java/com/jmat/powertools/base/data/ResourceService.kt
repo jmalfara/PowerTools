@@ -5,7 +5,6 @@ import androidx.annotation.RawRes
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 import kotlin.Result.Companion.failure
 import kotlin.Result.Companion.success
 
@@ -14,7 +13,7 @@ class ResourceService(
     private val dispatcher: CoroutineDispatcher,
     private val moshi: Moshi
 ) {
-    private suspend fun loadResourceInternal(@RawRes resourceId: Int) : Result<String> {
+    private suspend fun loadResourceInternal(@RawRes resourceId: Int): Result<String> {
         return withContext(dispatcher) {
             try {
                 success(
@@ -28,7 +27,7 @@ class ResourceService(
         }
     }
 
-    suspend fun <T>loadResource(@RawRes resourceId: Int, clazz: Class<T>) : Result<T> {
+    suspend fun <T> loadResource(@RawRes resourceId: Int, clazz: Class<T>): Result<T> {
         val result = loadResourceInternal(resourceId)
         return if (result.isSuccess) {
             val obj = moshi.adapter(clazz).fromJson(result.getOrThrow())
@@ -38,7 +37,7 @@ class ResourceService(
         } else failure(result.exceptionOrNull() ?: Exception("Unknown Error"))
     }
 
-    suspend inline fun <reified T>loadResource(@RawRes resourceId: Int) : Result<T> {
+    suspend inline fun <reified T> loadResource(@RawRes resourceId: Int): Result<T> {
         return loadResource(resourceId, T::class.java)
     }
 }

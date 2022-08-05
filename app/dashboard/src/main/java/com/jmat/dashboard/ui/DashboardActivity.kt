@@ -5,14 +5,12 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.jmat.dashboard.R
 import com.jmat.dashboard.di.DaggerDashboardComponent
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
