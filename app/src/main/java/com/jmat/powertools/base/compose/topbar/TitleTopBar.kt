@@ -2,6 +2,7 @@ package com.jmat.powertools.base.compose.topbar
 
 import androidx.annotation.DrawableRes
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.jmat.powertools.R
 import com.jmat.powertools.base.compose.theme.AppTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TitleTopBar(
     title: String,

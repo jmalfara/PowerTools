@@ -5,15 +5,15 @@ buildscript {
             google()
             mavenCentral()
         }
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.1")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.43.2")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1")
         classpath("com.android.tools.build:gradle:7.4.0-alpha08")
     }
 }
 
 // Define plugins but don't apply them
 plugins {
-    id("com.google.devtools.ksp") version "1.6.21-1.0.5" apply false
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6" apply false
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 

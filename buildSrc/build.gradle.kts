@@ -16,7 +16,8 @@ dependencies {
 
     /* Example Dependency */
     /* Depend on the kotlin plugin, since we want to access it in our plugin */
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    implementation("com.squareup:javapoet:1.13.0") // <-- added this
 
     /* Depend on the default Gradle API's since we want to build a custom plugin */
     implementation(gradleApi())

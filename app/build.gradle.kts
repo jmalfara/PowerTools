@@ -59,27 +59,27 @@ android {
 
 dependencies {
     api("androidx.core:core-ktx:1.8.0")
-    api("androidx.navigation:navigation-fragment-ktx:2.4.2")
-    api("androidx.navigation:navigation-ui-ktx:2.4.2")
-    api("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
+    api("androidx.navigation:navigation-fragment-ktx:2.5.1")
+    api("androidx.navigation:navigation-ui-ktx:2.5.1")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
     api("com.google.android.play:core:1.10.3")
 
     // Compose
-    api("androidx.compose.ui:ui:1.1.1")
-    api("androidx.compose.ui:ui-tooling:1.1.1")
-    api("androidx.compose.foundation:foundation:1.1.1")
-    api("androidx.compose.material3:material3:1.0.0-alpha14")
-    api("androidx.compose.material:material-icons-core:1.1.1")
-    api("androidx.compose.material:material-icons-extended:1.1.1")
-    api("androidx.compose.runtime:runtime-livedata:1.1.1")
-    api("androidx.compose.runtime:runtime-rxjava2:1.1.1")
-    api("androidx.activity:activity-compose:1.5.0")
-    api("androidx.compose.animation:animation:1.1.1")
-    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.14")
-    api("com.google.android.material:compose-theme-adapter:1.1.14")
+    api("androidx.compose.ui:ui:1.2.0")
+    api("androidx.compose.ui:ui-tooling:1.2.0")
+    api("androidx.compose.foundation:foundation:1.2.0")
+    api("androidx.compose.material3:material3:1.0.0-alpha15")
+    api("androidx.compose.material:material-icons-core:1.2.0")
+    api("androidx.compose.material:material-icons-extended:1.2.0")
+    api("androidx.compose.runtime:runtime-livedata:1.2.0")
+    api("androidx.compose.runtime:runtime-rxjava2:1.2.0")
+    api("androidx.activity:activity-compose:1.5.1")
+    api("androidx.compose.animation:animation:1.2.0")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.15")
+    api("com.google.android.material:compose-theme-adapter:1.1.15")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")
@@ -89,12 +89,12 @@ dependencies {
 
     api("androidx.datastore:datastore:1.0.0")
     api("androidx.datastore:datastore-core:1.0.0")
-    api("com.google.protobuf:protobuf-javalite:3.17.3")
+    api("com.google.protobuf:protobuf-javalite:3.21.4")
 
     api("com.github.bumptech.glide:glide:4.13.2")
     kapt("com.github.bumptech.glide:compiler:4.13.2")
 
-    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
+    implementation("androidx.core:core-splashscreen:1.0.0")
     testApi(fileTree("${project.rootDir}/buildSrc/build/"))
 }
 

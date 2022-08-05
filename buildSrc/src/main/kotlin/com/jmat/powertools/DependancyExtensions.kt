@@ -7,17 +7,17 @@ internal fun Project.configureDependencies() = dependencies.apply{
     add("implementation","androidx.constraintlayout:constraintlayout:2.1.4")
     add("implementation","androidx.appcompat:appcompat:1.4.2")
     add("implementation", "com.google.android.material:material:1.6.1")
-    add("implementation", "com.google.dagger:hilt-android:2.42")
+    add("implementation", "com.google.dagger:hilt-android:2.43.2")
     add("kapt", "com.google.dagger:hilt-compiler:2.42")
 
     add("testImplementation", "junit:junit:4.13.2")
     add("testImplementation", "com.google.truth:truth:1.1.3")
-    add("testImplementation", "io.mockk:mockk:1.12.4")
-    add("testImplementation", "app.cash.turbine:turbine:0.8.0")
-    add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
+    add("testImplementation", "io.mockk:mockk:1.12.5")
+    add("testImplementation", "app.cash.turbine:turbine:0.9.0")
+    add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 
 //    if (project.containsAndroidPlugin()) {
-        add("debugImplementation", "androidx.fragment:fragment-testing:1.4.1")
+        add("debugImplementation", "androidx.fragment:fragment-testing:1.5.1")
         add("androidTestImplementation", "androidx.test.ext:junit:1.1.3")
         add("androidTestImplementation", "androidx.test.espresso:espresso-core:3.4.0")
         add("androidTestImplementation", "androidx.compose.ui:ui-test-junit4:1.1.1")
