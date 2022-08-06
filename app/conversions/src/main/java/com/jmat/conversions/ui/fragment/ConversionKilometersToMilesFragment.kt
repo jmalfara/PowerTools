@@ -18,7 +18,7 @@ import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_KM_TO_MILES
 import com.jmat.conversions.ui.model.ConversionEvent
-import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
+import com.jmat.conversions.ui.viewmodel.ConversionShortcutsViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionKilometersToMilesViewModel
 import com.jmat.powertools.base.delegate.viewBinding
@@ -43,7 +43,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
     @Inject
     lateinit var userPreferencesRepository: UserPreferencesRepository
 
-    private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
+    private val shortcutsViewModel: ConversionShortcutsViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
             featureId = ID_CONVERSIONS_KM_TO_MILES,
@@ -67,7 +67,7 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
         ).apply {
             setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.favourite) {
-                    favouriteViewModel.toggleFavourite()
+                    shortcutsViewModel.toggleShortcut()
                     true
                 } else false
             }
@@ -76,8 +76,8 @@ class ConversionKilometersToMilesFragment : Fragment(R.layout.fragment_conversio
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    favouriteViewModel.isFavourite.collect { isFavourite ->
-                        val color = if (isFavourite) {
+                    shortcutsViewModel.isShortcut.collect { isShortcut ->
+                        val color = if (isShortcut) {
                             ResourcesCompat.getColor(resources, AppR.color.favourite, null)
                         } else {
                             val typedValue = TypedValue()

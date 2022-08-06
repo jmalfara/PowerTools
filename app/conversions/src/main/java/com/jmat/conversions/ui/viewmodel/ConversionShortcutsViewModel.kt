@@ -10,22 +10,22 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.launch
 
-class ConversionFavouritesViewModel(
+class ConversionShortcutsViewModel(
     private val userPreferencesRepository: UserPreferencesRepository,
     private val featureId: String,
     private val moduleName: String
 ) : ViewModel() {
-    val isFavourite: Flow<Boolean> = userPreferencesRepository.data.transform { data ->
-        val favourite = data.favouritesList.contains { it.featureId == featureId }
+    val isShortcut: Flow<Boolean> = userPreferencesRepository.data.transform { data ->
+        val favourite = data.shortcutsList.contains { it.featureId == featureId }
         emit(favourite)
     }
 
-    fun toggleFavourite() {
+    fun toggleShortcut() {
         viewModelScope.launch {
-            if (isFavourite.first()) {
-                userPreferencesRepository.removeFavourite(featureId)
+            if (isShortcut.first()) {
+                userPreferencesRepository.removeShortcut(featureId)
             } else {
-                userPreferencesRepository.addFavorite(
+                userPreferencesRepository.addShortcut(
                     moduleName = moduleName,
                     featureId = featureId
                 )
@@ -41,8 +41,8 @@ class ConversionFavouritesViewModelFactory(
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ConversionFavouritesViewModel::class.java)) {
-            return ConversionFavouritesViewModel(
+        if (modelClass.isAssignableFrom(ConversionShortcutsViewModel::class.java)) {
+            return ConversionShortcutsViewModel(
                 userPreferencesRepository = userPreferencesRepository,
                 featureId = featureId,
                 moduleName = moduleName

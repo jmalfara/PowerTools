@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
-    userPreferencesRepository: UserPreferencesRepository,
+    val userPreferencesRepository: UserPreferencesRepository,
     private val moduleRepository: ModuleRepository
 ) : ViewModel() {
     val modules = userPreferencesRepository.data
@@ -31,8 +31,8 @@ class DashboardViewModel @Inject constructor(
         .map { it.installedModulesList }
         .distinctUntilChanged()
 
-    val favourites = userPreferencesRepository.data
-        .map { it.favouritesList }
+    val shortcuts = userPreferencesRepository.data
+        .map { it.shortcutsList }
         .distinctUntilChanged()
 
     private val installedModulesData = combineTransform(
@@ -46,13 +46,13 @@ class DashboardViewModel @Inject constructor(
         emit(data)
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
 
-    private val favouriteFeaturesData = combineTransform(
+    private val shortcutFeatureData = combineTransform(
         modules,
-        favourites
-    ) { modules, favourites ->
-        val data = favourites.mapNotNull { favourite ->
-            modules.find { it.installName == favourite.moduleName }
-                ?.featuresList?.find { it.id == favourite.featureId }
+        shortcuts
+    ) { modules, shortcuts ->
+        val data = shortcuts.mapNotNull { shortcut ->
+            modules.find { it.installName == shortcut.moduleName }
+                ?.featuresList?.find { it.id == shortcut.featureId }
                 ?.toUiFeature()
         }
         emit(data)
@@ -63,13 +63,13 @@ class DashboardViewModel @Inject constructor(
     val uiState = combineTransform(
         loading,
         installedModulesData,
-        favouriteFeaturesData,
+        shortcutFeatureData,
     ) { loading, installedModules, favouriteFeatures ->
         emit(
             UiState(
                 loading = loading,
                 installedModules = installedModules,
-                favouriteFeatures = favouriteFeatures
+                shortcutFeatures = favouriteFeatures
             )
         )
     }
@@ -96,7 +96,7 @@ class DashboardViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean,
-        val favouriteFeatures: List<Feature>,
+        val shortcutFeatures: List<Feature>, //TODO Avoid using data objects.
         val installedModules: List<Module>
     )
 }

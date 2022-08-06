@@ -18,7 +18,7 @@ import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_L100KM_TO_MPG
 import com.jmat.conversions.ui.model.ConversionEvent
-import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
+import com.jmat.conversions.ui.viewmodel.ConversionShortcutsViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionL100KmToMPGViewModel
 import com.jmat.powertools.base.delegate.viewBinding
@@ -42,7 +42,7 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
     @Inject
     lateinit var userPreferencesRepository: UserPreferencesRepository
 
-    private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
+    private val shortcutsViewModel: ConversionShortcutsViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
             featureId = ID_CONVERSIONS_L100KM_TO_MPG,
@@ -66,7 +66,7 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
         ).apply {
             setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.favourite) {
-                    favouriteViewModel.toggleFavourite()
+                    shortcutsViewModel.toggleShortcut()
                     true
                 } else false
             }
@@ -75,8 +75,8 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    favouriteViewModel.isFavourite.collect { isFavourite ->
-                        val color = if (isFavourite) {
+                    shortcutsViewModel.isShortcut.collect { isShortcut ->
+                        val color = if (isShortcut) {
                             ResourcesCompat.getColor(resources, com.jmat.powertools.R.color.favourite, null)
                         } else {
                             val typedValue = TypedValue()

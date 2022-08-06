@@ -1,10 +1,10 @@
 package com.jmat.powertools.data.preferences
 
 import androidx.datastore.core.DataStore
-import com.jmat.powertools.Favourite
 import com.jmat.powertools.Feature
 import com.jmat.powertools.InstalledModule
 import com.jmat.powertools.Module
+import com.jmat.powertools.Shortcut
 import com.jmat.powertools.UserPreferences
 import javax.inject.Inject
 import com.jmat.powertools.data.model.Module as UiModule
@@ -14,26 +14,26 @@ class UserPreferencesRepository @Inject constructor(
 ) {
     val data = dataStore.data
 
-    suspend fun addFavorite(
+    suspend fun addShortcut(
         moduleName: String,
         featureId: String
     ) {
         dataStore.updateData { preferences ->
-            val favourite = Favourite.newBuilder()
+            val shortcut = Shortcut.newBuilder()
                 .setModuleName(moduleName)
                 .setFeatureId(featureId)
                 .build()
-            preferences.toBuilder().addFavourites(favourite).build()
+            preferences.toBuilder().addShortcuts(shortcut).build()
         }
     }
 
-    suspend fun removeFavourite(id: String) {
+    suspend fun removeShortcut(id: String) {
         dataStore.updateData { preferences ->
-            val favourite = preferences.favouritesList.find {
+            val shortcut = preferences.shortcutsList.find {
                 it.featureId == id
             }
-            val index = preferences.favouritesList.indexOf(favourite)
-            preferences.toBuilder().removeFavourites(index).build()
+            val index = preferences.shortcutsList.indexOf(shortcut)
+            preferences.toBuilder().removeShortcuts(index).build()
         }
     }
 

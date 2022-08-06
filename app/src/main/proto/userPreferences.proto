@@ -3,19 +3,6 @@ syntax = "proto3";
 option java_package = "com.jmat.powertools";
 option java_multiple_files = true;
 
-message Favourite {
-  string moduleName = 1;
-  string featureId = 2;
-}
-
-//// TODO Move this to TinyUrls
-//message TinyUrl {
-//  string id = 1;
-//  string url = 2;
-//  string originalUrl = 3;
-//  string createdAt = 4;
-//}
-
 message Module {
   string name = 1;
   string author = 2;
@@ -39,8 +26,13 @@ message InstalledModule {
   string moduleName = 1;
 }
 
+message Shortcut {
+  string moduleName = 1;
+  string featureId = 2;
+}
+
 message UserPreferences {
-  repeated Favourite favourites = 1;
+  repeated Shortcut shortcuts = 1;
   repeated Module modules = 2;
   repeated InstalledModule installedModules = 3;
 }

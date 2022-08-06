@@ -12,7 +12,7 @@ repositories {
 dependencies {
     /* Example Dependency */
     /* Depend on the android gradle plugin, since we want to access it in our plugin */
-    implementation("com.android.tools.build:gradle:7.4.0-alpha08")
+    implementation("com.android.tools.build:gradle:7.4.0-alpha09")
 
     /* Example Dependency */
     /* Depend on the kotlin plugin, since we want to access it in our plugin */

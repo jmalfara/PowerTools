@@ -53,7 +53,7 @@ class DashboardViewModelTest {
             moduleRepository = mockk()
         )
 
-        viewModel.favourites.test {
+        viewModel.shortcuts.test {
             val favourites = awaitItem()
             assertThat(favourites).hasSize(1)
             assertThat(favourites[0]).isEqualTo(expectedFavourite)
@@ -151,8 +151,8 @@ class DashboardViewModelTest {
 
         viewModel.uiState.test {
             val uiState = awaitItem()
-            assertThat(uiState.favouriteFeatures).hasSize(1)
-            with(uiState.favouriteFeatures.first()) {
+            assertThat(uiState.shortcutFeatures).hasSize(1)
+            with(uiState.shortcutFeatures.first()) {
                 assertThat(id).isEqualTo(featureId)
                 assertThat(moduleName).isEqualTo(moduleName)
             }

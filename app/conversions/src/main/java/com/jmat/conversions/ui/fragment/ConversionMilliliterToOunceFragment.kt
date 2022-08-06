@@ -18,7 +18,7 @@ import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_ML_TO_OUNCES
 import com.jmat.conversions.ui.model.ConversionEvent
-import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModel
+import com.jmat.conversions.ui.viewmodel.ConversionShortcutsViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionMilliliterToOunceViewModel
 import com.jmat.powertools.base.delegate.viewBinding
@@ -42,7 +42,7 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
     @Inject
     lateinit var userPreferencesRepository: UserPreferencesRepository
 
-    private val favouriteViewModel: ConversionFavouritesViewModel by viewModels {
+    private val shortcutsViewModel: ConversionShortcutsViewModel by viewModels {
         ConversionFavouritesViewModelFactory(
             userPreferencesRepository = userPreferencesRepository,
             featureId = ID_CONVERSIONS_ML_TO_OUNCES,
@@ -58,7 +58,6 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
         super.onViewCreated(view, savedInstanceState)
 
         setupToolbar(
@@ -67,7 +66,7 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
         ).apply {
             setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.favourite) {
-                    favouriteViewModel.toggleFavourite()
+                    shortcutsViewModel.toggleShortcut()
                     true
                 } else false
             }
@@ -100,8 +99,8 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    favouriteViewModel.isFavourite.collect { isFavourite ->
-                        val color = if (isFavourite) {
+                    shortcutsViewModel.isShortcut.collect { isShortcut ->
+                        val color = if (isShortcut) {
                             ResourcesCompat.getColor(
                                 resources,
                                 com.jmat.powertools.R.color.favourite,
