@@ -3,6 +3,7 @@ package com.jmat.dashboard.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.ui.model.ShortcutData
 import com.jmat.powertools.data.model.Feature
 import com.jmat.powertools.data.model.Module
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
@@ -46,14 +47,20 @@ class DashboardViewModel @Inject constructor(
         emit(data)
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
 
-    private val shortcutFeatureData = combineTransform(
+    private val shortcutUiData = combineTransform(
         modules,
         shortcuts
     ) { modules, shortcuts ->
         val data = shortcuts.mapNotNull { shortcut ->
-            modules.find { it.installName == shortcut.moduleName }
-                ?.featuresList?.find { it.id == shortcut.featureId }
-                ?.toUiFeature()
+            val module = modules.find { it.installName == shortcut.moduleName } ?: return@mapNotNull null
+            val feature = module.featuresList.find { it.id == shortcut.featureId } ?: return@mapNotNull null
+
+            ShortcutData(
+                id = shortcut.id,
+                name = feature.title,
+                action = feature.entrypoint,
+                icon = feature.iconUrl
+            )
         }
         emit(data)
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
@@ -63,13 +70,13 @@ class DashboardViewModel @Inject constructor(
     val uiState = combineTransform(
         loading,
         installedModulesData,
-        shortcutFeatureData,
-    ) { loading, installedModules, favouriteFeatures ->
+        shortcutUiData,
+    ) { loading, installedModules, shortcutUiData ->
         emit(
             UiState(
                 loading = loading,
                 installedModules = installedModules,
-                shortcutFeatures = favouriteFeatures
+                shortcutFeatures = shortcutUiData
             )
         )
     }
@@ -94,9 +101,17 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun reorderShortcuts(shortcuts: List<ShortcutData>) {
+        viewModelScope.launch {
+            userPreferencesRepository.updateShortcuts(
+                ids = shortcuts.map { it.id }
+            )
+        }
+    }
+
     data class UiState(
         val loading: Boolean,
-        val shortcutFeatures: List<Feature>, //TODO Avoid using data objects.
+        val shortcutFeatures: List<ShortcutData>,
         val installedModules: List<Module>
     )
 }

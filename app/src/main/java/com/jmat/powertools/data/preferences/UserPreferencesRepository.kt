@@ -6,6 +6,7 @@ import com.jmat.powertools.InstalledModule
 import com.jmat.powertools.Module
 import com.jmat.powertools.Shortcut
 import com.jmat.powertools.UserPreferences
+import java.util.UUID
 import javax.inject.Inject
 import com.jmat.powertools.data.model.Module as UiModule
 
@@ -20,6 +21,7 @@ class UserPreferencesRepository @Inject constructor(
     ) {
         dataStore.updateData { preferences ->
             val shortcut = Shortcut.newBuilder()
+                .setId(UUID.randomUUID().toString())
                 .setModuleName(moduleName)
                 .setFeatureId(featureId)
                 .build()
@@ -34,6 +36,19 @@ class UserPreferencesRepository @Inject constructor(
             }
             val index = preferences.shortcutsList.indexOf(shortcut)
             preferences.toBuilder().removeShortcuts(index).build()
+        }
+    }
+
+    suspend fun updateShortcuts(ids: List<String>) {
+        dataStore.updateData { preferences ->
+            val shortcuts: List<Shortcut> = ids.mapNotNull { shortcutId ->
+                preferences.shortcutsList.find { it.id == shortcutId }
+            }
+
+            preferences.toBuilder()
+                .clearShortcuts()
+                .addAllShortcuts(shortcuts)
+                .build()
         }
     }
 

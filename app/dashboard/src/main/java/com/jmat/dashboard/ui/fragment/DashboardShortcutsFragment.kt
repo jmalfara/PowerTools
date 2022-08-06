@@ -8,15 +8,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.jmat.dashboard.R
 import com.jmat.dashboard.databinding.FragmentDashboardShortcutsBinding
 import com.jmat.dashboard.di.DaggerDashboardComponent
-import com.jmat.dashboard.ui.adapter.FavouritesAdapter
+import com.jmat.dashboard.ui.adapter.ShortcutsAdapter
 import com.jmat.dashboard.ui.util.ItemMoveCallback
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
-import com.jmat.powertools.Feature
 import com.jmat.powertools.base.decoration.MarginItemDecoration
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
@@ -43,14 +42,14 @@ class DashboardShortcutsFragment : Fragment(R.layout.fragment_dashboard_shortcut
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val favouritesAdapter = FavouritesAdapter()
+        val shortcutsAdapter = ShortcutsAdapter()
         with(binding.recyclerView) {
-            adapter = favouritesAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+            adapter = shortcutsAdapter
+            layoutManager = GridLayoutManager(requireContext(), 2)
             addItemDecoration(MarginItemDecoration(30))
 
-            val callback = ItemMoveCallback<Feature> { items ->
-//                viewModel.reorderFavourite(from, to)
+            val callback = ItemMoveCallback { items ->
+                viewModel.reorderShortcuts(items)
             }
 
             ItemTouchHelper(callback)
@@ -60,7 +59,7 @@ class DashboardShortcutsFragment : Fragment(R.layout.fragment_dashboard_shortcut
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.uiState.collect { uiState ->
-                    favouritesAdapter.submitList(uiState.shortcutFeatures)
+                    shortcutsAdapter.submitList(uiState.shortcutFeatures)
                     binding.emptyCard.isVisible = uiState.shortcutFeatures.isEmpty()
                 }
             }

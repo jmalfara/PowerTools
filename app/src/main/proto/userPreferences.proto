@@ -27,8 +27,9 @@ message InstalledModule {
 }
 
 message Shortcut {
-  string moduleName = 1;
-  string featureId = 2;
+  string id = 1;
+  string moduleName = 2;
+  string featureId = 3;
 }
 
 message UserPreferences {

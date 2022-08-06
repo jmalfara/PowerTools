@@ -22,7 +22,11 @@ class ItemMoveCallback<T>(
         recyclerView: RecyclerView,
         viewHolder:ViewHolder
     ): Int {
-        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        val dragFlags = ItemTouchHelper.UP or
+                ItemTouchHelper.DOWN or
+                ItemTouchHelper.START or
+                ItemTouchHelper.END
+
         return makeMovementFlags(dragFlags, 0)
     }
 
@@ -43,6 +47,7 @@ class ItemMoveCallback<T>(
         return true
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun clearView(recyclerView: RecyclerView, viewHolder: ViewHolder) {
         super.clearView(recyclerView, viewHolder)
 
