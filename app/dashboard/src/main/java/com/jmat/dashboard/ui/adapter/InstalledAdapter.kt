@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.databinding.LayoutDashboardFavouriteBinding
 import com.jmat.powertools.base.adapter.GenericDiffer
 import com.jmat.powertools.base.extensions.navigateDeeplink
-import com.jmat.powertools.data.model.Module
 
 class InstalledAdapter : ListAdapter<Module, InstalledViewHolder>(
     GenericDiffer()

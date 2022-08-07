@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.DashboardModuleDetailsActivityArgs
 import com.jmat.powertools.base.data.TextResource
-import com.jmat.powertools.data.model.Module
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow

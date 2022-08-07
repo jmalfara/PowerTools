@@ -3,11 +3,12 @@ package com.jmat.dashboard.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.data.model.Feature
 import com.jmat.dashboard.data.model.Listing
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.model.ListingData
 import com.jmat.powertools.base.extensions.contains
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
-import com.jmat.powertools.extensions.toUiModule
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -41,13 +42,32 @@ class DashboardStoreViewModel @Inject constructor(
                 ?: return@mapNotNull null
 
             ListingData(
-                module = module.toUiModule(),
+                module = Module(
+                    name = module.name,
+                    author = module.author,
+                    iconUrl = module.iconUrl,
+                    shortDescription = module.shortDescription,
+                    installName = module.installName,
+                    entrypoint = module.entrypoint,
+                    features = module.featuresList.map {
+                        Feature(
+                            id = it.id,
+                            title = it.title,
+                            description = it.description,
+                            module = it.module,
+                            iconUrl = it.iconUrl,
+                            entrypoint = it.entrypoint
+                        )
+                    },
+                ),
                 listing = listing,
                 installed = installed
             )
         }
         emit(listingData)
     }
+
+
 
     init {
         viewModelScope.launch {
@@ -58,12 +78,6 @@ class DashboardStoreViewModel @Inject constructor(
                     )
                 )
             }
-        }
-    }
-
-    fun showPopular(show: Boolean) {
-        viewModelScope.launch {
-            fetchStoreDetails(show)
         }
     }
 

@@ -3,12 +3,10 @@ package com.jmat.dashboard.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.data.model.Feature
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.model.ShortcutData
-import com.jmat.powertools.data.model.Feature
-import com.jmat.powertools.data.model.Module
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
-import com.jmat.powertools.extensions.toUiFeature
-import com.jmat.powertools.extensions.toUiModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -41,8 +39,25 @@ class DashboardViewModel @Inject constructor(
         installedModules
     ) { modules, installedModules ->
         val data = installedModules.mapNotNull { installedModule ->
-            modules.find { it.installName == installedModule.moduleName }
-                ?.toUiModule()
+            val module = modules.find { it.installName == installedModule.moduleName } ?: return@mapNotNull null
+            Module(
+                name = module.name,
+                author = module.author,
+                iconUrl = module.iconUrl,
+                shortDescription = module.shortDescription,
+                installName = module.installName,
+                entrypoint = module.entrypoint,
+                features = module.featuresList.map {
+                    Feature(
+                        id = it.id,
+                        title = it.title,
+                        description = it.description,
+                        module = it.module,
+                        iconUrl = it.iconUrl,
+                        entrypoint = it.entrypoint
+                    )
+                }
+            )
         }
         emit(data)
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)

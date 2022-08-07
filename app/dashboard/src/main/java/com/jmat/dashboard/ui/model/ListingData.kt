@@ -1,7 +1,7 @@
 package com.jmat.dashboard.ui.model
 
 import com.jmat.dashboard.data.model.Listing
-import com.jmat.powertools.data.model.Module
+import com.jmat.dashboard.data.model.Module
 import java.io.Serializable
 
 data class ListingData(

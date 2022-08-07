@@ -77,8 +77,8 @@ class DashboardModuleListingsPopularFragment : Fragment(R.layout.fragment_dashbo
             }
         }
 
-        if (savedInstanceState == null) {
+//        if (savedInstanceState == null) {
             viewModel.fetchStoreDetails(true)
-        }
+//        }
     }
 }

@@ -4,12 +4,12 @@ import android.util.Log
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.jmat.dashboard.R
+import com.jmat.dashboard.data.datastore.DashboardStoreService
+import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.data.model.ModuleListings
 import com.jmat.dashboard.data.model.Modules
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
-import com.jmat.powertools.data.model.Module
-import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
@@ -18,7 +18,7 @@ class ModuleRepository @Inject constructor(
     private val resourceService: ResourceService,
     private val imageDownloadService: ImageDownloadService,
     private val splitInstallManager: SplitInstallManager,
-    private val userPreferencesRepo: UserPreferencesRepository
+    private val dashboardStoreService: DashboardStoreService
 ) {
     suspend fun downloadModules(): Result<Modules> {
         val result = resourceService.loadResource<Modules>(R.raw.modules).onSuccess { modulesData ->
@@ -27,7 +27,7 @@ class ModuleRepository @Inject constructor(
         }
 
         if (result.isSuccess) {
-            userPreferencesRepo.resetModules(result.getOrThrow().modules)
+            dashboardStoreService.resetModules(result.getOrThrow().modules)
         }
 
         return result
@@ -65,7 +65,7 @@ class ModuleRepository @Inject constructor(
         }
 
         if (result.isSuccess) {
-            userPreferencesRepo.addInstalledModule(module.installName)
+            dashboardStoreService.addInstalledModule(module.installName)
         }
 
         return result
@@ -84,7 +84,7 @@ class ModuleRepository @Inject constructor(
         }
 
         if (result.isSuccess) {
-            userPreferencesRepo.removeInstalledModule(
+            dashboardStoreService.removeInstalledModule(
                 moduleName = moduleName
             )
         }
