@@ -19,7 +19,7 @@ class ConversionsLandingFragment : Fragment(R.layout.fragment_conversions_landin
         with(binding) {
             setupToolbar(
                 toolbar = toolbar,
-                navigationMode = NavigationMode.BACK
+                navigationMode = NavigationMode.CLOSE
             )
 
             kilometersToMiles.setOnClickListener {

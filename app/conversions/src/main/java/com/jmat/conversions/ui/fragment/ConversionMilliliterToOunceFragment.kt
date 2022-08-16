@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.jmat.conversions.R
 import com.jmat.conversions.databinding.FragmentConversionMlToOzBinding
 import com.jmat.conversions.di.ConversionsComponent
@@ -24,6 +25,7 @@ import com.jmat.conversions.ui.viewmodel.ConversionMilliliterToOunceViewModel
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener
+import com.jmat.powertools.base.extensions.isRoot
 import com.jmat.powertools.base.extensions.setupToolbar
 import com.jmat.powertools.base.extensions.showEndIconOnFocus
 import com.jmat.powertools.base.extensions.toCleanBigDecimal
@@ -62,7 +64,9 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
 
         setupToolbar(
             toolbar = binding.toolbar,
-            navigationMode = NavigationMode.CLOSE
+            navigationMode = if (findNavController().isRoot()) {
+                NavigationMode.CLOSE
+            } else NavigationMode.BACK
         ).apply {
             setOnMenuItemClickListener { item ->
                 if (item.itemId == R.id.favourite) {
