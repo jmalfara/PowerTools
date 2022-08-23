@@ -121,7 +121,7 @@ class ConversionMilliliterToOunceFragment : Fragment(R.layout.fragment_conversio
                             typedValue.data
                         }
 
-                        binding.toolbar.menu.findItem(R.id.favourite).icon.setTint(color)
+                        binding.toolbar.menu.findItem(R.id.favourite).icon?.setTint(color)
                     }
                 }
 

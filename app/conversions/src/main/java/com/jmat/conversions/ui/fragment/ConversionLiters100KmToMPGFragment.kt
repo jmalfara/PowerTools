@@ -93,7 +93,7 @@ class ConversionLiters100KmToMPGFragment : Fragment(R.layout.fragment_conversion
                             typedValue.data
                         }
 
-                        binding.toolbar.menu.findItem(R.id.favourite).icon.setTint(color)
+                        binding.toolbar.menu.findItem(R.id.favourite).icon?.setTint(color)
                     }
                 }
 

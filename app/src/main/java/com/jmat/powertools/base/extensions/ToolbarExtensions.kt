@@ -29,7 +29,7 @@ fun AppCompatActivity.setupSupportActionbar(
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             toolbar.setNavigationOnClickListener {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
         }
         NavigationMode.CLOSE -> {
@@ -53,7 +53,7 @@ fun Fragment.setupToolbar(
         NavigationMode.BACK -> {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24)
             toolbar.setNavigationOnClickListener {
-                requireActivity().onBackPressed()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
             }
         }
         NavigationMode.CLOSE -> {

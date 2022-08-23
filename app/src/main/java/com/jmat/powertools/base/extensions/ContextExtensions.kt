@@ -1,6 +1,5 @@
 package com.jmat.powertools.base.extensions
 
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -14,13 +13,6 @@ fun Context.navigateLauncherActions(
     intent.action = launcherAction
     extras?.forEach { item -> intent.putExtra(item.key, item.value) }
     intent.setPackage(packageName)
-
-    val resolveInfo = packageManager.queryIntentActivities(intent, 0).firstOrNull() ?: return
-
-    intent.component = ComponentName(
-        packageName,
-        resolveInfo.activityInfo.name
-    )
     startActivity(intent)
 }
 
@@ -29,12 +21,5 @@ fun Context.navigateDeeplink(
 ) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(deeplink))
     intent.setPackage(packageName)
-
-    val resolveInfo = packageManager.queryIntentActivities(intent, 0).firstOrNull() ?: return
-
-    intent.component = ComponentName(
-        packageName,
-        resolveInfo.activityInfo.name
-    )
     startActivity(intent)
 }

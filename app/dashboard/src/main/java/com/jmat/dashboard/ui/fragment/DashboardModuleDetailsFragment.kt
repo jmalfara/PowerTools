@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.jmat.dashboard.R
@@ -56,7 +57,7 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
 
         with(binding) {
             toolbar.setNavigationOnClickListener {
-                requireActivity().onBackPressed()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
             }
             name.text = args.listingData.module.name
             description.text = args.listingData.module.shortDescription

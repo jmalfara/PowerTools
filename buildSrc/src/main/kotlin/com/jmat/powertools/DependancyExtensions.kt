@@ -5,7 +5,7 @@ import org.gradle.api.Project
 
 internal fun Project.configureDependencies() = dependencies.apply{
     add("implementation","androidx.constraintlayout:constraintlayout:2.1.4")
-    add("implementation","androidx.appcompat:appcompat:1.4.2")
+    add("implementation","androidx.appcompat:appcompat:1.5.0")
     add("implementation", "com.google.android.material:material:1.6.1")
     add("implementation", "com.google.dagger:hilt-android:2.43.2")
     add("kapt", "com.google.dagger:hilt-compiler:2.42")
@@ -17,7 +17,7 @@ internal fun Project.configureDependencies() = dependencies.apply{
     add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 
 //    if (project.containsAndroidPlugin()) {
-        add("debugImplementation", "androidx.fragment:fragment-testing:1.5.1")
+        add("debugImplementation", "androidx.fragment:fragment-testing:1.5.2")
         add("androidTestImplementation", "androidx.test.ext:junit:1.1.3")
         add("androidTestImplementation", "androidx.test.espresso:espresso-core:3.4.0")
         add("androidTestImplementation", "androidx.compose.ui:ui-test-junit4:1.1.1")
