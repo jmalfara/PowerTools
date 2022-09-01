@@ -70,7 +70,7 @@ dependencies {
     api("androidx.compose.ui:ui:1.2.1")
     api("androidx.compose.ui:ui-tooling:1.2.1")
     api("androidx.compose.foundation:foundation:1.2.1")
-    api("androidx.compose.material3:material3:1.0.0-alpha16")
+    api("androidx.compose.material3:material3:1.0.0-beta01")
     api("androidx.compose.material:material-icons-core:1.2.1")
     api("androidx.compose.material:material-icons-extended:1.2.1")
     api("androidx.compose.runtime:runtime-livedata:1.2.1")
@@ -78,8 +78,8 @@ dependencies {
     api("androidx.activity:activity-compose:1.5.1")
     api("androidx.compose.animation:animation:1.2.1")
     api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.16")
-    api("com.google.android.material:compose-theme-adapter:1.1.16")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.17")
+    api("com.google.android.material:compose-theme-adapter:1.1.17")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")
@@ -91,7 +91,7 @@ dependencies {
     api("io.ktor:ktor-client-content-negotiation:2.1.0")
     api("io.ktor:ktor-serialization-kotlinx-json:2.1.0")
     api("io.ktor:ktor-client-logging:2.1.0")
-    api("ch.qos.logback:logback-classic:1.2.11")
+    api("ch.qos.logback:logback-classic:1.4.0")
 
     api("androidx.datastore:datastore:1.0.0")
     api("androidx.datastore:datastore-core:1.0.0")

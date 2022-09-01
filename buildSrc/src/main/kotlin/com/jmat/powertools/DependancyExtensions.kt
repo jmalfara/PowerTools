@@ -12,7 +12,7 @@ internal fun Project.configureDependencies() = dependencies.apply{
 
     add("testImplementation", "junit:junit:4.13.2")
     add("testImplementation", "com.google.truth:truth:1.1.3")
-    add("testImplementation", "io.mockk:mockk:1.12.5")
+    add("testImplementation", "io.mockk:mockk:1.12.7")
     add("testImplementation", "app.cash.turbine:turbine:0.9.0")
     add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 
