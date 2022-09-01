@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import com.google.protobuf.gradle.builtins
 import com.google.protobuf.gradle.generateProtoTasks
 import com.google.protobuf.gradle.protobuf
@@ -55,6 +57,12 @@ android {
             ":app:encode"
         )
     )
+
+    packagingOptions {
+        resources {
+            excludes.add("META-INF/INDEX.LIST")
+        }
+    }
 }
 
 dependencies {
