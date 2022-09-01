@@ -1,6 +1,7 @@
 package com.jmat.encode.di
 
 import androidx.lifecycle.ViewModel
+import com.jmat.encode.ui.viewmodel.EncodeDownloadImageBytesViewModel
 import com.jmat.encode.ui.viewmodel.EncodeTinyUrlCreateViewModel
 import com.jmat.encode.ui.viewmodel.EncodeTinyUrlViewModel
 import com.jmat.powertools.base.di.ViewModelKey
@@ -22,4 +23,9 @@ abstract class EncodeViewModelsModule {
     @IntoMap
     @ViewModelKey(EncodeTinyUrlViewModel::class)
     abstract fun bindEncodeTinyUrlViewModel(viewModel: EncodeTinyUrlViewModel): ViewModel
+    
+    @Binds
+    @IntoMap
+    @ViewModelKey(EncodeDownloadImageBytesViewModel::class)
+    abstract fun bindEncodeDownloadImageBytesViewModel(viewModel: EncodeDownloadImageBytesViewModel): ViewModel
 }

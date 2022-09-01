@@ -2,7 +2,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,33 +29,40 @@
             android:orientation="vertical"
             android:padding="@dimen/layout_padding">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/tinyUrl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                style="@style/Text.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/encode_image_bytes_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="@dimen/layout_padding"
-                    android:text="@string/encode_tinyurl_title" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/imageBytes"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/urlInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_padding">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                app:endIconMode="clear_text"
+                android:hint="@string/encode_tinyurl_create_url_label"
+                android:paddingVertical="@dimen/layout_gutter">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="@dimen/layout_padding"
-                    android:text="@string/encode_image_bytes_title" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:inputType="textUri"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/submit"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/encode_tinyurl_create_button_action" />
+
+            <TextView
+                android:id="@+id/bytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/layout_gutter"
+                tools:text="@string/placeholder_content"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

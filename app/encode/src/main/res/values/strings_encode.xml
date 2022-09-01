@@ -11,4 +11,5 @@
     <string name="encode_tinyurl_create_button_cancel">Cancel</string>
     <string name="encode_tinyurl_delete_title">%d Selected</string>
 
+    <string name="encode_image_bytes_title">Image Bytes</string>
 </resources>

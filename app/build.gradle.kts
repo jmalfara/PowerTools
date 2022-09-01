@@ -86,6 +86,12 @@ dependencies {
     api("com.squareup.moshi:moshi-kotlin:1.13.0")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
+    api("io.ktor:ktor-client-core:2.1.0")
+    api("io.ktor:ktor-client-cio:2.1.0")
+    api("io.ktor:ktor-client-content-negotiation:2.1.0")
+    api("io.ktor:ktor-serialization-kotlinx-json:2.1.0")
+    api("io.ktor:ktor-client-logging:2.1.0")
+    api("ch.qos.logback:logback-classic:1.2.11")
 
     api("androidx.datastore:datastore:1.0.0")
     api("androidx.datastore:datastore-core:1.0.0")

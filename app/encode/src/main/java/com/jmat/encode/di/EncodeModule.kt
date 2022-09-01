@@ -13,7 +13,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.migration.DisableInstallInCheck
-import javax.inject.Named
 
 private lateinit var encodeDataStore: DataStore<EncodeStore>
 
@@ -23,10 +22,10 @@ class EncodeModule {
 
     @Provides
     fun provideTinyUrlService(
-        @Named("debug") debug: Boolean
+        httpClientProvider: HttpClientProvider
     ) : TinyUrlService {
         return ServiceClientFactory.create(
-            clientProvider = HttpClientProvider(debug),
+            clientProvider = httpClientProvider,
             baseUrl = "https://api.tinyurl.com"
         )
     }

@@ -12,7 +12,16 @@
         <action
             android:id="@+id/encodeLandingFragment_to_encodeTinyUrlFragment"
             app:destination="@+id/encodeTinyUrlFragment"/>
+
+        <action
+            android:id="@+id/encodeLandingFragment_to_encodeDownloadImageBytesFragment"
+            app:destination="@+id/encodeDownloadImageBytesFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/encodeDownloadImageBytesFragment"
+        android:name="com.jmat.encode.ui.fragment.EncodeGetDataFragment"
+        tools:layout="@layout/fragment_encode_get_data"/>
 
     <fragment
         android:id="@+id/encodeTinyUrlFragment"

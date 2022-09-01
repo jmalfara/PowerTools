@@ -24,6 +24,12 @@ class EncodeLandingFragment : Fragment(R.layout.fragment_encode_landing) {
                     EncodeLandingFragmentDirections.encodeLandingFragmentToEncodeTinyUrlFragment()
                 )
             }
+
+            imageBytes.setOnClickListener {
+                findNavController().navigate(
+                    EncodeLandingFragmentDirections.encodeLandingFragmentToEncodeDownloadImageBytesFragment()
+                )
+            }
         }
     }
 }

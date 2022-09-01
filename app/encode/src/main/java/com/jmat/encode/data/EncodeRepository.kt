@@ -2,6 +2,7 @@ package com.jmat.encode.data
 
 import com.jmat.encode.data.datastore.EncodeStoreService
 import com.jmat.encode.data.model.TinyUrlCreateRequest
+import com.jmat.encode.data.service.SimpleHttpService
 import com.jmat.encode.data.service.TinyUrlService
 import com.jmat.powertools.TinyUrl
 import com.jmat.powertools.base.service.ApiResult
@@ -14,6 +15,7 @@ import javax.inject.Inject
 
 class EncodeRepository @Inject constructor (
     private val tinyUrlService: TinyUrlService,
+    private val simpleHttpService: SimpleHttpService,
     private val encodeStoreService: EncodeStoreService
 ) {
     val tinyUrls: Flow<List<TinyUrl>> = encodeStoreService.data.transform { data ->
@@ -42,5 +44,11 @@ class EncodeRepository @Inject constructor (
     suspend fun deleteTinyUrls(urls: List<TinyUrl>) : ApiResult<Unit> {
         encodeStoreService.deleteTinyUrls(urls)
         return ApiSuccess(Unit)
+    }
+
+    suspend fun getData(url: String): ApiResult<String> {
+        return safeApiCall {
+            simpleHttpService.getData(url)
+        }
     }
 }
