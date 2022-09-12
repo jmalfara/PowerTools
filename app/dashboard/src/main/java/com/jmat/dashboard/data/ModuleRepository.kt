@@ -1,13 +1,11 @@
 package com.jmat.dashboard.data
 
-import android.util.Log
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.datastore.DashboardStoreService
 import com.jmat.dashboard.data.model.ModuleInstallData
 import com.jmat.dashboard.data.model.Module
-import com.jmat.dashboard.data.model.ModuleListings
 import com.jmat.dashboard.data.model.Modules
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
@@ -23,21 +21,8 @@ class ModuleRepository @Inject constructor(
     private val splitInstallManager: SplitInstallManager,
     private val dashboardStoreService: DashboardStoreService
 ) {
-    private val _Module_installData = MutableStateFlow<List<ModuleInstallData>>(listOf())
-    val moduleInstallData: StateFlow<List<ModuleInstallData>> = _Module_installData
-
-    suspend fun downloadModules(): Result<Modules> {
-        val result = resourceService.loadResource<Modules>(R.raw.modules).onSuccess { modulesData ->
-            val images = modulesData.modules.map { it.iconUrl }
-            imageDownloadService.downloadImages(images)
-        }
-
-        if (result.isSuccess) {
-            dashboardStoreService.resetModules(result.getOrThrow().modules)
-        }
-
-        return result
-    }
+    private val _moduleInstallData = MutableStateFlow<List<ModuleInstallData>>(listOf())
+    val moduleInstallData: StateFlow<List<ModuleInstallData>> = _moduleInstallData
 
     suspend fun downloadModuleInstallData(): Result<List<ModuleInstallData>> {
         val result = resourceService.loadResource<Modules>(R.raw.modules).map { moduleData ->
@@ -50,25 +35,10 @@ class ModuleRepository @Inject constructor(
                 )
             }
         }.onSuccess {
-            _Module_installData.emit(it)
+            _moduleInstallData.emit(it)
         }
 
         return result
-    }
-
-    suspend fun fetchModuleListings(): Result<ModuleListings> {
-        return resourceService.loadResource<ModuleListings>(R.raw.store_listings)
-            .onSuccess { moduleListings ->
-                moduleListings.new
-                    .forEach {
-                        imageDownloadService.downloadImages(it.previewUrls)
-                    }
-
-                moduleListings.popular
-                    .forEach {
-                        imageDownloadService.downloadImages(it.previewUrls)
-                    }
-            }
     }
 
     suspend fun installModule(module: Module): Result<Unit> {
@@ -82,7 +52,6 @@ class ModuleRepository @Inject constructor(
                     continuation.resume(Result.success(Unit))
                 }
                 .addOnFailureListener {
-                    Log.e("Module", "Install", it)
                     continuation.resume(Result.failure(it))
                 }
         }
@@ -101,7 +70,6 @@ class ModuleRepository @Inject constructor(
                     continuation.resume(Result.success(Unit))
                 }
                 .addOnFailureListener {
-                    Log.e("Module", "Uninstall", it)
                     continuation.resume(Result.failure(it))
                 }
         }

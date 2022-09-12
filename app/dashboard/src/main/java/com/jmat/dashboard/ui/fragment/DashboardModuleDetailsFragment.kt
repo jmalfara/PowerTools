@@ -32,7 +32,7 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
 
     @Inject
     lateinit var viewModelFactory: InjectedSavedStateViewModelFactory
-    val viewModel: DashboardModuleDetailsViewModel by viewModels {
+    private val viewModel: DashboardModuleDetailsViewModel by viewModels {
         viewModelFactory.create(this, requireActivity().intent.extras)
     }
 
@@ -58,12 +58,12 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
             toolbar.setNavigationOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
-            name.text = args.listingData.module.name
-            description.text = args.listingData.module.shortDescription
-            author.text = args.listingData.module.author
+            name.text = args.module.name
+            description.text = args.module.shortDescription
+            author.text = args.module.author
 
             Glide.with(requireActivity())
-                .load(args.listingData.module.iconUrl)
+                .load(args.module.iconUrl)
                 .fitCenter()
                 .into(icon)
         }
@@ -78,12 +78,12 @@ class DashboardModuleDetailsFragment : Fragment(R.layout.fragment_dashboard_modu
                         if (uiState.installed) {
                             action.text = getString(R.string.dashboard_details_uninstall)
                             action.setOnClickListener {
-                                viewModel.uninstallModule(args.listingData.module)
+                                viewModel.uninstallModule(args.module)
                             }
                         } else {
                             action.text = getString(R.string.dashboard_details_install)
                             action.setOnClickListener {
-                                viewModel.installModule(args.listingData.module)
+                                viewModel.installModule(args.module)
                             }
                         }
 

@@ -7,20 +7,10 @@
 
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardFragment"/>
-
-    <fragment
-        android:id="@id/home"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardHomeFragment"
-        tools:layout="@layout/fragment_dashboard_shortcuts"/>
-
-    <fragment
-        android:id="@id/listings"
-        android:name="com.jmat.dashboard.ui.fragment.DashboardModuleListingsFragment"
-        tools:layout="@layout/fragment_dashboard_listings">
+        android:name="com.jmat.dashboard.ui.fragment.DashboardFragment">
 
         <action
-            android:id="@+id/listings_to_moduleDetails"
+            android:id="@+id/dashboard_to_moduleDetails"
             app:destination="@+id/moduleDetails"/>
     </fragment>
 
@@ -30,7 +20,11 @@
         tools:layout="@layout/fragment_dashboard_module_details">
 
         <argument
-            android:name="listingData"
-            app:argType="com.jmat.dashboard.ui.model.ListingData"/>
+            android:name="module"
+            app:argType="com.jmat.dashboard.data.model.Module"/>
+
+        <argument
+            android:name="installed"
+            app:argType="boolean"/>
     </activity>
 </navigation>

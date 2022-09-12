@@ -17,7 +17,6 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.model.ModuleInstallData
 import com.jmat.dashboard.data.model.Module
@@ -81,7 +81,15 @@ class DashboardFragment : Fragment() {
                     DashboardScreen(
                         shortcuts = uiState.value.shortcutFeatures,
                         moduleInstallData = uiState.value.moduleInstallData,
-                        loading = uiState.value.loading
+                        loading = uiState.value.loading,
+                        navigateToDetails = { module ->
+                            findNavController().navigate(
+                                DashboardFragmentDirections.dashboardToModuleDetails(
+                                    module = module,
+                                    installed = false
+                                )
+                            )
+                        }
                     )
                 }
             }
@@ -134,7 +142,8 @@ fun DashboardScreenLight() {
                     true
                 )
             ),
-            loading = true
+            loading = true,
+            navigateToDetails = { }
         )
     }
 }
@@ -184,7 +193,8 @@ fun DashboardScreenDark() {
                     true
                 )
             ),
-            loading = false
+            loading = false,
+            navigateToDetails = { }
         )
     }
 }
@@ -194,7 +204,8 @@ fun DashboardScreenDark() {
 fun DashboardScreen(
     shortcuts: List<ShortcutData>,
     moduleInstallData: List<ModuleInstallData>,
-    loading: Boolean
+    loading: Boolean,
+    navigateToDetails: (Module) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -252,7 +263,11 @@ fun DashboardScreen(
             items(moduleInstallData) {
                 Card(
                     onClick = {
-                        context.navigateDeeplink(it.module.entrypoint)
+                        if (it.installed) {
+                            context.navigateDeeplink(it.module.entrypoint)
+                        } else {
+                            navigateToDetails(it.module)
+                        }
                     }
                 ) {
                     ModuleItem(

@@ -64,7 +64,6 @@ class DashboardViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.Default) {
             loading.emit(true)
-            delay(5000)
             moduleRepository.downloadModuleInstallData()
             loading.emit(false)
         }
