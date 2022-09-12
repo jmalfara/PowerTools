@@ -18,20 +18,10 @@ class DashboardModuleListingsFragment : Fragment(R.layout.fragment_dashboard_lis
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            val tabLayout = requireActivity().findViewById<TabLayout>(R.id.tabs)
-
             viewPager.adapter = DashboardModuleListingsViewPagerAdapter(
                 fragmentManager = childFragmentManager,
                 lifecycle = viewLifecycleOwner.lifecycle
             )
-
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = when (position) {
-                    0 -> getString(R.string.tab_popular)
-                    1 -> getString(R.string.tab_new)
-                    else -> throw RuntimeException("Tab does not exist")
-                }
-            }.attach()
         }
     }
 }

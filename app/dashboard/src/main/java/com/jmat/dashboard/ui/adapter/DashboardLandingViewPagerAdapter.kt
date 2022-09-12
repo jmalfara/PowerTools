@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.jmat.dashboard.ui.fragment.DashboardShortcutsFragment
 import com.jmat.dashboard.ui.fragment.DashboardInstalledFragment
+import com.jmat.dashboard.ui.fragment.DashboardShortcutsFragment
 
 class DashboardLandingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {

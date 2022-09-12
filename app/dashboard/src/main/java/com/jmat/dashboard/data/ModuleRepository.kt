@@ -5,11 +5,14 @@ import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.datastore.DashboardStoreService
+import com.jmat.dashboard.data.model.ModuleInstallData
 import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.data.model.ModuleListings
 import com.jmat.dashboard.data.model.Modules
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
@@ -20,6 +23,9 @@ class ModuleRepository @Inject constructor(
     private val splitInstallManager: SplitInstallManager,
     private val dashboardStoreService: DashboardStoreService
 ) {
+    private val _Module_installData = MutableStateFlow<List<ModuleInstallData>>(listOf())
+    val moduleInstallData: StateFlow<List<ModuleInstallData>> = _Module_installData
+
     suspend fun downloadModules(): Result<Modules> {
         val result = resourceService.loadResource<Modules>(R.raw.modules).onSuccess { modulesData ->
             val images = modulesData.modules.map { it.iconUrl }
@@ -28,6 +34,23 @@ class ModuleRepository @Inject constructor(
 
         if (result.isSuccess) {
             dashboardStoreService.resetModules(result.getOrThrow().modules)
+        }
+
+        return result
+    }
+
+    suspend fun downloadModuleInstallData(): Result<List<ModuleInstallData>> {
+        val result = resourceService.loadResource<Modules>(R.raw.modules).map { moduleData ->
+            val images = moduleData.modules.map { it.iconUrl }
+            imageDownloadService.downloadImages(images) //Cache the image with Glide
+            moduleData.modules.map {
+                ModuleInstallData(
+                    installed = splitInstallManager.installedModules.contains(it.installName),
+                    module = it
+                )
+            }
+        }.onSuccess {
+            _Module_installData.emit(it)
         }
 
         return result

@@ -50,8 +50,8 @@ class DashboardInstalledFragment : Fragment(R.layout.fragment_dashboard_installe
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.uiState.collect { uiState ->
-                    installedAdapter.submitList(uiState.installedModules)
-                    binding.emptyCard.isVisible = uiState.installedModules.isEmpty()
+                    installedAdapter.submitList(uiState.moduleInstallData.map { it.module })
+                    binding.emptyCard.isVisible = uiState.moduleInstallData.isEmpty()
                 }
             }
         }

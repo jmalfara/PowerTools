@@ -11,6 +11,10 @@
     <string name="tab_popular">Popular</string>
     <string name="tab_new">New</string>
 
+    <string name="dashboard_title_shortcuts">Shortcuts</string>
+    <string name="dashboard_title_modules">Modules</string>
+
+
     <!--  Details  -->
     <string name="dashboard_details_install">Install</string>
     <string name="dashboard_details_uninstall">Uninstall</string>

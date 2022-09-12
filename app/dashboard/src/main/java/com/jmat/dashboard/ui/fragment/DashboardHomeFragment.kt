@@ -19,20 +19,20 @@ class DashboardHomeFragment : Fragment(R.layout.fragment_dashboard_pager) {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            val tabLayout = requireActivity().findViewById<TabLayout>(R.id.tabs)
+//            val tabLayout = requireActivity().findViewById<TabLayout>(R.id.tabs)
 
             viewPager.adapter = DashboardLandingViewPagerAdapter(
                 fragmentManager = childFragmentManager,
                 lifecycle = viewLifecycleOwner.lifecycle
             )
 
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = when (position) {
-                    0 -> getString(R.string.tab_favourites)
-                    1 -> getString(R.string.tab_installed)
-                    else -> throw RuntimeException("Tab does not exist")
-                }
-            }.attach()
+//            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+//                tab.text = when (position) {
+//                    0 -> getString(R.string.tab_favourites)
+//                    1 -> getString(R.string.tab_installed)
+//                    else -> throw RuntimeException("Tab does not exist")
+//                }
+//            }.attach()
         }
     }
 }

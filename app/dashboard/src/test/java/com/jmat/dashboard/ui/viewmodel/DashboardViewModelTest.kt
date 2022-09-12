@@ -1,3 +1,4 @@
+/*
 package com.jmat.dashboard.ui.viewmodel
 
 import app.cash.turbine.test
@@ -236,4 +237,4 @@ class MainDispatcherRule @OptIn(ExperimentalCoroutinesApi::class) constructor(
     override fun finished(description: Description) {
         Dispatchers.resetMain()
     }
-}
+}*/
