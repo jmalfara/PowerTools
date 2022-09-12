@@ -3,14 +3,13 @@ package com.jmat.dashboard.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
-import com.jmat.dashboard.data.model.Feature
-import com.jmat.dashboard.data.model.Module
+import com.jmat.dashboard.data.model.ModuleInstallData
 import com.jmat.dashboard.ui.model.ShortcutData
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combineTransform
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -19,56 +18,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
-    val userPreferencesRepository: UserPreferencesRepository,
+    private val userPreferencesRepository: UserPreferencesRepository,
     private val moduleRepository: ModuleRepository
 ) : ViewModel() {
-    val modules = userPreferencesRepository.data
-        .map { it.modulesList }
-        .distinctUntilChanged()
+    private val installData = moduleRepository.moduleInstallData
 
-    private val installedModules = userPreferencesRepository.data
-        .map { it.installedModulesList }
-        .distinctUntilChanged()
-
-    val shortcuts = userPreferencesRepository.data
+    private val shortcuts = userPreferencesRepository.data
         .map { it.shortcutsList }
         .distinctUntilChanged()
 
-    private val installedModulesData = combineTransform(
-        modules,
-        installedModules
-    ) { modules, installedModules ->
-        val data = installedModules.mapNotNull { installedModule ->
-            val module = modules.find { it.installName == installedModule.moduleName } ?: return@mapNotNull null
-            Module(
-                name = module.name,
-                author = module.author,
-                iconUrl = module.iconUrl,
-                shortDescription = module.shortDescription,
-                installName = module.installName,
-                entrypoint = module.entrypoint,
-                features = module.featuresList.map {
-                    Feature(
-                        id = it.id,
-                        title = it.title,
-                        description = it.description,
-                        module = it.module,
-                        iconUrl = it.iconUrl,
-                        entrypoint = it.entrypoint
-                    )
-                }
-            )
-        }
-        emit(data)
-    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
-
     private val shortcutUiData = combineTransform(
-        modules,
+        installData,
         shortcuts
-    ) { modules, shortcuts ->
+    ) { installData, shortcuts ->
         val data = shortcuts.mapNotNull { shortcut ->
-            val module = modules.find { it.installName == shortcut.moduleName } ?: return@mapNotNull null
-            val feature = module.featuresList.find { it.id == shortcut.featureId } ?: return@mapNotNull null
+            val module = installData.find { it.module.installName == shortcut.moduleName }?.module ?: return@mapNotNull null
+            val feature = module.features.find { it.id == shortcut.featureId } ?: return@mapNotNull null
 
             ShortcutData(
                 id = shortcut.id,
@@ -84,34 +49,22 @@ class DashboardViewModel @Inject constructor(
 
     val uiState = combineTransform(
         loading,
-        installedModulesData,
+        installData,
         shortcutUiData,
-    ) { loading, installedModules, shortcutUiData ->
+    ) { loading, installData, shortcutUiData ->
         emit(
             UiState(
                 loading = loading,
-                installedModules = installedModules,
+                moduleInstallData = installData,
                 shortcutFeatures = shortcutUiData
             )
         )
     }
 
     init {
-        viewModelScope.launch {
-            modules.collectLatest {
-                // This is here if the user has cleared the app data.
-                // We need to re-download the module catalog
-                if (it.isEmpty()) {
-                    downloadModuleCatalog()
-                }
-            }
-        }
-    }
-
-    fun downloadModuleCatalog() {
         viewModelScope.launch(Dispatchers.Default) {
             loading.emit(true)
-            moduleRepository.downloadModules()
+            moduleRepository.downloadModuleInstallData()
             loading.emit(false)
         }
     }
@@ -127,6 +80,14 @@ class DashboardViewModel @Inject constructor(
     data class UiState(
         val loading: Boolean,
         val shortcutFeatures: List<ShortcutData>,
-        val installedModules: List<Module>
-    )
+        val moduleInstallData: List<ModuleInstallData>
+    ) {
+        companion object {
+            val default = UiState(
+                loading = false,
+                shortcutFeatures = listOf(),
+                moduleInstallData = listOf()
+            )
+        }
+    }
 }
