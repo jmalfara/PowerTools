@@ -23,10 +23,10 @@ class DashboardModuleDetailsViewModel @AssistedInject constructor(
     private val _uiState = MutableStateFlow(
         UiState(
             installing = false,
-            actionTextRes = if (args.listingData.installed) {
+            actionTextRes = if (args.installed) {
                 R.string.dashboard_details_uninstall
             } else R.string.dashboard_details_install,
-            installed = args.listingData.installed,
+            installed = args.installed,
             notificationMessage = null
         )
     )

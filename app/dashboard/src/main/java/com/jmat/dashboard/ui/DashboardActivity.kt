@@ -24,9 +24,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardActivity : AppCompatActivity() {
-    @Inject
-    lateinit var viewModelFactory: InjectedViewModelFactory
-    private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerDashboardComponent.builder()
@@ -38,29 +35,5 @@ class DashboardActivity : AppCompatActivity() {
             ).build().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        val navigationRail = findViewById<NavigationBarView>(R.id.navigation_rail)
-        navigationRail.setupWithNavController(navController)
-
-        navigationRail.menu.findItem(R.id.settings).setOnMenuItemClickListener {
-            navigateDeeplink(DEEPLINK_SETTINGS)
-            true
-        }
-
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collectLatest { uiState ->
-                    findViewById<View>(R.id.progress_bar).isVisible = uiState.loading
-                }
-            }
-        }
-
-        if (savedInstanceState == null) {
-            viewModel.downloadModuleCatalog()
-        }
     }
 }
