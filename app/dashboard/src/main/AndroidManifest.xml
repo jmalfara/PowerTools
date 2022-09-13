@@ -33,9 +33,5 @@
                 <data android:scheme="powertools" android:host="dashboard" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ui.DashboardModuleDetailsActivity"
-            android:exported="false"/>
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.jmat.dashboard.ui.compose
+package com.jmat.dashboard.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

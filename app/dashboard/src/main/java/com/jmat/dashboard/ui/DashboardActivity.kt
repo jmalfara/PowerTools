@@ -1,29 +1,31 @@
 package com.jmat.dashboard.ui
 
+import android.content.Context
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationBarView
-import com.jmat.dashboard.R
+import androidx.compose.runtime.collectAsState
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.jmat.dashboard.di.DaggerDashboardComponent
+import com.jmat.dashboard.ui.screen.DashboardScreen
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
+import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.di.InjectedViewModelFactory
-import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
-import com.jmat.powertools.modules.settings.DEEPLINK_SETTINGS
 import dagger.hilt.android.EntryPointAccessors
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
+
+    @Inject
+    lateinit var viewModelFactory: InjectedViewModelFactory
+    private val viewModel: DashboardViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerDashboardComponent.builder()
@@ -34,6 +36,26 @@ class DashboardActivity : AppCompatActivity() {
                 )
             ).build().inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+
+        setContent {
+            val uiState =
+                viewModel.uiState.collectAsState(initial = DashboardViewModel.UiState.default)
+
+            uiState.value.notificationText?.let { notificationText ->
+                Toast.makeText(this@DashboardActivity, notificationText, Toast.LENGTH_LONG).show()
+                viewModel.consumeNotificationText()
+            }
+
+            AppTheme {
+                DashboardScreen(
+                    shortcuts = uiState.value.shortcutFeatures,
+                    moduleInstallData = uiState.value.moduleInstallData,
+                    loading = uiState.value.loading,
+                    installModule = { module ->
+                        viewModel.installModule(module)
+                    }
+                )
+            }
+        }
     }
 }

@@ -1,13 +1,14 @@
 package com.jmat.dashboard.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.data.ModuleRepository
-import com.jmat.dashboard.data.model.ModuleInstallData
+import com.jmat.dashboard.data.model.Module
+import com.jmat.dashboard.ui.model.ModuleInstallData
 import com.jmat.dashboard.ui.model.ShortcutData
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combineTransform
@@ -46,17 +47,20 @@ class DashboardViewModel @Inject constructor(
     }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
 
     private val loading = MutableStateFlow(false)
+    private val notificationText = MutableStateFlow<String?>(null)
 
     val uiState = combineTransform(
         loading,
         installData,
         shortcutUiData,
-    ) { loading, installData, shortcutUiData ->
+        notificationText
+    ) { loading, installData, shortcutUiData, notificationText ->
         emit(
             UiState(
                 loading = loading,
                 moduleInstallData = installData,
-                shortcutFeatures = shortcutUiData
+                shortcutFeatures = shortcutUiData,
+                notificationText = notificationText
             )
         )
     }
@@ -69,6 +73,17 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun installModule(module: Module) {
+        viewModelScope.launch {
+            moduleRepository.installModule(module)
+                .onSuccess { }
+                .onFailure {
+                    Log.d("Modules", it.toString())
+                    notificationText.emit(it.toString())
+                }
+        }
+    }
+
     fun reorderShortcuts(shortcuts: List<ShortcutData>) {
         viewModelScope.launch {
             userPreferencesRepository.updateShortcuts(
@@ -77,16 +92,24 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun consumeNotificationText() {
+        viewModelScope.launch {
+            notificationText.emit(null)
+        }
+    }
+
     data class UiState(
         val loading: Boolean,
         val shortcutFeatures: List<ShortcutData>,
-        val moduleInstallData: List<ModuleInstallData>
+        val moduleInstallData: List<ModuleInstallData>,
+        val notificationText: String?
     ) {
         companion object {
             val default = UiState(
                 loading = false,
                 shortcutFeatures = listOf(),
-                moduleInstallData = listOf()
+                moduleInstallData = listOf(),
+                notificationText = null
             )
         }
     }

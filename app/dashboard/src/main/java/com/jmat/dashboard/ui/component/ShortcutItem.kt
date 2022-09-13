@@ -1,13 +1,10 @@
-package com.jmat.dashboard.ui.compose
+package com.jmat.dashboard.ui.component
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,7 +32,6 @@ fun ShortcutItem(
             .wrapContentHeight()
             .width(width = 168.dp)
             .padding(8.dp)
-//            .height(height = 64.dp)
             .then(modifier)
     ) {
         val (icon, name, description) = createRefs()

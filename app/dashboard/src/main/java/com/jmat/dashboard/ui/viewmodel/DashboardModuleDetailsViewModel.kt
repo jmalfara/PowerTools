@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
 import com.jmat.dashboard.data.model.Module
-import com.jmat.dashboard.ui.DashboardModuleDetailsActivityArgs
 import com.jmat.powertools.base.data.TextResource
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -19,14 +18,15 @@ class DashboardModuleDetailsViewModel @AssistedInject constructor(
     @Assisted val savedStateHandle: SavedStateHandle,
     private val moduleRepository: ModuleRepository
 ) : ViewModel() {
-    private val args = DashboardModuleDetailsActivityArgs.fromSavedStateHandle(savedStateHandle)
+    val installed: Boolean = savedStateHandle["installed"] ?: throw RuntimeException("Installed Required")
+
     private val _uiState = MutableStateFlow(
         UiState(
             installing = false,
-            actionTextRes = if (args.installed) {
+            actionTextRes = if (installed) {
                 R.string.dashboard_details_uninstall
             } else R.string.dashboard_details_install,
-            installed = args.installed,
+            installed = installed,
             notificationMessage = null
         )
     )
