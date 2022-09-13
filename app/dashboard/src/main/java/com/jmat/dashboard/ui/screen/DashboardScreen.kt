@@ -1,7 +1,9 @@
 package com.jmat.dashboard.ui.screen
 
 import android.widget.Toast
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -40,13 +42,14 @@ import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.settings.DEEPLINK_SETTINGS
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun DashboardScreen(
     shortcuts: List<ShortcutData>,
     moduleInstallData: List<ModuleInstallData>,
     loading: Boolean,
-    installModule: (Module) -> Unit
+    installModule: (Module) -> Unit,
+    uninstallModule: (Module) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -105,19 +108,29 @@ fun DashboardScreen(
             }
             items(moduleInstallData) {
                 Card(
-                    onClick = {
-                        when (it.moduleState) {
-                            ModuleState.Installed -> {
-                                context.navigateDeeplink(it.module.entrypoint)
+                    modifier = Modifier.combinedClickable(
+                        onClick = {
+                            when (it.moduleState) {
+                                ModuleState.Installed -> {
+                                    context.navigateDeeplink(it.module.entrypoint)
+                                }
+                                ModuleState.Installing -> {
+                                    Toast.makeText(context, "Please wait", Toast.LENGTH_LONG).show()
+                                }
+                                ModuleState.Uninstalled -> {
+                                    installModule(it.module)
+                                }
                             }
-                            ModuleState.Installing -> {
-                                Toast.makeText(context, "Please wait", Toast.LENGTH_LONG).show()
-                            }
-                            ModuleState.Uninstalled -> {
-                                installModule(it.module)
+                        },
+                        onLongClick = {
+                            when (it.moduleState) {
+                                ModuleState.Installed -> {
+                                    uninstallModule(it.module)
+                                }
+                                else -> { /* no-op */ }
                             }
                         }
-                    }
+                    )
                 ) {
                     ModuleItem(
                         modifier = Modifier.padding(8.dp),
@@ -157,7 +170,8 @@ fun DashboardScreenLight() {
                 )
             ),
             loading = true,
-            installModule = { }
+            installModule = { },
+            uninstallModule = { }
         )
     }
 }
@@ -175,7 +189,8 @@ fun DashboardScreenWithoutShortcuts() {
                 )
             ),
             loading = false,
-            installModule = { }
+            installModule = { },
+            uninstallModule = { }
         )
     }
 }
@@ -196,7 +211,8 @@ fun DashboardScreenDark() {
                 )
             ),
             loading = false,
-            installModule = { }
+            installModule = { },
+            uninstallModule = { }
         )
     }
 }

@@ -15,4 +15,4 @@ upload-keystore.jks
 /buildSrc/build/*
 /.idea/
 
-./fastlane/report.xml
+fastlane/report.xml

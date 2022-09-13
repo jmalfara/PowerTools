@@ -15,14 +15,17 @@
     <string name="dashboard_title_modules">Modules</string>
 
 
-    <!--  Details  -->
     <string name="dashboard_details_install">Install</string>
     <string name="dashboard_details_uninstall">Uninstall</string>
-
     <string name="dashboard_details_installing">Installing</string>
     <string name="dashboard_details_uninstalling">Uninstalling</string>
     <string name="dashboard_details_installed">Installed</string>
     <string name="dashboard_details_error">Something went wrong</string>
+
+    <string name="dashboard_uninstall_dialog_title">Uninstall Confirmation</string>
+    <string name="dashboard_uninstall_dialog_message">Confirm if you would like to mark this module for removal. Note that removing modules may not be instant. The device will remove the modules when space becomes low.</string>
+    <string name="dashboard_uninstall_dialog_uninstall">Uninstall</string>
+    <string name="dashboard_uninstall_dialog_dismiss">Dismiss</string>
 
     <!--  Conversions  -->
     <string name="dashboard_conversion_title_ml_to_oz">Milliliters to Ounce</string>

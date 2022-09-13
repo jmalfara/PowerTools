@@ -9,6 +9,7 @@ import com.jmat.dashboard.ui.model.ModuleInstallData
 import com.jmat.dashboard.ui.model.ModuleState
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -59,6 +60,7 @@ class ModuleRepository constructor(
                 }
         }
 
+        delay(5000) // Split install will fail if done too fast. Its ugly but oh well
         if (result.isSuccess) {
             updateModuleInstallState(ModuleState.Installed, module.installName)
         } else {

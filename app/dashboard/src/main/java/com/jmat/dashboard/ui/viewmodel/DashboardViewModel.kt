@@ -3,10 +3,12 @@ package com.jmat.dashboard.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
 import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.model.ModuleInstallData
 import com.jmat.dashboard.ui.model.ShortcutData
+import com.jmat.powertools.base.data.TextResource
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -78,8 +80,19 @@ class DashboardViewModel @Inject constructor(
             moduleRepository.installModule(module)
                 .onSuccess { }
                 .onFailure {
-                    Log.d("Modules", it.toString())
                     notificationText.emit(it.toString())
+                }
+        }
+    }
+
+    fun uninstallModule(module: Module) {
+        viewModelScope.launch {
+            moduleRepository.uninstallModule(module.installName)
+                .onSuccess {
+                    notificationText.emit("Module has been marked for removal")
+                }
+                .onFailure {
+                    notificationText.emit("We could not remove the module at this time")
                 }
         }
     }
