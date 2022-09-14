@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "836112672600",
+    "project_id": "powertools-ff56d",
+    "storage_bucket": "powertools-ff56d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836112672600:android:c981e08f95925abc8c272d",
+        "android_client_info": {
+          "package_name": "com.jmat.powertools"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836112672600-6mugln4ah12tukbmeang09gfprrk5eqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jmat.powertools",
+            "certificate_hash": "2a72cff04ad7d2806b88efb8633dd12b09c571e8"
+          }
+        },
+        {
+          "client_id": "836112672600-beer4fmruqipa0tnut4jtermaummf1d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHGXn2wRTiaIDPSCLHT2QD1C8lrYGez4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836112672600-beer4fmruqipa0tnut4jtermaummf1d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

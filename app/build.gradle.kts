@@ -11,6 +11,8 @@ plugins {
     id("com.jmat.powertools.application")
     id("com.google.protobuf") version "0.8.17"
     id("org.jlleitschuh.gradle.ktlint")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 val keystoreProperties = Properties().apply {
@@ -37,7 +39,6 @@ android {
             signingConfig = android.signingConfigs.getByName("release")
         }
         getByName("debug") {
-            applicationIdSuffix = ".debug"
             isDebuggable = true
         }
     }
@@ -110,6 +111,14 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.0")
     testApi(fileTree("${project.rootDir}/buildSrc/build/"))
+
+    // Anayltics
+    implementation(platform("com.google.firebase:firebase-bom:30.4.1"))
+
+    // Add the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
 }
 
 kapt {
