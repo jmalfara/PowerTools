@@ -2,11 +2,9 @@ package com.jmat.dashboard.di
 
 import androidx.lifecycle.ViewModel
 import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
-import com.jmat.powertools.base.di.AssistedSavedStateViewModelFactory
 import com.jmat.powertools.base.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
-import dagger.assisted.AssistedFactory
 import dagger.hilt.migration.DisableInstallInCheck
 import dagger.multibindings.IntoMap
 

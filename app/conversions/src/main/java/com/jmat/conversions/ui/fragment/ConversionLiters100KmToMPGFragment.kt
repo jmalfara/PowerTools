@@ -19,9 +19,9 @@ import com.jmat.conversions.di.InjectionInitializer
 import com.jmat.conversions.ui.CONVERSION_MODULE_NAME
 import com.jmat.conversions.ui.ID_CONVERSIONS_L100KM_TO_MPG
 import com.jmat.conversions.ui.model.ConversionEvent
-import com.jmat.conversions.ui.viewmodel.ConversionShortcutsViewModel
 import com.jmat.conversions.ui.viewmodel.ConversionFavouritesViewModelFactory
 import com.jmat.conversions.ui.viewmodel.ConversionL100KmToMPGViewModel
+import com.jmat.conversions.ui.viewmodel.ConversionShortcutsViewModel
 import com.jmat.powertools.base.delegate.viewBinding
 import com.jmat.powertools.base.extensions.NavigationMode
 import com.jmat.powertools.base.extensions.addFocusedOnTextChangeListener

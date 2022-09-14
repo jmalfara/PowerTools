@@ -1,14 +1,11 @@
 package com.jmat.dashboard.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jmat.dashboard.R
 import com.jmat.dashboard.data.ModuleRepository
 import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.model.ModuleInstallData
 import com.jmat.dashboard.ui.model.ShortcutData
-import com.jmat.powertools.base.data.TextResource
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
