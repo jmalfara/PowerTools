@@ -29,7 +29,6 @@ import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.system.R
 import com.jmat.powertools.R as AppR
 import com.jmat.powertools.base.compose.topbar.TitleTopBar
-import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.system.ui.router.RouterStack
 import kotlinx.coroutines.CoroutineScope
 import kotlin.coroutines.EmptyCoroutineContext
@@ -79,8 +78,10 @@ fun SystemIntentScreen(
                 Button(
                     modifier = Modifier.padding(vertical = 16.dp),
                     onClick = {
-                        val intent = Intent(action.text)
-                        context.startActivity(intent)
+                        kotlin.runCatching {
+                            val intent = Intent(action.text)
+                            context.startActivity(intent)
+                        }
                     }
                 ) {
                     Text(stringResource(id = R.string.system_intent_submit))

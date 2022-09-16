@@ -62,7 +62,11 @@ fun SystemDeeplinkScreen(
                     label = { Text(stringResource(id = R.string.system_deeplink_hint)) }
                 )
                 Button(
-                    onClick = { context.navigateDeeplink(action.text) }
+                    onClick = {
+                        kotlin.runCatching {
+                            context.navigateDeeplink(action.text)
+                        }
+                    }
                 ) {
                     Text(stringResource(id = R.string.system_intent_submit))
                 }
