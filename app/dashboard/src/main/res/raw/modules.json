@@ -51,6 +51,15 @@
           "entrypoint": "powertools://encode/tinyUrl"
         }
       ]
+    },
+    {
+      "installName": "system",
+      "name": "System",
+      "author": "JMAT - Tools",
+      "shortDescription": "System specific functions. More nerdy things",
+      "iconUrl": "https://avatars.githubusercontent.com/u/442240?v=4",
+      "entrypoint": "powertools://system",
+      "features": []
     }
   ]
 }

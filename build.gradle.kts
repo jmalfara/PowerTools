@@ -17,6 +17,8 @@ buildscript {
 plugins {
     id("com.google.devtools.ksp") version "1.7.10-1.0.6" apply false
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+//    id("com.android.dynamic-feature") version "7.4.0-alpha10" apply false
+//    id("org.jetbrains.kotlin.android") version "1.7.10" apply false
 }
 
 tasks.register("clean", Delete::class) {

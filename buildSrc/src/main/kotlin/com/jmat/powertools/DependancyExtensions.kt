@@ -12,6 +12,7 @@ internal fun Project.configureDependencies() = dependencies.apply{
     add("implementation", "com.google.android.material:compose-theme-adapter:1.1.17")
     add("implementation", "androidx.compose.ui:ui:1.2.1")
     add("implementation", "androidx.compose.ui:ui-tooling:1.2.1")
+    add("implementation", "androidx.constraintlayout:constraintlayout-compose:1.0.1")
     add("kapt", "com.google.dagger:hilt-compiler:2.42")
 
     add("testImplementation", "junit:junit:4.13.2")

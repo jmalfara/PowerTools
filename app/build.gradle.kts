@@ -64,6 +64,7 @@ android {
             excludes.add("META-INF/INDEX.LIST")
         }
     }
+    dynamicFeatures += setOf(":app:system")
 }
 
 dependencies {
@@ -89,6 +90,7 @@ dependencies {
     api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     api("com.google.android.material:compose-theme-adapter-3:1.0.17")
     api("com.google.android.material:compose-theme-adapter:1.1.17")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")

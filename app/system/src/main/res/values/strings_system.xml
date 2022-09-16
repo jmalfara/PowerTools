@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_deeplink_title">Deeplink Navigator</string>
+    <string name="system_deeplink_hint">Deeplink</string>
+    <string name="system_deeplink_submit">Submit</string>
+
+    <string name="system_intent_title">Intent Navigator</string>
+    <string name="system_intent_description">Enter some intent details. The system may ask you to pick an application if more that one app can handle the action</string>
+    <string name="system_intent_hint">Action</string>
+    <string name="system_intent_submit">Submit</string>
+</resources>
