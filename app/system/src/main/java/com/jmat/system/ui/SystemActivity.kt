@@ -1,9 +1,11 @@
 package com.jmat.system.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM
 import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM_INTENT
@@ -14,6 +16,10 @@ import com.jmat.system.ui.screen.SystemDeeplinkScreen
 import com.jmat.system.ui.screen.SystemLandingScreen
 
 class SystemActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
