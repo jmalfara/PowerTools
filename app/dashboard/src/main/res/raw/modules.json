@@ -59,7 +59,24 @@
       "shortDescription": "System specific functions. More nerdy things",
       "iconUrl": "https://avatars.githubusercontent.com/u/442240?v=4",
       "entrypoint": "powertools://system",
-      "features": []
+      "features": [
+        {
+          "id": "deeplink_navigator",
+          "title": "Deeplink Navigator",
+          "description": "Navigation using system deeplinks.",
+          "module": "System",
+          "iconUrl": "https://avatars.githubusercontent.com/u/142240?v=4",
+          "entrypoint": "powertools://system/deeplink"
+        },
+        {
+          "id": "action_navigator",
+          "title": "Action Navigator",
+          "description": "Navigation using system actions.",
+          "module": "System",
+          "iconUrl": "https://avatars.githubusercontent.com/u/182240?v=4",
+          "entrypoint": "powertools://system/action"
+        }
+      ]
     }
   ]
 }

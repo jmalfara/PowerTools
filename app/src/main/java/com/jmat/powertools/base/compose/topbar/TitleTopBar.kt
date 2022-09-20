@@ -1,6 +1,8 @@
 package com.jmat.powertools.base.compose.topbar
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,7 +21,8 @@ import com.jmat.powertools.base.compose.theme.AppTheme
 fun TitleTopBar(
     title: String,
     onNavigationClick: () -> Unit,
-    @DrawableRes navigationIconRes: Int
+    @DrawableRes navigationIconRes: Int,
+    actions: @Composable RowScope.() -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -42,7 +45,8 @@ fun TitleTopBar(
                     )
                 }
             )
-        }
+        },
+        actions = actions
     )
 }
 
@@ -52,11 +56,29 @@ fun PreviewTitleBarDark() {
     AppTheme(
         darkTheme = true
     ) {
-        TitleTopBar(
-            title = "Title",
-            navigationIconRes = R.drawable.ic_arrow_back_24,
-            onNavigationClick = { }
-        )
+        Column {
+            TitleTopBar(
+                title = "Title",
+                navigationIconRes = R.drawable.ic_arrow_back_24,
+                onNavigationClick = { }
+            )
+            TitleTopBar(
+                title = "Title",
+                navigationIconRes = R.drawable.ic_arrow_back_24,
+                onNavigationClick = { },
+                actions = {
+                    IconButton(
+                        onClick = { },
+                        content = {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_star_24),
+                                contentDescription = null
+                            )
+                        }
+                    )
+                }
+            )
+        }
     }
 }
 

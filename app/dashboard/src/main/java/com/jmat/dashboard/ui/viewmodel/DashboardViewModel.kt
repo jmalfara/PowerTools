@@ -38,6 +38,7 @@ class DashboardViewModel @Inject constructor(
             ShortcutData(
                 id = shortcut.id,
                 name = feature.title,
+                description = feature.description,
                 action = feature.entrypoint,
                 icon = feature.iconUrl
             )

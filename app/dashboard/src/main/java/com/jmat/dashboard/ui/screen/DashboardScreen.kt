@@ -1,20 +1,26 @@
 package com.jmat.dashboard.ui.screen
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
@@ -67,70 +73,58 @@ fun DashboardScreen(
                 .background(
                     color = MaterialTheme.colorScheme.surface
                 )
-                .padding(all = dimensionResource(id = R.dimen.layout_padding)),
+                .padding(vertical = dimensionResource(id = R.dimen.layout_padding)),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             if (shortcuts.isNotEmpty()) {
                 item {
                     DashboardHeader(
+                        modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.layout_padding)),
                         title = stringResource(id = com.jmat.dashboard.R.string.dashboard_title_shortcuts),
                         onSearchClicked = { }
                     )
                 }
-                item {
-                    LazyHorizontalGrid(
-                        modifier = Modifier.height(128.dp),
-                        rows = GridCells.Adaptive(64.dp),
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                        content = {
-                            items(shortcuts) {
-                                Card(onClick = {
-                                    context.navigateDeeplink(it.action)
-                                }) {
-                                    ShortcutItem(
-                                        modifier = Modifier.padding(8.dp),
-                                        shortcutData = it
-                                    )
-                                }
-                            }
-                        }
-                    )
-                }
+                composeShortcuts(context, shortcuts)
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
                 }
             }
             item {
                 DashboardHeader(
+                    modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.layout_padding)),
                     title = stringResource(id = com.jmat.dashboard.R.string.dashboard_title_modules)
                 )
             }
             items(moduleInstallData) {
                 Card(
-                    modifier = Modifier.combinedClickable(
-                        onClick = {
-                            when (it.moduleState) {
-                                ModuleState.Installed -> {
-                                    context.navigateDeeplink(it.module.entrypoint)
+                    modifier = Modifier
+                        .padding(horizontal = dimensionResource(id = R.dimen.layout_padding))
+                        .combinedClickable(
+                            onClick = {
+                                when (it.moduleState) {
+                                    ModuleState.Installed -> {
+                                        context.navigateDeeplink(it.module.entrypoint)
+                                    }
+                                    ModuleState.Installing -> {
+                                        Toast
+                                            .makeText(context, "Please wait", Toast.LENGTH_LONG)
+                                            .show()
+                                    }
+                                    ModuleState.Uninstalled -> {
+                                        installModule(it.module)
+                                    }
                                 }
-                                ModuleState.Installing -> {
-                                    Toast.makeText(context, "Please wait", Toast.LENGTH_LONG).show()
-                                }
-                                ModuleState.Uninstalled -> {
-                                    installModule(it.module)
+                            },
+                            onLongClick = {
+                                when (it.moduleState) {
+                                    ModuleState.Installed -> {
+                                        uninstallModule(it.module)
+                                    }
+                                    else -> { /* no-op */
+                                    }
                                 }
                             }
-                        },
-                        onLongClick = {
-                            when (it.moduleState) {
-                                ModuleState.Installed -> {
-                                    uninstallModule(it.module)
-                                }
-                                else -> { /* no-op */ }
-                            }
-                        }
-                    )
+                        )
                 ) {
                     ModuleItem(
                         modifier = Modifier.padding(8.dp),
@@ -141,6 +135,7 @@ fun DashboardScreen(
             }
             item {
                 TextButton(
+                    modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.layout_padding)),
                     onClick = { context.navigateDeeplink(DEEPLINK_SETTINGS) }
                 ) {
                     Text(
@@ -149,6 +144,37 @@ fun DashboardScreen(
                 }
             }
         }
+    }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+private fun LazyListScope.composeShortcuts(
+    context: Context,
+    shortcuts: List<ShortcutData>,
+) {
+    item {
+        LazyHorizontalGrid(
+            modifier = Modifier
+                .height(260.dp)
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.layout_padding)),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            rows = GridCells.Adaptive(128.dp),
+            content = {
+                items(shortcuts) {
+                    Card(onClick = {
+                        context.navigateDeeplink(it.action)
+                    }) {
+                        ShortcutItem(
+                            modifier = Modifier.padding(8.dp),
+                            shortcutData = it
+                        )
+                    }
+                }
+            }
+        )
     }
 }
 
@@ -201,6 +227,11 @@ fun DashboardScreenDark() {
     AppTheme(darkTheme = true) {
         DashboardScreen(
             shortcuts = listOf(
+                DashboardFixtures.shortcutData,
+                DashboardFixtures.shortcutData,
+                DashboardFixtures.shortcutData,
+                DashboardFixtures.shortcutData,
+                DashboardFixtures.shortcutData,
                 DashboardFixtures.shortcutData,
                 DashboardFixtures.shortcutData,
             ),

@@ -17,13 +17,15 @@ import com.jmat.powertools.base.compose.theme.AppTheme
 
 @Composable
 fun DashboardHeader(
+    modifier: Modifier = Modifier,
     title: String,
     onSearchClicked: (() -> Unit)? = null
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = MaterialTheme.colorScheme.surface),
+            .background(color = MaterialTheme.colorScheme.surface)
+            .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(

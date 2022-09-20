@@ -10,24 +10,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jmat.system.ui.component.FeatureItem
 import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.compose.topbar.TitleTopBar
-import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM_INTENT
-import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM_DEEPLINK
 import com.jmat.system.R
-import com.jmat.system.ui.router.RouterStack
-import kotlinx.coroutines.CoroutineScope
-import kotlin.coroutines.EmptyCoroutineContext
+import com.jmat.system.ui.component.FeatureItem
 
 @Composable
 fun SystemLandingScreen(
-    routerStack: RouterStack
+    navigateClose: () -> Unit = { },
+    navigateToDeeplinkScreen: () -> Unit = { },
+    navigateToIntentScreen: () -> Unit = { }
 ) {
     Column {
         TitleTopBar(
             title = stringResource(id = com.jmat.powertools.R.string.title_system),
-            onNavigationClick = { routerStack.pop() },
+            onNavigationClick = { navigateClose() },
             navigationIconRes = com.jmat.powertools.R.drawable.ic_close_24
         )
         LazyColumn(
@@ -41,14 +38,14 @@ fun SystemLandingScreen(
                 FeatureItem(
                     modifier = Modifier.fillMaxWidth(),
                     title = stringResource(id = R.string.system_deeplink_title),
-                    onClick = { routerStack.push(DEEPLINK_SYSTEM_DEEPLINK) }
+                    onClick = { navigateToDeeplinkScreen() }
                 )
             }
             item {
                 FeatureItem(
                     modifier = Modifier.fillMaxWidth(),
                     title = stringResource(id = R.string.system_intent_title),
-                    onClick = { routerStack.push(DEEPLINK_SYSTEM_INTENT) }
+                    onClick = { navigateToIntentScreen() }
                 )
             }
         }
@@ -59,9 +56,7 @@ fun SystemLandingScreen(
 @Preview
 fun SystemLandingScreenPreviewLight() {
     AppTheme(darkTheme = false) {
-        SystemLandingScreen(
-            routerStack = RouterStack("", {}, CoroutineScope(EmptyCoroutineContext))
-        )
+        SystemLandingScreen()
     }
 }
 
@@ -69,8 +64,6 @@ fun SystemLandingScreenPreviewLight() {
 @Preview
 fun SystemLandingScreenPreviewDark() {
     AppTheme(darkTheme = true) {
-        SystemLandingScreen(
-            routerStack = RouterStack("", {}, CoroutineScope(EmptyCoroutineContext))
-        )
+        SystemLandingScreen()
     }
 }
