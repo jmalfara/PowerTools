@@ -5,5 +5,4 @@ import dagger.hilt.migration.DisableInstallInCheck
 
 @DisableInstallInCheck
 @Module
-class SystemModule {
-}
+class SystemModule

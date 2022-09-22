@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             delay(500)
             navigateDeeplink(DEEPLINK_DASHBOARD)
+            finish()
         }
     }
 }

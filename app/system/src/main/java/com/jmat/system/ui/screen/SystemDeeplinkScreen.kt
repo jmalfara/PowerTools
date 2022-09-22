@@ -38,6 +38,7 @@ import com.jmat.powertools.R as AppR
 @Composable
 fun SystemDeeplinkScreen(
     navigateBack: () -> Unit = { },
+    isRoot: Boolean,
     stateHolder: SystemShortcutsStateHolder
 ) {
     var action by remember { mutableStateOf(TextFieldValue()) }
@@ -50,7 +51,9 @@ fun SystemDeeplinkScreen(
             TitleTopBar(
                 title = stringResource(id = R.string.system_deeplink_title),
                 onNavigationClick = { navigateBack() },
-                navigationIconRes = AppR.drawable.ic_arrow_back_24,
+                navigationIconRes = if (isRoot) {
+                    AppR.drawable.ic_close_24
+                } else AppR.drawable.ic_arrow_back_24,
                 actions = {
                     IconButton(
                         onClick = {
@@ -105,6 +108,7 @@ fun SystemDeeplinkScreenLight() {
     AppTheme(darkTheme = false) {
         SystemDeeplinkScreen(
             navigateBack = { },
+            isRoot = false,
             stateHolder = object : SystemShortcutsStateHolder {
                 override val isShortcut: Flow<Boolean> = MutableStateFlow(true)
                 override fun toggleShortcut() { }
@@ -119,6 +123,7 @@ fun SystemDeeplinkScreenDark() {
     AppTheme(darkTheme = true) {
         SystemDeeplinkScreen(
             navigateBack = { },
+            isRoot = true,
             stateHolder = object : SystemShortcutsStateHolder {
                 override val isShortcut: Flow<Boolean> = MutableStateFlow(true)
                 override fun toggleShortcut() { }

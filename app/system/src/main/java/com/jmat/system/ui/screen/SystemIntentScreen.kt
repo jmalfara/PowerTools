@@ -40,6 +40,7 @@ import com.jmat.powertools.R as AppR
 @Composable
 fun SystemIntentScreen(
     navigateBack: () -> Unit = { },
+    isRoot: Boolean,
     stateHolder: SystemShortcutsStateHolder
 ) {
     var action by remember { mutableStateOf(TextFieldValue()) }
@@ -52,7 +53,9 @@ fun SystemIntentScreen(
             TitleTopBar(
                 title = stringResource(id = R.string.system_intent_title),
                 onNavigationClick = { navigateBack() },
-                navigationIconRes = AppR.drawable.ic_arrow_back_24,
+                navigationIconRes = if (isRoot) {
+                    AppR.drawable.ic_close_24
+                } else AppR.drawable.ic_arrow_back_24,
                 actions = {
                     IconButton(
                         onClick = {
@@ -119,6 +122,7 @@ fun SystemIntentScreenLight() {
     AppTheme(darkTheme = false) {
         SystemIntentScreen(
             navigateBack = { },
+            isRoot = true,
             stateHolder = object : SystemShortcutsStateHolder {
                 override val isShortcut: Flow<Boolean> = MutableStateFlow(true)
                 override fun toggleShortcut() { }
@@ -133,6 +137,7 @@ fun SystemIntentScreenDark() {
     AppTheme(darkTheme = true) {
         SystemIntentScreen(
             navigateBack = { },
+            isRoot = false,
             stateHolder = object : SystemShortcutsStateHolder {
                 override val isShortcut: Flow<Boolean> = MutableStateFlow(true)
                 override fun toggleShortcut() { }

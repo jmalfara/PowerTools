@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.jmat.powertools.base.compose.theme.AppTheme
+import com.jmat.powertools.base.extensions.isRoot
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM
 import com.jmat.powertools.modules.system.DEEPLINK_SYSTEM_DEEPLINK
@@ -63,6 +64,7 @@ class SystemActivity : AppCompatActivity() {
                         )
                         SystemDeeplinkScreen(
                             navigateBack = onBackPressedDispatcher::onBackPressed,
+                            isRoot = navController.isRoot(),
                             stateHolder = viewModel
                         )
                     }
@@ -76,6 +78,7 @@ class SystemActivity : AppCompatActivity() {
                         )
                         SystemIntentScreen(
                             navigateBack = onBackPressedDispatcher::onBackPressed,
+                            isRoot = navController.isRoot(),
                             stateHolder = viewModel
                         )
                     }
