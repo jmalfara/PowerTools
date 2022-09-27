@@ -10,6 +10,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.migration.DisableInstallInCheck
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 
 @DisableInstallInCheck
 @Module
@@ -23,6 +25,7 @@ object DashboardModule {
         return SplitInstallManagerFactory.create(context)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     @Provides
     fun provideModuleRepository(
         resourceService: ResourceService,
@@ -32,7 +35,8 @@ object DashboardModule {
         return moduleRepository ?: ModuleRepository(
             resourceService = resourceService,
             imageDownloadService = imageDownloadService,
-            splitInstallManager = splitInstallManager
+            splitInstallManager = splitInstallManager,
+            coroutineScope = GlobalScope //GlobalScope because this is a singleton
         ).also { moduleRepository = it }
     }
 }

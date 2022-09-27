@@ -100,6 +100,13 @@ fun ModuleItem(
                             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
                         )
                     }
+                    is ModuleState.Failed -> {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_baseline_error_outline_24),
+                            contentDescription = null,
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
+                        )
+                    }
                 }
             }
         }
@@ -145,6 +152,10 @@ fun ModuleItemDarkPreview() {
                 ModuleItem(
                     module = DashboardFixtures.module,
                     moduleState = ModuleState.Installing
+                )
+                ModuleItem(
+                    module = DashboardFixtures.module,
+                    moduleState = ModuleState.Failed("SomeError")
                 )
             }
         }

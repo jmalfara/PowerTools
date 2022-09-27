@@ -12,15 +12,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
@@ -48,7 +45,7 @@ import com.jmat.powertools.base.compose.theme.AppTheme
 import com.jmat.powertools.base.extensions.navigateDeeplink
 import com.jmat.powertools.modules.settings.DEEPLINK_SETTINGS
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DashboardScreen(
     shortcuts: List<ShortcutData>,
@@ -110,6 +107,7 @@ fun DashboardScreen(
                                             .makeText(context, "Please wait", Toast.LENGTH_LONG)
                                             .show()
                                     }
+                                    is ModuleState.Failed,
                                     ModuleState.Uninstalled -> {
                                         installModule(it.module)
                                     }
