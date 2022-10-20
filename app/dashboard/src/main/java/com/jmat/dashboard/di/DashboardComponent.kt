@@ -1,6 +1,6 @@
 package com.jmat.dashboard.di
 
-import com.jmat.dashboard.ui.DashboardActivity
+import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.modules.dashboard.DashboardModuleDependencies
 import dagger.Component
 
@@ -8,12 +8,13 @@ import dagger.Component
     dependencies = [DashboardModuleDependencies::class],
     modules = [DashboardModule::class, DashboardViewModelsModule::class],
 )
+@DashboardScope
 interface DashboardComponent {
-    fun inject(activity: DashboardActivity)
-
     @Component.Builder
     interface Builder {
         fun appDependencies(dashboardModuleDependencies: DashboardModuleDependencies): Builder
         fun build(): DashboardComponent
     }
+
+    fun getViewModel(): DashboardViewModel
 }

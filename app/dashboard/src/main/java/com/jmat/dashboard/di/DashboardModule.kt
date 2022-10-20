@@ -4,8 +4,10 @@ import android.content.Context
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.jmat.dashboard.data.ModuleRepository
+import com.jmat.dashboard.ui.viewmodel.DashboardViewModel
 import com.jmat.powertools.base.data.ImageDownloadService
 import com.jmat.powertools.base.data.ResourceService
+import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -39,4 +41,14 @@ object DashboardModule {
             coroutineScope = GlobalScope //GlobalScope because this is a singleton
         ).also { moduleRepository = it }
     }
+
+    @Provides
+    @DashboardScope
+    fun provideDashboardViewModel(
+        userPreferencesRepository: UserPreferencesRepository,
+        moduleRepository: ModuleRepository
+    ): DashboardViewModel = DashboardViewModel(
+        userPreferencesRepository = userPreferencesRepository,
+        moduleRepository = moduleRepository
+    )
 }

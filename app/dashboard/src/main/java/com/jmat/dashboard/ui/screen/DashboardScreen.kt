@@ -26,6 +26,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -33,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jmat.dashboard.data.model.Module
+import com.jmat.dashboard.ui.component.Alert
 import com.jmat.dashboard.ui.component.DashboardHeader
 import com.jmat.dashboard.ui.component.ModuleItem
 import com.jmat.dashboard.ui.component.ShortcutItem
@@ -55,6 +60,7 @@ fun DashboardScreen(
     uninstallModule: (Module) -> Unit
 ) {
     val context = LocalContext.current
+    var uninstallAlert by remember { mutableStateOf<Module?>(null) }
 
     if (loading) {
         LinearProgressIndicator(
@@ -64,6 +70,19 @@ fun DashboardScreen(
     }
 
     Surface {
+        uninstallAlert?.let { module ->
+            Alert(
+                title = stringResource(id = com.jmat.dashboard.R.string.dashboard_uninstall_dialog_title),
+                text = stringResource(id = com.jmat.dashboard.R.string.dashboard_uninstall_dialog_message),
+                confirmText = stringResource(id = com.jmat.dashboard.R.string.dashboard_uninstall_dialog_uninstall),
+                dismissText = stringResource(id = com.jmat.dashboard.R.string.dashboard_uninstall_dialog_dismiss),
+            ) { confirmed ->
+                if (confirmed) {
+                    uninstallModule(module)
+                }
+                uninstallAlert = null
+            }
+        }
         LazyColumn(
             modifier = Modifier
                 .fillMaxHeight()
@@ -116,7 +135,8 @@ fun DashboardScreen(
                             onLongClick = {
                                 when (it.moduleState) {
                                     ModuleState.Installed -> {
-                                        uninstallModule(it.module)
+                                        // Launch Confirmation
+                                        uninstallAlert = it.module
                                     }
                                     else -> { /* no-op */
                                     }
