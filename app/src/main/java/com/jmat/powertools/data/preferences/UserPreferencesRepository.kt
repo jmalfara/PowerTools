@@ -3,6 +3,7 @@ package com.jmat.powertools.data.preferences
 import androidx.datastore.core.DataStore
 import com.jmat.powertools.Shortcut
 import com.jmat.powertools.UserPreferences
+import kotlinx.coroutines.flow.map
 import java.util.UUID
 import javax.inject.Inject
 
@@ -10,6 +11,7 @@ class UserPreferencesRepository @Inject constructor(
     private val dataStore: DataStore<UserPreferences>
 ) {
     val data = dataStore.data
+    val shortcuts = dataStore.data.map { it.shortcutsList }
 
     suspend fun addShortcut(
         moduleName: String,

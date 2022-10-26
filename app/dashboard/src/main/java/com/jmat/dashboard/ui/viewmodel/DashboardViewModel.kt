@@ -9,29 +9,27 @@ import com.jmat.dashboard.ui.model.ShortcutData
 import com.jmat.powertools.data.preferences.UserPreferencesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combineTransform
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
-    private val userPreferencesRepository: UserPreferencesRepository,
+    userPreferencesRepository: UserPreferencesRepository,
     private val moduleRepository: ModuleRepository
 ) : ViewModel() {
     private val installData = moduleRepository.moduleInstallData
+    private val shortcuts = userPreferencesRepository.shortcuts
+    private val loading = MutableStateFlow(false)
+    private val notificationText = MutableStateFlow<String?>(null)
 
-    private val shortcuts = userPreferencesRepository.data
-        .map { it.shortcutsList }
-        .distinctUntilChanged()
-
-    private val shortcutUiData = combineTransform(
+    val uiState = combineTransform(
+        loading,
         installData,
-        shortcuts
-    ) { installData, shortcuts ->
-        val data = shortcuts.mapNotNull { shortcut ->
+        shortcuts,
+        notificationText
+    ) { loading, installData, shortcuts, notificationText ->
+        val shortcutsFeatures = shortcuts.mapNotNull { shortcut ->
             val module = installData.find { it.module.installName == shortcut.moduleName }?.module ?: return@mapNotNull null
             val feature = module.features.find { it.id == shortcut.featureId } ?: return@mapNotNull null
 
@@ -43,23 +41,12 @@ class DashboardViewModel @Inject constructor(
                 icon = feature.iconUrl
             )
         }
-        emit(data)
-    }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(), 1)
 
-    private val loading = MutableStateFlow(false)
-    private val notificationText = MutableStateFlow<String?>(null)
-
-    val uiState = combineTransform(
-        loading,
-        installData,
-        shortcutUiData,
-        notificationText
-    ) { loading, installData, shortcutUiData, notificationText ->
         emit(
             UiState(
                 loading = loading,
                 moduleInstallData = installData,
-                shortcutFeatures = shortcutUiData,
+                shortcutFeatures = shortcutsFeatures,
                 notificationText = notificationText
             )
         )
@@ -67,9 +54,9 @@ class DashboardViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.Default) {
-            loading.emit(true)
+            loading.update { true }
             moduleRepository.downloadModuleInstallData()
-            loading.emit(false)
+            loading.update { false }
         }
     }
 
@@ -78,7 +65,7 @@ class DashboardViewModel @Inject constructor(
             moduleRepository.installModule(module)
                 .onSuccess { }
                 .onFailure {
-                    notificationText.emit(it.toString())
+                    notificationText.update { it.toString() }
                 }
         }
     }
@@ -87,25 +74,25 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             moduleRepository.uninstallModule(module.installName)
                 .onSuccess {
-                    notificationText.emit("Module has been marked for removal")
+                    notificationText.update {"Module has been marked for removal" }
                 }
                 .onFailure {
-                    notificationText.emit("We could not remove the module at this time")
+                    notificationText.update {"We could not remove the module at this time" }
                 }
         }
     }
 
-    fun reorderShortcuts(shortcuts: List<ShortcutData>) {
-        viewModelScope.launch {
-            userPreferencesRepository.updateShortcuts(
-                ids = shortcuts.map { it.id }
-            )
-        }
-    }
+//    fun reorderShortcuts(shortcuts: List<ShortcutData>) {
+//        viewModelScope.launch {
+//            userPreferencesRepository.updateShortcuts(
+//                ids = shortcuts.map { it.id }
+//            )
+//        }
+//    }
 
     fun consumeNotificationText() {
         viewModelScope.launch {
-            notificationText.emit(null)
+            notificationText.update { null }
         }
     }
 
