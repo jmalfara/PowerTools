@@ -7,18 +7,16 @@ buildscript {
         }
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.43.2")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2")
-        classpath("com.android.tools.build:gradle:7.4.0-beta02")
-        classpath("com.google.gms:google-services:4.3.13")
-        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.1")
+        classpath("com.android.tools.build:gradle:7.4.0-beta03")
+        classpath("com.google.gms:google-services:4.3.14")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.2")
     }
 }
 
 // Define plugins but don't apply them
 plugins {
-    id("com.google.devtools.ksp") version "1.7.10-1.0.6" apply false
+    id("com.google.devtools.ksp") version "1.7.20-1.0.7" apply false
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
-//    id("com.android.dynamic-feature") version "7.4.0-alpha10" apply false
-//    id("org.jetbrains.kotlin.android") version "1.7.10" apply false
 }
 
 tasks.register("clean", Delete::class) {

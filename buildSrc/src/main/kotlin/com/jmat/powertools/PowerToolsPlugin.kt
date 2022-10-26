@@ -41,7 +41,7 @@ internal fun Project.configureAndroid() = this.extensions.getByType<BaseExtensio
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0-rc02"
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
 }
 

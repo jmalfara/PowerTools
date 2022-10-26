@@ -18,6 +18,7 @@ fun Context.navigateLauncherActions(
     startActivity(intent)
 }
 
+@Suppress("DEPRECATION")
 fun Context.navigateDeeplink(
     deeplink: String
 ) {

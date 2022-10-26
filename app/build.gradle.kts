@@ -68,58 +68,57 @@ android {
 }
 
 dependencies {
-    api("androidx.core:core-ktx:1.8.0")
-    api("androidx.navigation:navigation-fragment-ktx:2.5.1")
-    api("androidx.navigation:navigation-ui-ktx:2.5.1")
+    implementation(platform("androidx.compose:compose-bom:2022.10.00"))
+
+    api("androidx.core:core-ktx:1.9.0")
+    api("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    api("androidx.navigation:navigation-ui-ktx:2.5.3")
     api("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
     api("com.google.android.play:core:1.10.3")
 
     // Compose
-    api("androidx.compose.ui:ui:1.2.1")
-    api("androidx.compose.ui:ui-tooling:1.2.1")
-    api("androidx.compose.foundation:foundation:1.2.1")
-    api("androidx.compose.material3:material3:1.0.0-beta01")
-    api("androidx.compose.material:material-icons-core:1.2.1")
-    api("androidx.compose.material:material-icons-extended:1.2.1")
-    api("androidx.compose.runtime:runtime-livedata:1.2.1")
-    api("androidx.compose.runtime:runtime-rxjava2:1.2.1")
-    api("androidx.activity:activity-compose:1.5.1")
-    api("androidx.compose.animation:animation:1.2.1")
+    api("androidx.compose.ui:ui")
+    api("androidx.compose.ui:ui-tooling")
+    api("androidx.compose.foundation:foundation")
+    api("androidx.compose.material3:material3:1.0.0")
+    api("androidx.compose.material:material-icons-core:1.3.0")
+    api("androidx.compose.material:material-icons-extended:1.3.0")
+    api("androidx.compose.runtime:runtime-livedata:1.3.0")
+    api("androidx.compose.runtime:runtime-rxjava2:1.3.0")
+    api("androidx.activity:activity-compose:1.6.1")
+    api("androidx.compose.animation:animation:1.3.0")
     api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     api("androidx.hilt:hilt-navigation-compose:1.0.0")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.17")
-    api("com.google.android.material:compose-theme-adapter:1.1.17")
+    api("com.google.android.material:compose-theme-adapter-3:1.0.21")
+    api("com.google.android.material:compose-theme-adapter:1.1.21")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
     api("com.squareup.retrofit2:converter-moshi:2.9.0")
-    api("com.squareup.moshi:moshi-kotlin:1.13.0")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+    api("com.squareup.moshi:moshi-kotlin:1.14.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
-    api("io.ktor:ktor-client-core:2.1.0")
-    api("io.ktor:ktor-client-cio:2.1.0")
-    api("io.ktor:ktor-client-content-negotiation:2.1.0")
-    api("io.ktor:ktor-serialization-kotlinx-json:2.1.0")
-    api("io.ktor:ktor-client-logging:2.1.0")
-    api("ch.qos.logback:logback-classic:1.4.0")
+    api("io.ktor:ktor-client-core:2.1.2")
+    api("io.ktor:ktor-client-cio:2.1.2")
+    api("io.ktor:ktor-client-content-negotiation:2.1.2")
+    api("io.ktor:ktor-serialization-kotlinx-json:2.1.2")
+    api("io.ktor:ktor-client-logging:2.1.2")
+    api("ch.qos.logback:logback-classic:1.4.4")
 
     api("androidx.datastore:datastore:1.0.0")
     api("androidx.datastore:datastore-core:1.0.0")
-    api("com.google.protobuf:protobuf-javalite:3.21.5")
+    api("com.google.protobuf:protobuf-javalite:3.21.8")
 
-    api("com.github.bumptech.glide:glide:4.13.2")
-    kapt("com.github.bumptech.glide:compiler:4.13.2")
+    api("com.github.bumptech.glide:glide:4.14.2")
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
 
     implementation("androidx.core:core-splashscreen:1.0.0")
     testApi(fileTree("${project.rootDir}/buildSrc/build/"))
 
     // Anayltics
-    implementation(platform("com.google.firebase:firebase-bom:30.4.1"))
-
-    // Add the dependencies for the Crashlytics and Analytics libraries
-    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(platform("com.google.firebase:firebase-bom:31.0.1"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
 }

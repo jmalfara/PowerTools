@@ -37,7 +37,7 @@ internal fun Project.configureDynamic() = this.extensions.getByType<DynamicFeatu
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0-rc02"
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
 
     buildFeatures {

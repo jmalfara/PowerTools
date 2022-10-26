@@ -27,6 +27,7 @@ import com.jmat.dashboard.data.model.Module
 import com.jmat.dashboard.ui.fixture.DashboardFixtures
 import com.jmat.dashboard.ui.model.ModuleState
 import com.jmat.powertools.base.compose.theme.AppTheme
+import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
@@ -46,8 +47,7 @@ fun ModuleItem(
             val (icon, name, installStatus) = createRefs()
 
             GlideImage(
-                imageModel = module.iconUrl,
-                contentDescription = null,
+                imageModel = { module.iconUrl },
                 previewPlaceholder = R.drawable.ic_baseline_check_circle_24,
                 modifier = Modifier
                     .constrainAs(icon) {
@@ -57,7 +57,9 @@ fun ModuleItem(
                     }
                     .height(Dp(42f))
                     .width(Dp(42f)),
-                contentScale = ContentScale.Crop
+                imageOptions = ImageOptions(
+                    contentScale = ContentScale.Crop
+                )
             )
             Text(
                 modifier = Modifier

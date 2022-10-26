@@ -21,6 +21,7 @@ import com.jmat.dashboard.R
 import com.jmat.dashboard.ui.fixture.DashboardFixtures
 import com.jmat.dashboard.ui.model.ShortcutData
 import com.jmat.powertools.base.compose.theme.AppTheme
+import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
@@ -40,8 +41,7 @@ fun ShortcutItem(
         ) {
             val (icon, name) = createRefs()
             GlideImage(
-                imageModel = shortcutData.icon,
-                contentDescription = null,
+                imageModel = { shortcutData.icon },
                 previewPlaceholder = R.drawable.ic_baseline_check_circle_24,
                 modifier = Modifier
                     .constrainAs(icon) {
@@ -50,7 +50,9 @@ fun ShortcutItem(
                     }
                     .height(Dp(42f))
                     .width(Dp(42f)),
-                contentScale = ContentScale.Crop
+                imageOptions = ImageOptions(
+                    contentScale = ContentScale.Crop
+                )
             )
             Text(
                 modifier = Modifier
