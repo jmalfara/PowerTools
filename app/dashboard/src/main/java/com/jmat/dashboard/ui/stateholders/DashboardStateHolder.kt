@@ -34,8 +34,6 @@ interface DashboardStateHolder {
 
 @Stable
 class DashboardStateHolderImpl(
-//    private val navController: NavHostController,
-//    private val resources: Resources,
     uiState: DashboardViewModel.UiState,
     private val uninstallAlert: Module?,
     private val setUninstallModule: (Module?) -> Unit,
@@ -58,8 +56,6 @@ class DashboardStateHolderImpl(
 
 @Composable
 fun rememberDashboardState(
-//    navController: NavHostController = rememberNavController(),
-//    resources: Resources = LocalContext.current.resources,
     viewModel: DashboardViewModel
 ): DashboardStateHolder {
     var uninstallAlert by remember { mutableStateOf<Module?>(null) }
