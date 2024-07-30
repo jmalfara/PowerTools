@@ -8,5 +8,5 @@ android {
 
 dependencies {
     implementation(project(":app"))
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 }

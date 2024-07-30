@@ -21,6 +21,7 @@ internal fun Project.configureDynamicPlugins() = plugins.apply {
     apply("org.jetbrains.kotlin.android")
     apply("org.jetbrains.kotlin.kapt")
     apply("androidx.navigation.safeargs.kotlin")
+    apply("org.jetbrains.kotlin.plugin.compose")
 }
 
 internal fun Project.configureDynamic() = this.extensions.getByType<DynamicFeatureExtension>().run {
@@ -43,6 +44,7 @@ internal fun Project.configureDynamic() = this.extensions.getByType<DynamicFeatu
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
     }
 }
 

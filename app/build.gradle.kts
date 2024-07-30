@@ -1,18 +1,15 @@
 @file:Suppress("UnstableApiUsage")
 
-import com.google.protobuf.gradle.builtins
-import com.google.protobuf.gradle.generateProtoTasks
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
 import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
     id("com.jmat.powertools.application")
-    id("com.google.protobuf") version "0.8.17"
+    id("com.google.protobuf") version "0.9.4"
     id("org.jlleitschuh.gradle.ktlint")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0" // this version matches your Kotlin version
 }
 
 val keystoreProperties = Properties().apply {
@@ -46,6 +43,7 @@ android {
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
     }
 
     dynamicFeatures.addAll(
@@ -68,13 +66,13 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2022.10.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.06.00"))
 
-    api("androidx.core:core-ktx:1.9.0")
-    api("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    api("androidx.navigation:navigation-ui-ktx:2.5.3")
-    api("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    api("androidx.core:core-ktx:1.13.1")
+    api("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    api("androidx.navigation:navigation-ui-ktx:2.7.7")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     api("androidx.recyclerview:recyclerview-selection:1.1.0")
     api("com.google.android.play:core:1.10.3")
 
@@ -82,17 +80,17 @@ dependencies {
     api("androidx.compose.ui:ui")
     api("androidx.compose.ui:ui-tooling")
     api("androidx.compose.foundation:foundation")
-    api("androidx.compose.material3:material3:1.0.0")
-    api("androidx.compose.material:material-icons-core:1.3.0")
-    api("androidx.compose.material:material-icons-extended:1.3.0")
-    api("androidx.compose.runtime:runtime-livedata:1.3.0")
-    api("androidx.compose.runtime:runtime-rxjava2:1.3.0")
-    api("androidx.activity:activity-compose:1.6.1")
-    api("androidx.compose.animation:animation:1.3.0")
-    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-    api("androidx.hilt:hilt-navigation-compose:1.0.0")
-    api("com.google.android.material:compose-theme-adapter-3:1.0.21")
-    api("com.google.android.material:compose-theme-adapter:1.1.21")
+    api("androidx.compose.material3:material3:1.2.1")
+    api("androidx.compose.material:material-icons-core:1.6.8")
+    api("androidx.compose.material:material-icons-extended:1.6.8")
+    api("androidx.compose.runtime:runtime-livedata:1.6.8")
+    api("androidx.compose.runtime:runtime-rxjava2:1.6.8")
+    api("androidx.activity:activity-compose:1.9.1")
+    api("androidx.compose.animation:animation:1.6.8")
+    api("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    api("androidx.hilt:hilt-navigation-compose:1.2.0")
+    api("com.google.android.material:compose-theme-adapter-3:1.1.1")
+    api("com.google.android.material:compose-theme-adapter:1.2.1")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     api("com.squareup.retrofit2:retrofit:2.9.0")
